@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindEase - Mood Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body style="background: linear-gradient(to bottom, #E8EAF6, #C7C9F2);"> <!-- Misty Lilac to Lavender -->
+  <header>
+    <div class="logo">
+      <img src="https://via.placeholder.com/30?text=🧠" alt="Brain Icon">
+      <span>MindEase</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="journal.html">Journal</a></li>
+        <li><a href="quotes.html">Quotes</a></li>
+        <li><a href="calm_corner.html">Calm Corner</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="about_us.html">About Us</a></li>
+        <li><a href="help.html">Help</a></li>
+        <li><a href="privacy_policy.html">Privacy Policy</a></li>
+        <li><a href="contact_us.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section mood-tracker" style="padding: 2rem; text-align: center;">
+      <h1>Track Your Mood</h1>
+      <div class="card" style="max-width: 600px; margin: 2rem auto;">
+        <h2>How are you feeling today?</h2>
+        <div class="mood-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 1rem; margin: 1rem;">
+          <button class="btn mood-btn" data-mood="happy" style="font-size: 2rem;">😊</button>
+          <button class="btn mood-btn" data-mood="sad" style="font-size: 2rem;">😢</button>
+          <button class="btn mood-btn" data-mood="anxious" style="font-size: 2rem;">😟</button>
+          <button class="btn mood-btn" data-mood="calm" style="font-size: 2rem;">😌</button>
+          <button class="btn mood-btn" data-mood="tired" style="font-size: 2rem;">😴</button>
+        </div>
+        <input type="date" id="moodDate" style="margin: 0.5rem; padding: 0.5rem;">
+        <button class="btn" onclick="submitMood()">Submit</button>
+      </div>
+      <div class="card" style="max-width: 600px; margin: 2rem auto;">
+        <h2>Mood Trends</h2>
+        <div id="moodTrends" style="margin: 1rem;">
+          <p>Happy: <span id="happyCount">0</span></p>
+          <div style="background: #A8E6CF; height: 10px; width: 0%;" id="happyBar"></div>
+          <p>Sad: <span id="sadCount">0</span></p>
+          <div style="background: #A8E6CF; height: 10px; width: 0%;" id="sadBar"></div>
+          <p>Anxious: <span id="anxiousCount">0</span></p>
+          <div style="background: #A8E6CF; height: 10px; width: 0%;" id="anxiousBar"></div>
+          <p>Calm: <span id="calmCount">0</span></p>
+          <div style="background: #A8E6CF; height: 10px; width: 0%;" id="calmBar"></div>
+          <p>Tired: <span id="tiredCount">0</span></p>
+          <div style="background: #A8E6CF; height: 10px; width: 0%;" id="tiredBar"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      <a href="privacy_policy.html">Privacy Policy</a> |
+      <a href="help.html">Help</a> |
+      <a href="about_us.html">About Us</a> |
+      <a href="contact_us.html">Contact Us</a>
+    </p>
+    <p>© 2025 MindEase. All Rights Reserved.</p>
+  </footer>
+
+  <script src="../js/script.js"></script>
+  <script>
+    const moodCounts = { happy: 0, sad: 0, anxious: 0, calm: 0, tired: 0 };
+
+    function submitMood() {
+      const selectedMood = document.querySelector('.mood-btn.selected')?.dataset.mood;
+      const date = document.getElementById('moodDate').value;
+      if (selectedMood && date) {
+        moodCounts[selectedMood]++;
+        updateMoodTrends();
+        document.querySelectorAll('.mood-btn').forEach(btn => btn.classList.remove('selected'));
+      }
+    }
+
+    function updateMoodTrends() {
+      const total = Object.values(moodCounts).reduce((sum, count) => sum + count, 0) || 1;
+      for (const mood in moodCounts) {
+        const count = moodCounts[mood];
+        const percentage = (count / total) * 100;
+        document.getElementById(`${mood}Count`).textContent = count;
+        document.getElementById(`${mood}Bar`).style.width = `${percentage}%`;
+      }
+    }
+
+    document.querySelectorAll('.mood-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        btn.style.background = '#B3E5FC'; // Pale Aqua Blue for selected
+      });
+    });
+  </script>
+</body>
+</html>
