@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body style="background: #C8E6C9;"> <!-- Mint Green -->
+
+<body> 
   <header>
     <div class="logo">
       <img src="https://via.placeholder.com/30?text=🧠" alt="Brain Icon">
@@ -16,6 +18,7 @@
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
+        <li><a href="mood_tracker.html">Mood Tracker</a></li>
         <li><a href="journal.html">Journal</a></li>
         <li><a href="quotes.html">Quotes</a></li>
         <li><a href="calm_corner.html">Calm Corner</a></li>
@@ -25,29 +28,52 @@
   </header>
 
   <main>
-    <section class="section calm" style="padding: 2rem; text-align: center;">
-      <h1>Your Calm Space</h1>
-      <div class="card">
-        <h3>Breathing Exercise</h3>
-        <div id="breathingCircle" style="width: 100px; height: 100px; background: #A8E6CF; border-radius: 50%; margin: 1rem auto; animation: breathe 8s infinite;"></div>
-        <p>Inhale... Exhale...</p>
-        <style>
-          @keyframes breathe {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.5); }
-          }
-        </style>
-      </div>
-      <div class="card">
-        <h3>Meditation Audio</h3>
+    <section class="section-calm">
+      <h1 style="color: #546E7A; font-size: 3rem;">Your Calm Space</h1>
+      <p style="font-size: 1.2rem; margin-bottom: 2rem;">Take a moment to breathe and relax.</p>
+
+      <!-- Shared container style -->
+      <!-- <div class="content-box">
+        <h2 style="font-size: 2rem;">Breathing Exercise</h2>
+        <div id="breathingCircle"></div>
+        <p>Follow the circle. Inhale as it shrinks, exhale as it grows.</p>
+      </div> -->
+<div class="content-box">
+  <h2 style="color: #546E7A; font-size: 2rem;">Breathing Exercise</h2>
+  <div class="breathing-circle" id="breathingCircle">
+                <p id="breathingStatus">Ready</p>
+            </div>
+
+            <div class="breathing-controls">
+                <p class="breathing-text" id="breathingText">
+                    Click start to begin a guided breathing exercise
+                </p>
+                <button class="btn" id="breathingBtn" onclick="toggleBreathing()">
+                    <span id="btnText">Start</span>
+                </button>
+            </div>
+        </div>
+</div>
+      
+
+      <div class="content-box">
+        <h2>Meditation Audio</h2>
         <audio controls>
           <source src="https://www.example.com/meditation.mp3" type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
       </div>
-      <div class="card">
-        <h3>Relaxation Tips</h3>
-        <p>Take a moment to stretch, sip some water, or listen to calming music.</p>
+
+      <div class="content-box">
+        <h2>Relaxation Tips</h2>
+        <div class="grid">
+          <div class="tip">Take a few deep breaths and focus on the present moment</div>
+          <div class="tip">Step outside for fresh air and natural light</div>
+          <div class="tip">Listen to calming music or nature sounds</div>
+          <div class="tip">Practice progressive muscle relaxation</div>
+          <div class="tip">Try a short meditation or mindfulness exercise</div>
+          <div class="tip">Write down three things you’re grateful for</div>
+        </div>
       </div>
     </section>
   </main>
@@ -64,4 +90,5 @@
 
   <script src="../js/script.js"></script>
 </body>
+
 </html>

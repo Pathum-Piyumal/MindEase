@@ -7,14 +7,17 @@
 }
 
 body {
-  background: #E8EAF6; /* Misty Lilac */
-  color: #546E7A; /* Slate Gray */
+  background: #E8EAF6;
+  /* Misty Lilac */
+  color: #546E7A;
+  /* Slate Gray */
   line-height: 1.6;
 }
 
 /* Header */
 header {
-  background: linear-gradient(to right, #E8EAF6, #C7C9F2); /* Misty Lilac to Lavender */
+  background: #E8EAF6;
+  /* Misty Lilac to Lavender */
   padding: 1rem 2rem;
   position: sticky;
   top: 0;
@@ -51,16 +54,18 @@ nav a {
 }
 
 nav a:hover {
-  color: #B3E5FC; /* Pale Aqua Blue */
+  color: #B3E5FC;
+  /* Pale Aqua Blue */
 }
 
 /* Footer */
 footer {
-  background: #E8EAF6; /* Misty Lilac */
+  background: #E8EAF6;
+  /* Misty Lilac */
   padding: 2rem;
   text-align: center;
   margin-top: 2rem;
-  border-top: 1px solid #C7C9F2;
+  /* border-top: 1px solid #C7C9F2; */
 }
 
 footer a {
@@ -74,44 +79,162 @@ footer a:hover {
 }
 
 /* Buttons */
-.btn {
-  background: #A8E6CF; /* Soft Teal Green */
+/* .btn {
+  background-color: #A8E6CF;  
   color: #546E7A;
   padding: 0.8rem 1.5rem;
   border: none;
   border-radius: 25px;
   cursor: pointer;
   font-weight: 500;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+.btn:hover {
+  background: #B3E5FC;
+  transform: translateY(-2px);
+} */
+
+
+.btn {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #A8E6CF;
+  color: white;
 }
 
 .btn:hover {
-  background: #B3E5FC; /* Pale Aqua Blue */
-  transform: translateY(-2px);
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
 }
 
-/* Cards */
-.card {
-  background: #FAFAFA; /* White Smoke */
-  border-radius: 15px;
+.btn:disabled {
+  background: #cbd5e0;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+/* Calm section */
+.section-calm {
+  background: linear-gradient(135deg, #A8E6CF, #B3E5FC);
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.section-calm h1 {
+  font-size: 2.5rem;
+  color: #37474f;
+  margin-bottom: 0.5rem;
+}
+
+.section-calm p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Shared container style */
+.content-box {
+  background: #ffffff;
   padding: 1.5rem;
-  margin: 1rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  margin: 2rem auto;
+  max-width: 1000px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-.card:hover {
-  transform: translateY(-5px);
+.content-box h2 {
+  font-size: 1.8rem;
+  color: #37474f;
+  margin-bottom: 2rem;
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Breathing Circle */
+#breathingCircle {
+  width: 200px;
+  height: 200px;
+  margin: 3rem auto;
+  background: linear-gradient(135deg, #A8E6CF, #B3E5FC);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 4s ease-in-out;
 }
 
-.fade-in {
-  animation: fadeIn 0.5s ease-in;
+.breathing-circle.active {
+  animation: breathe 8s ease-in-out infinite;
+}
+
+@keyframes breathe {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.5);
+  }
+}
+
+.breathing-circle p {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.breathing-controls {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.breathing-text {
+  font-size: 1.1rem;
+  color: #546E7A;
+  margin-bottom: 0.5rem;
+}
+
+
+
+
+/* Relaxation Tips Grid */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.tip {
+  background: #f9f9ff;
+  border: 1px solid #dcd6f7;
+  border-radius: 10px;
+  padding: 1rem;
+  color: #455a64;
+  transition: 0.3s ease;
+}
+
+.tip:hover {
+  box-shadow: 0 3px 10px rgba(150, 120, 200, 0.2);
+  transform: translateY(-3px);
+}
+
+/* Responsive Grid */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* Responsive Design */
@@ -120,6 +243,7 @@ footer a:hover {
     flex-direction: column;
     gap: 1rem;
   }
+
   nav ul {
     flex-direction: column;
     text-align: center;
