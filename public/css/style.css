@@ -96,27 +96,29 @@ footer a:hover {
   transform: translateY(-2px);
 } */
 
+.hero {
+  background: linear-gradient(135deg, #E3F2FD, #C8E6C9);
+  color: #37474F;
+}
+
+.hero h1, .hero h2, .hero p {
+  margin: 0;
+}
 
 .btn {
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  font-weight: 600;
-  border: none;
+  background-color: #A8E6CF;
+  color: #37474F;
+  padding: 0.8rem 1.8rem;
   border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: #A8E6CF;
-  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+  background: #B3E5FC;
+  transform: translateY(-3px);
 }
-
 .btn:disabled {
   background: #cbd5e0;
   cursor: not-allowed;
