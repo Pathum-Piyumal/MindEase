@@ -6,3 +6,28 @@ document.addEventListener('DOMContentLoaded', () => {
     section.classList.add('fade-in');
   });
 });
+
+
+
+//calm corner js
+let isBreathing = false;
+
+function toggleBreathing() {
+  isBreathing = !isBreathing;
+  var circle = document.getElementById("breathingCircle");
+  var status = document.getElementById("breathingStatus");
+  var text = document.getElementById("breathingText");
+  var btnText = document.getElementById("btnText");
+
+  if (isBreathing) {
+    circle.classList.add("active");
+    status.textContent = "Breathe...";
+    text.textContent = "Follow the circle. Inhale as it grows, exhale as it shrinks.";
+    btnText.textContent = "Pause";
+  } else {
+    circle.classList.remove("active");
+    status.textContent = "Ready";
+    text.textContent = "Click start to begin a guided breathing exercise";
+    btnText.textContent = "Start";
+  }
+}
