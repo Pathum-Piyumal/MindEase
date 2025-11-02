@@ -16,6 +16,7 @@
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
+        <li><a href="./pages/mood_tracker.html">Mood Tracker</a></li>
         <li><a href="./pages/journal.html">Journal</a></li>
         <li><a href="./pages/quotes.html">Quotes</a></li>
         <li><a href="./pages/calm_corner.html">Calm Corner</a></li>
@@ -25,36 +26,71 @@
   </header>
 
   <main>
-    <section class="section hero" style="text-align: center; padding: 4rem 2rem; background: linear-gradient(to bottom, #E8EAF6, #C7C9F2);">
-      <h1>MindEase – Online Mental Wellness Companion</h1>
-      <p>Track. Reflect. Relax. Feel better every day.</p>
-      <img src="https://via.placeholder.com/300x200?text=Person+Meditating" alt="Meditating Person" style="margin: 2rem 0;">
-      <button class="btn">Get Started</button>
-    </section>
+    <!-- Hero Section -->
+    <section class="section hero" 
+  style="display: flex; align-items: center; justify-content: space-between; padding: 5rem 8%; background: linear-gradient(135deg, #E3F2FD, #C8E6C9); flex-wrap: wrap;">
 
-    <section class="section about" style="padding: 2rem; text-align: center;">
-      <h2>About MindEase</h2>
-      <p>MindEase is your companion for mental wellness, offering tools to track your mood, journal your thoughts, find inspiration, and relax.</p>
-    </section>
+  <div style="flex: 1; min-width: 280px; margin-right: 2rem;">
+    <h1 style="font-size: 2.8rem; color: #37474F; margin-bottom: 1rem; font-weight: 700;">
+      MindEase
+    </h1>
+    <h2 style="font-size: 1.6rem; color: #546E7A; margin-bottom: 1rem; font-weight: 500;">
+      Online Mental Wellness Companion
+    </h2>
+    <p style="font-size: 1rem; color: #607D8B; margin-bottom: 2rem;">
+      Track. Reflect. Relax. Feel better every day.
+    </p>
+    <a href="index.html" class="btn">Get Started</a>
+  </div>
 
-    <section class="section features" style="padding: 2rem; display: flex; flex-wrap: wrap; justify-content: center;">
-      <div class="card" style="width: 200px;">
-        <h3>Mood Tracker 😊 </h3>
-        <p>Track your daily emotions with ease.</p>
-      </div>
-      <div class="card" style="width: 200px;">
-        <h3>Digital Journal 📓</h3>
-        <p>Reflect on your thoughts and experiences.</p>
-      </div>
-      <div class="card" style="width: 200px;">
-        <h3>Motivational Quotes 💬</h3>
-        <p>Find daily inspiration to uplift your mood.</p>
-      </div>
-      <div class="card" style="width: 200px;">
-        <h3>Calm Corner 🍃</h3>
-        <p>Relax with guided exercises and tips.</p>
-      </div>
-    </section>
+  <div style="flex: 1; min-width: 280px; display: flex; justify-content: center;">
+    <img src="/assets/images/hero-meditation.png" 
+         alt="Meditating Person" 
+         style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+  </div>
+</section>
+
+<!-- Journey Section (Full Width) -->
+<section class="journey-section">
+  <div class="journey-content">
+    <h2>Your Journey to Mental Wellness</h2>
+    <p>
+      MindEase is your daily companion for mental health and emotional well-being.
+      Explore tools designed to track your moods, reflect your thoughts, and find calm.
+    </p>
+  </div>
+</section>
+
+<!-- Core Features Section -->
+<section class="core-features">
+  <h2 class="core-title">Core Features</h2>
+
+  <div class="features-grid">
+    <a href="./pages/mood_tracker.html" class="feature-card">
+      <h3>😊 Mood Tracker</h3>
+      <p>Track your daily emotions with ease.</p>
+    </a>
+
+    <a href="./pages/journal.html" class="feature-card">
+      <h3>📓 Digital Journal</h3>
+      <p>Reflect on your thoughts and experiences.</p>
+    </a>
+
+    <a href="./pages/quotes.html" class="feature-card">
+      <h3>💬 Motivational Quotes</h3>
+      <p>Find daily inspiration to uplift your mood.</p>
+    </a>
+
+    <a href="./pages/calm_corner.html" class="feature-card">
+      <h3>🍃 Calm Corner</h3>
+      <p>Relax with guided exercises and tips.</p>
+    </a>
+  </div>
+</section>
+
+
+
+
   </main>
 
   <footer>

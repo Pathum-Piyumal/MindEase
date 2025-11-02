@@ -1,4 +1,4 @@
-/* Reset and Base Styles */
+/* Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -96,32 +96,112 @@ footer a:hover {
   transform: translateY(-2px);
 } */
 
+.hero {
+  background: linear-gradient(135deg, #E3F2FD, #C8E6C9);
+  color: #37474F;
+}
+
+.hero h1, .hero h2, .hero p {
+  margin: 0;
+}
 
 .btn {
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  font-weight: 600;
-  border: none;
+  background-color: #A8E6CF;
+  color: #37474F;
+  padding: 0.8rem 1.8rem;
   border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: #A8E6CF;
-  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+  background: #B3E5FC;
+  transform: translateY(-3px);
 }
 
-.btn:disabled {
-  background: #cbd5e0;
-  cursor: not-allowed;
-  transform: none;
+/* Journey Section  */
+.journey-section {
+  width: 100%;
+  background: linear-gradient(to right, #e6f0ff, #f0f9ff);
+  padding: 4rem 2rem;
+  text-align: center;
 }
+
+.journey-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.journey-content h2 {
+  font-size: 2rem;
+  color: #2f3e46;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.journey-content p {
+  font-size: 1.1rem;
+  color: #4a5b63;
+  line-height: 1.7;
+  margin: 0 auto;
+}
+
+/* Core Features Section */
+.core-features {
+  background: linear-gradient(to bottom right, #f0faff, #eaf4ff);
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.core-features .core-title {
+  font-size: 2rem;
+  color: #2f3e46;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+/* 2x2 Grid Layout */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Feature Cards */
+.feature-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.1);
+}
+
+.feature-card h3 {
+  color: #2f3e46;
+  margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+  color: #607d8b;
+}
+
+
 
 
 /* Calm section */
