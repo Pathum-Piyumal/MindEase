@@ -31,3 +31,4 @@ function toggleBreathing() {
     btnText.textContent = "Start";
   }
 }
+
