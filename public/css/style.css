@@ -120,34 +120,58 @@ footer a:hover {
   transform: translateY(-3px);
 }
 
-/* Journey Section  */
+/* Journey Section */
+
 .journey-section {
-  width: 100%;
-  background: linear-gradient(to right, #e6f0ff, #f0f9ff);
-  padding: 4rem 2rem;
+  background: linear-gradient(to right, #dee8ff, #f2e9fb);
+  padding: 6rem 2rem;
   text-align: center;
+  color: #37474f;
+  display: flex;
+  justify-content: center;
 }
 
 .journey-content {
-  max-width: 900px;
-  margin: 0 auto;
+  background: #ffffff;
+  width: 90%;          
+  max-width: 1200px;    
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
 }
 
 .journey-content h2 {
-  font-size: 2rem;
-  color: #2f3e46;
+  font-size: 2.2rem;
   margin-bottom: 1rem;
-  font-weight: 700;
-}
-
-.journey-content p {
-  font-size: 1.1rem;
-  color: #4a5b63;
-  line-height: 1.7;
-  margin: 0 auto;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* Core Features Section */
+.feature-card {
+  background: #ffffff;
+  width: 280px;
+  height: 200px;
+  padding: 1rem;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: #37474f;
+  text-decoration: none;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(200, 200, 255, 0.2);
+  backdrop-filter: blur(4px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+
 .core-features {
   background: linear-gradient(to bottom right, #f0faff, #eaf4ff);
   text-align: center;
@@ -164,45 +188,19 @@ footer a:hover {
 /* 2x2 Grid Layout */
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  max-width: 850px;
-  margin: 0 auto;
+  justify-items: center;
+  align-items: center;
+  margin-top: 2rem;
 }
+
 
 @media (max-width: 768px) {
   .features-grid {
     grid-template-columns: 1fr;
   }
 }
-
-/* Feature Cards */
-.feature-card {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 2rem;
-  text-decoration: none;
-  color: inherit;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 22px rgba(0,0,0,0.1);
-}
-
-.feature-card h3 {
-  color: #2f3e46;
-  margin-bottom: 0.5rem;
-}
-
-.feature-card p {
-  color: #607d8b;
-}
-
-
-
 
 /* Calm section */
 .section-calm {
