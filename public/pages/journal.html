@@ -27,19 +27,7 @@
   <main>
     <section class="section journal" style="padding: 2rem; text-align: center;">
       <h1>Your Daily Journal</h1>
-      <div class="card">
-        <h3>New Entry</h3>
-        <input type="date" id="entryDate" style="margin: 0.5rem; padding: 0.5rem;">
-        <textarea id="entryText" placeholder="Write your thoughts..." style="width: 100%; min-height: 100px; padding: 0.5rem;"></textarea>
-        <select id="entryMood">
-          <option value="happy">😊 Happy</option>
-          <option value="sad">😢 Sad</option>
-          <option value="anxious">😟 Anxious</option>
-          <option value="calm">😌 Calm</option>
-          <option value="tired">😴 Tired</option>
-        </select>
-        <button class="btn" onclick="saveEntry()">Save</button>
-      </div>
+      
       <div id="entries" style="display: flex; flex-wrap: wrap; justify-content: center;"></div>
     </section>
   </main>
