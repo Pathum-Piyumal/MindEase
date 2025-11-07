@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MindEase - Quotes</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="../css/quotes.css" />
 </head>
-<body style="background: linear-gradient(to bottom, #E8EAF6, #FFDAB9);"> <!-- Lavender to Peach -->
-  <header>
+
+<body>
+    <header>
     <div class="logo">
       <img src="https://via.placeholder.com/30?text=🧠" alt="Brain Icon">
       <span>MindEase</span>
@@ -16,24 +17,28 @@
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="journal.html">Journal</a></li>
-        <li><a href="quotes.html">Quotes</a></li>
-        <li><a href="calm_corner.html">Calm Corner</a></li>
-        <li><a href="login.html">Login</a></li>
+        <li><a href="./pages/mood_tracker.html">Mood Tracker</a></li>
+        <li><a href="./pages/journal.html">Journal</a></li>
+        <li><a href="./pages/quotes.html">Quotes</a></li>
+        <li><a href="./pages/calm_corner.html">Calm Corner</a></li>
+        <li><a href="./pages/login.html">Login</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <section class="section quotes" style="padding: 2rem; text-align: center;">
-      <h1>Daily Motivation</h1>
-      <div class="card" id="quoteCard">
-        <p id="quoteText">"You are stronger than you know."</p>
-        <button class="btn" onclick="showNewQuote()">Show Another Quote</button>
-        <button class="btn" onclick="saveQuote()">Save</button>
-      </div>
-      <div id="savedQuotes" style="display: flex; flex-wrap: wrap; justify-content: center;"></div>
-    </section>
+ <main class="quotes">
+    <h2>Daily Motivation</h2>
+
+    <div class="quotes-card">
+        <p id="quotes-text"></p>
+    </div>
+
+    <div class="quotes-group">
+            <button id="like-btn"><i class="fa-regular fa-heart"></i><span id="like-count">0</span></button>
+            <button id="save-btn"><i class="fa-regular fa-bookmark"></i></button>
+            <button id="next-btn">Next</button>
+    </div>
+    
   </main>
 
   <footer>
@@ -46,25 +51,6 @@
     <p>© 2025 MindEase. All Rights Reserved.</p>
   </footer>
 
-  <script src="../js/script.js"></script>
-  <script>
-    const quotes = [
-      "You are stronger than you know.",
-      "Take a deep breath and let go.",
-      "Every day is a new beginning.",
-      "You are enough just as you are."
-    ];
-    function showNewQuote() {
-      const quoteText = document.getElementById('quoteText');
-      quoteText.textContent = quotes[Math.floor(Math.random() * quotes.length)];
-    }
-    function saveQuote() {
-      const quote = document.getElementById('quoteText').textContent;
-      const savedQuote = document.createElement('div');
-      savedQuote.className = 'card';
-      savedQuote.innerHTML = `<p>${quote}</p>`;
-      document.getElementById('savedQuotes').prepend(savedQuote);
-    }
-  </script>
+<script src="../js/quotes.js"></script>
 </body>
 </html>
