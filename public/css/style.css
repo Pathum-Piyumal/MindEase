@@ -228,9 +228,9 @@ footer a:hover {
   }
 }
 
-.hero {
+.feature-hero{
     padding: 4rem 5%;
-    background: linear-gradient(135deg, #E3F2FD, #C8E6C9);;
+   background: linear-gradient(135deg, #E3F2FD, #C8E6C9);
     color: rgb(37, 30, 30);
     text-align: center;
 }
@@ -240,13 +240,13 @@ footer a:hover {
     margin: 0 auto;
 }
 
-.hero h2 {
+.feature-hero h2 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
     font-weight: 700;
 }
 
-.hero p {
+.feature-hero p {
     font-size: 1.2rem;
     margin-bottom: 3rem;
     opacity: 0.9;
@@ -287,6 +287,32 @@ footer a:hover {
 .feature-item h3 {
     font-size: 1.3rem;
     font-weight: 600;
+}
+/*ready-to-feel section*/
+.ready-to-feel{
+    padding: 4rem 5%;
+    background: linear-gradient(135deg, #f0faff, #eaf4ff);
+    text-align: center;
+    color: rgb(37, 30, 30);
+    text-align: center;
+}
+
+.ready-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.ready-to-feel h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.ready-to-feel p {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+    line-height: 1.8;
 }
 
 
