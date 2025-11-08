@@ -67,9 +67,10 @@ nav a:hover {
 }
 
 .quotes h2{
-    font-size: 2em;
+    font-size: 2.2em;
     color: #4A4A7D;
     margin-bottom: 30px;
+    padding: 5;
 }
 
 .quotes-card {
@@ -86,11 +87,11 @@ nav a:hover {
 }
 
 #quotes-card {
-  font-size: 1.2rem;
   color: #333;
 }
 
 #quotes-text{
+  font-size: 1.7rem;
   font-family: 'Comfortaa', cursive;
 }
 
@@ -121,7 +122,7 @@ button:hover {
 }
 
 #like-btn i {
-  color: #999;
+  color: black;
   margin-right: 6px;
   transition: color 0.3s;
 }
