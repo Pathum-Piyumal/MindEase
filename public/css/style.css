@@ -78,24 +78,6 @@ footer a:hover {
   color: #B3E5FC;
 }
 
-/* Buttons */
-/* .btn {
-  background-color: #A8E6CF;  
-  color: #546E7A;
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-
-.btn:hover {
-  background: #B3E5FC;
-  transform: translateY(-2px);
-} */
-
 .hero {
   background: linear-gradient(135deg, #E3F2FD, #C8E6C9);
   color: #37474F;
@@ -269,7 +251,7 @@ footer a:hover {
     border-radius: 15px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: transform 0.3s ease, background 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease;
     min-width: 200px;
 }
 
