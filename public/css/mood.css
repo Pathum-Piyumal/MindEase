@@ -44,24 +44,20 @@ nav a:hover {
 
 
 .mood-bar { 
-            height: 30px; 
+            display: flex;
+            gap: 10px;
+            height: 50px; 
             width: 0%;
-            background-color: #4CAF50; 
-            border-radius: 20px; 
-            text-align:left; 
-            color: rgb(12, 4, 4); 
-            line-height: 30px; 
-            font-weight: bold; 
-            transition: width 0.5s; 
-        }
-
-        .mood-container { 
+            
+          }
+        
+.mood-container { 
             width: 60%; 
             background-color: #def39c; 
             border-radius: 20px; 
             margin: 20px auto; 
             padding: 5px; 
-        }    
+                }    
 
         
         /* Footer */
