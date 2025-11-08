@@ -1,74 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MindEase - Journal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css">
-</head>
-<body style="background: #A6D1E6;"> <!-- Soft Blue -->
-  <header>
-    <div class="logo">
-      <img src="https://via.placeholder.com/30?text=🧠" alt="Brain Icon">
-      <span>MindEase</span>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="./journal.html">Journal</a></li>
-        <li><a href="./quotes.html">Quotes</a></li>
-        <li><a href="./calm_corner.html">Calm Corner</a></li>
-        <li><a href="./login.html">Login</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <section class="section journal" style="padding: 2rem; text-align: center;">
-      <h1>Your Daily Journal</h1>
-      <div class="card">
-        <h3>New Entry</h3>
-        <input type="date" id="entryDate" style="margin: 0.5rem; padding: 0.5rem;">
-        <textarea id="entryText" placeholder="Write your thoughts..." style="width: 100%; min-height: 100px; padding: 0.5rem;"></textarea>
-        <select id="entryMood">
-          <option value="happy">😊 Happy</option>
-          <option value="sad">😢 Sad</option>
-          <option value="anxious">😟 Anxious</option>
-          <option value="calm">😌 Calm</option>
-          <option value="tired">😴 Tired</option>
-        </select>
-        <button class="btn" onclick="saveEntry()">Save</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindEase - Journal</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/feature-journal.css">
+  </head>
+  <body>
+    <!-- Soft Blue -->
+    <header>
+      <div class="logo">
+        <img src="https://via.placeholder.com/30?text=🧠" alt="Brain Icon" />
+        <span>MindEase</span>
       </div>
-      <div id="entries" style="display: flex; flex-wrap: wrap; justify-content: center;"></div>
-    </section>
-  </main>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="./journal.html">Journal</a></li>
+          <li><a href="./quotes.html">Quotes</a></li>
+          <li><a href="./calm_corner.html">Calm Corner</a></li>
+          <li><a href="./login.html">Login</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <footer>
-    <p>
-      <a href="#">Privacy Policy</a> |
-      <a href="#">Contact</a> |
-      <a href="#">Help</a> |
-      <a href="#">About Us</a>
-    </p>
-    <p>© 2025 MindEase. All Rights Reserved.</p>
-  </footer>
+    <main>
+      <section class="section-jou" style="padding: 2rem; text-align: left">
+        <div class="content-box" style="text-align: left">
+          <h1>Your Daily Journal</h1>
+          <p id="currentDate" style="margin-bottom: 10px;"></p>
+          <div class="entryText">
+            <textarea
+              id="entryText"
+              placeholder="Write your thoughts..."
+            ></textarea>
+          </div>
+          <div style="margin-top: 10px;">
+          <button class="btn save" onclick="saveEntry()">Save Entry</button>
+          <button class="btn clear">Clear</button>
+          </div>
+        </div>
 
-  <script src="../js/script.js"></script>
-  <script>
-    function saveEntry() {
-      const date = document.getElementById('entryDate').value;
-      const text = document.getElementById('entryText').value;
-      const mood = document.getElementById('entryMood').value;
-      if (text && date) {
-        const entry = document.createElement('div');
-        entry.className = 'card';
-        entry.innerHTML = `<p><strong>${date}</strong> (${mood})</p><p>${text}</p>
+        <div class="entry-card">
+          <h2>Previous Entries</h2>
+          <div class="content-box" style="text-align: left">
+            <date></date>
+            <p style="margin-top: 1rem">
+              Totay was a good day.I felt calm and productive
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Contact</a>
+        <a href="#">Help</a>
+        <a href="#">About Us</a>
+      </p>
+      <p>© 2025 MindEase. All Rights Reserved.</p>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+      function saveEntry() {
+        const date = document.getElementById("entryDate").value;
+        const text = document.getElementById("entryText").value;
+        const mood = document.getElementById("entryMood").value;
+        if (text && date) {
+          const entry = document.createElement("div");
+          entry.className = "card";
+          entry.innerHTML = `<p><strong>${date}</strong> (${mood})</p><p>${text}</p>
           <button class="btn" onclick="this.parentElement.remove()">Delete</button>`;
-        document.getElementById('entries').prepend(entry);
-        document.getElementById('entryText').value = '';
+          document.getElementById("entries").prepend(entry);
+          document.getElementById("entryText").value = "";
+        }
       }
-    }
-  </script>
-</body>
+
+      const today = new Date();
+      const options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      };
+      const formattedDate = today.toLocaleDateString("en-US", options);
+      document.getElementById("currentDate").textContent = formattedDate;
+    </script>
+  </body>
 </html>
