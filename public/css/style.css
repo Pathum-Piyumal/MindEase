@@ -78,24 +78,6 @@ footer a:hover {
   color: #B3E5FC;
 }
 
-/* Buttons */
-/* .btn {
-  background-color: #A8E6CF;  
-  color: #546E7A;
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-
-.btn:hover {
-  background: #B3E5FC;
-  transform: translateY(-2px);
-} */
-
 .hero {
   background: linear-gradient(135deg, #E3F2FD, #C8E6C9);
   color: #37474F;
@@ -318,7 +300,7 @@ footer a:hover {
 
 
 /* Calm section */
-.section-calm {
+/* .section-calm {
   background: linear-gradient(135deg, #A8E6CF, #B3E5FC);
   text-align: center;
   padding: 3rem 1rem;
@@ -333,10 +315,10 @@ footer a:hover {
 .section-calm p {
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
-}
+} */
 
 /* Shared container style */
-.content-box {
+/* .content-box {
   background: #ffffff;
   padding: 1.5rem;
   margin: 2rem auto;
@@ -350,10 +332,10 @@ footer a:hover {
   font-size: 1.8rem;
   color: #37474f;
   margin-bottom: 2rem;
-}
+} */
 
 /* Breathing Circle */
-#breathingCircle {
+/* #breathingCircle {
   width: 200px;
   height: 200px;
   margin: 3rem auto;
@@ -399,10 +381,10 @@ footer a:hover {
 }
 
 
-
+ */
 
 /* Relaxation Tips Grid */
-.grid {
+/* .grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
@@ -421,14 +403,14 @@ footer a:hover {
 .tip:hover {
   box-shadow: 0 3px 10px rgba(150, 120, 200, 0.2);
   transform: translateY(-3px);
-}
+} */
 
 /* Responsive Grid */
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
-}
+} */
 
 /* Responsive Design */
 @media (max-width: 768px) {
