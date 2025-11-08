@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Tracker</title>
+    <link rel="stylesheet" href="../css/mood.css">
+    <script src="mood.js" defer></script>
+
+    
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+    <div class="logo">
+      <img src="https://via.placeholder.com/30?text=🧠" alt="Brain Icon">
+      <span>MindEase</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="journal.html">Journal</a></li>
+        <li><a href="quotes.html">Quotes</a></li>
+        <li><a href="calm_corner.html">Calm Corner</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="about_us.html">About Us</a></li>
+        <li><a href="help.html">Help</a></li>
+        <li><a href="privacy_policy.html">Privacy Policy</a></li>
+        <li><a href="contact_us.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+  <br><br><br>
+    <!--add chart to display mood trends-->  
+    <h1>let's check your mood level&#128202</h1> 
+    <p>Enter your mood level (0-100):<input type="number" id="moodLevel" name="moodLevel" min="0" max="100"></p>
+    <br>
+    <button onclick="myfunction()">Show Mood</button>
+    <div class="mood-container"> 
+        <div class="mood-bar" id="moodBar">0%</div> 
+    </div>
+
+    <script>
+        function myfunction() {
+            var moodLevel = document.getElementById("moodLevel").value;
+            let bar = document.getElementById('moodBar');
+            bar.style.width = moodLevel + "%";
+            bar.textContent = moodLevel + "%";
+
+    //give min and max level of moodLevel
+        if(moodLevel<0)moodLevel=0;
+        if(moodLevel>100)moodLevel=100;
+    
+    
+    //change color based on mood
+        if(moodLevel<20){
+            bar.style.backgroundColor = "#00ff00";
+        }
+        else if(moodLevel<50){
+            bar.style.backgroundColor = '#00b300';
+        }
+        else if(moodLevel<80){
+            bar.style.backgroundColor = '#ffff00';
+        }
+        else{
+            bar.style.backgroundColor = '#00ffbf';
+        }
+        }
+    </script>
+<!-- Footer Section -->
+  <footer>
+    <p>
+      <a href="privacy_policy.html">Privacy Policy</a> |
+      <a href="help.html">Help</a> |
+      <a href="about_us.html">About Us</a> |
+      <a href="contact_us.html">Contact Us</a>
+    </p>
+    <p>© 2025 MindEase. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
