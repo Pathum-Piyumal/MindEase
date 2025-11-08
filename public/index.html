@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MindEase - Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
   <header>
     <div class="logo">
-      <img src="https://via.placeholder.com/30?text=🧠" alt="Brain Icon">
+      <img src="/assets/icons/logo.png" alt="Brain Icon">
       <span>MindEase</span>
     </div>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="./pages/mood_tracker.html">Mood Tracker</a></li>
+        <li><a href="./pages/mood.html">Mood Tracker</a></li>
         <li><a href="./pages/journal.html">Journal</a></li>
         <li><a href="./pages/quotes.html">Quotes</a></li>
         <li><a href="./pages/calm_corner.html">Calm Corner</a></li>
@@ -31,16 +31,17 @@
   style="display: flex; align-items: center; justify-content: space-between; padding: 5rem 8%; background: linear-gradient(135deg, #E3F2FD, #C8E6C9); flex-wrap: wrap;">
 
   <div style="flex: 1; min-width: 280px; margin-right: 2rem;">
-    <h1 style="font-size: 2.8rem; color: #37474F; margin-bottom: 1rem; font-weight: 700;">
+    <h1 style="font-size: 5rem; color: #37474F; margin-bottom: 1rem; font-weight: 700;">
       MindEase
     </h1>
-    <h2 style="font-size: 1.6rem; color: #546E7A; margin-bottom: 1rem; font-weight: 500;">
-      Online Mental Wellness Companion
+    <h2 style="font-size: 2.3rem; color: #546E7A; margin-bottom: 1rem; font-weight: 500;">
+      Your Personal Mental Wellness Companion
     </h2>
-    <p style="font-size: 1rem; color: #607D8B; margin-bottom: 2rem;">
-      Track. Reflect. Relax. Feel better every day.
+    <p style="font-size: 1.5rem; color: #607D8B; margin-bottom: 2rem;">
+      Track emotions. Reflect daily. Find your calm. Transform your well-being, one day at a time.
     </p>
-    <a href="index.html" class="btn">Get Started</a>
+    <a href="./pages/login.html" class="btn">Get Started</a>
+     <a href="./pages/login.html" class="btn_2">Try Breathing Exercise</a>
   </div>
 
   <div style="flex: 1; min-width: 280px; display: flex; justify-content: center;">
@@ -50,23 +51,37 @@
        style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
 </div>
 </section>
-
-
-<!-- Journey Section -->
-<section class="journey-section">
-  <div class="journey-box">
-    <h2>Your Journey to Mental Wellness</h2>
-    <p>
-     MindEase is your daily companion for mental health and emotional well-being. 
-     Whether you're tracking your mood, journaling your thoughts, or finding calm through guided breathing, we're here to support you every step of the way.
-    </p>
+<section class="stats-section">
+  <div class="container">
+    <div class="stat-item">
+      <h2>10k+</h2>
+      <p>Active Users</p>
+    </div>
+    <div class="stat-item">
+      <h2>95%</h2>
+      <p>Feel Better</p>
+    </div>
+    <div class="stat-item">
+      <h2>24/7</h2>
+      <p>Available</p>
+    </div>
+    <div class="stat-item">
+      <h2>100%</h2>
+      <p>Private & Safe</p>
+    </div>
   </div>
 </section>
 
+
+
 <!-- Core Features Section -->
 <section class="core-features">
-  <h2 class="core-title">Core Features</h2>
-
+  <div class="journey-box">
+    <h2 style="font-size: 2.3rem; color: #546E7A; margin-bottom: 1rem; font-weight: 500;">Everything You Need for Mental Wellness</h2>
+    <p style="font-size: 1.5rem; color: #607D8B; margin-bottom: 3rem;">
+    Powerful tools designed to support your journey towards better mental health
+  </div>
+ 
   <div class="features-grid">
     <a href="./pages/mood_tracker.html" class="feature-card">
       <h3>😊 Mood Tracker</h3>
@@ -89,8 +104,34 @@
     </a>
   </div>
 </section>
-
-
+ <section class="feature-hero">
+            <div class="hero-content">
+                <h2 style="font-size: 2.1rem; color: #546E7A; margin-bottom: 1rem; font-weight: 500;">Your Journey to Mental Wellness Starts Here</h2>
+                <p>MindEase is more than just an app—it's your daily companion for mental health and emotional well-being. Whether you're tracking your mood, journaling your thoughts, or finding calm through guided breathing, we're here to support you every step of the way.</p>
+                
+                <div class="features">
+                    <div class="feature-item">
+                        <span class="feature-icon">🔒</span>
+                        <h3>100% Private</h3>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🔬</span>
+                        <h3>Science-Based</h3>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✨</span>
+                        <h3>Easy to Use</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+ <section class="ready-to-feel">
+            <div class="redy-content">
+                <h2 style="font-size: 2.1rem; color: #546E7A; margin-bottom: 1rem; font-weight: 500;">Ready to Feel Better?</h2>
+                <p>Join thousands who are taking control of their mental wellness</p>
+                <a href="./pages/mood.html" class="btn">Get Started Today</a>
+            </div>
+        </section>
 
 
   </main>
