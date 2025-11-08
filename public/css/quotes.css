@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
+
+body {
+  background: #E8EAF6;
+  /* Misty Lilac */
+  color: #546E7A;
+  /* Slate Gray */
+  line-height: 1.6;
+}
+
+header {
+  background: #E8EAF6;
+  /* Misty Lilac to Lavender */
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.logo img {
+  width: 30px;
+  margin-right: 0.5rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: #546E7A;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #B3E5FC;
+  /* Pale Aqua Blue */
+}
+
+.quotes {
+   background: linear-gradient(to bottom right, #C7C9F2, #FFD1BA);
+   min-height: 100vh;
+   padding: 60px 20px;
+   text-align: center;
+}
+
+.quotes h2{
+    font-size: 2em;
+    color: #4A4A7D;
+    margin-bottom: 30px;
+}
+
+.quotes-card {
+  background: #A6D1E6;
+  width: 70%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  font-size: 1.3em;
+  color: #333;
+  transition: transform 0.3s ease;
+}
+
+#quotes-card {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+#quotes-text{
+  font-family: 'Comfortaa', cursive;
+}
+
+.quote-card:hover {
+  transform: scale(1.02);
+}
+
+.quotes-group {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+button {
+  background-color: white;
+  border: 2px solid #a6d1e6;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #89c4e1;
+  transform: scale(1.05);
+}
+
+#like-btn i {
+  color: #999;
+  margin-right: 6px;
+  transition: color 0.3s;
+}
+
+#like-btn.liked i {
+  color: red;
+}
+
+#save-btn.saved i{
+    color: yellow;
+}
+
+footer {
+  background: #E8EAF6;
+  /* Misty Lilac */
+  padding: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+  /* border-top: 1px solid #C7C9F2; */
+}
+
+footer a {
+  color: #546E7A;
+  text-decoration: none;
+  margin: 0 1rem;
+}
+
+footer a:hover {
+  color: #B3E5FC;
+}
+
