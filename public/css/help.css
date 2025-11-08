@@ -1,0 +1,202 @@
+/* Help page styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  color: #546E7A;
+  background: #E8EAF6;
+}
+
+/* Header */
+header {
+  background: linear-gradient(90deg, #E8EAF6, #C7C9F2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+header .logo img {
+  width: 40px;
+  height: 40px;
+}
+
+header .logo span {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #546E7A;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #546E7A;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #A8E6CF;
+}
+
+/* Main content */
+.section.help {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.section.help h1 {
+  font-size: 2.5rem;
+  color: #546E7A;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: #FAFAFA;
+  margin: 1.5rem auto;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(199, 201, 242, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* FAQ section */
+.card h2 {
+  color: #546E7A;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.card h3 {
+  color: #607D8B;
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+.card p {
+  color: #78909C;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Contact form - smaller and centered */
+.card form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.card input,
+.card textarea {
+  width: 100%;
+  max-width: 400px; /* Make inputs smaller */
+  padding: 0.8rem;
+  margin: 0.5rem auto;
+  border: 1px solid #C7C9F2;
+  border-radius: 8px;
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.card input:focus,
+.card textarea:focus {
+  outline: none;
+  border-color: #A8E6CF;
+  box-shadow: 0 0 0 2px rgba(168, 230, 207, 0.2);
+}
+
+.btn {
+  background: linear-gradient(135deg, #A8E6CF, #C7C9F2);
+  color: #546E7A;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 1rem;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(168, 230, 207, 0.3);
+}
+
+/* Footer */
+footer {
+  background: #E8EAF6;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 3rem;
+  border-top: 1px solid rgba(84, 110, 122, 0.1);
+}
+
+footer a {
+  color: #546E7A;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #A8E6CF;
+}
+
+footer p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .section.help {
+    padding: 1rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .card input,
+  .card textarea {
+    max-width: 100%;
+  }
+}

@@ -95,6 +95,62 @@ nav a:hover {
   box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Team grid: show members in a row (flex) and wrap on small screens */
+.team-grid {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap; /* allow wrapping on small screens */
+  margin-top: 1rem;
+  padding: 0;
+}
+
+.team-member {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 1rem;
+  width: 180px; /* card width - controls how many fit per row */
+  box-shadow: 0 6px 18px rgba(84, 110, 122, 0.06);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.team-member img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.team-member h4 {
+  margin: 0;
+  color: #37474F;
+  font-size: 1.05rem;
+}
+
+.team-member p {
+  margin: 0;
+  color: #78909C;
+  font-size: 0.95rem;
+}
+
+/* Responsive: make cards take half width on narrow screens, full width on very small screens */
+@media (max-width: 600px) {
+  .team-member {
+    width: calc(50% - 1rem);
+  }
+}
+
+@media (max-width: 380px) {
+  .team-member {
+    width: calc(100% - 1rem);
+  }
+}
+
 /* Footer */
 footer {
   background: #E8EAF6;
