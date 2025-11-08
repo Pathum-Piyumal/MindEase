@@ -50,7 +50,18 @@ nav a:hover {
             width: 0%;
             
           }
-        
+
+.mood { 
+            flex: 1; 
+            border: none; 
+            border-radius: 10px; 
+            background-color: #90caf9; 
+            /* Light Blue */
+            color: white; 
+            font-size: 16px; 
+            cursor: pointer;
+} 
+    
 .mood-container { 
             width: 60%; 
             background-color: #def39c; 
