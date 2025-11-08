@@ -2,6 +2,10 @@ body {
     background-color: #d1ddf8;
 }
 
+.icon-calender {
+    height: 30px;
+}
+
 #entryText {
     padding:10px;
     width: 100%;

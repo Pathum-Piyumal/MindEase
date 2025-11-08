@@ -9,7 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/feature-journal.css">
+    <link rel="stylesheet" href="../css/feature-journal.css" />
   </head>
   <body>
     <!-- Soft Blue -->
@@ -32,24 +32,26 @@
     <main>
       <section class="section-jou" style="padding: 2rem; text-align: left">
         <div class="content-box" style="text-align: left">
-          <h1>Your Daily Journal</h1>
-          <p id="currentDate" style="margin-bottom: 15px;"></p>
+          <div>
+            <h1>Daily Journal</h1>
+          </div>
+          <p id="currentDate" style="margin-bottom: 15px"></p>
           <div class="entryText">
             <textarea
               id="entryText"
               placeholder="Write your thoughts..."
             ></textarea>
           </div>
-          <div style="margin-top: 10px;">
-          <button class="btn save" onclick="saveEntry()">Save Entry</button>
-          <button class="btn clear">Clear</button>
+          <div style="margin-top: 10px">
+            <button class="btn save" onclick="saveEntry()">Save Entry</button>
+            <button class="btn clear">Clear</button>
           </div>
         </div>
 
         <div class="entry-card">
           <h2>Previous Entries</h2>
           <div class="content-box" style="text-align: left">
-            <date></date>
+            <p id="dateShort"></p>
             <p style="margin-top: 1rem">
               Totay was a good day.I felt calm and productive
             </p>
@@ -93,6 +95,13 @@
       };
       const formattedDate = today.toLocaleDateString("en-US", options);
       document.getElementById("currentDate").textContent = formattedDate;
+
+      const today1 = new Date();
+      const month = today.getMonth() + 1;
+      const day = today.getDate();
+      const year = today.getFullYear();
+      const formattedDate1 = `${month}/${day}/${year}`;
+      document.getElementById("dateShort").textContent = formattedDate1;
     </script>
   </body>
 </html>
