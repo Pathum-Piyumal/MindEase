@@ -119,17 +119,50 @@ footer a:hover {
   background: #B3E5FC;
   transform: translateY(-3px);
 }
-
-/* Journey Section */
-
-.journey-section {
-  background: linear-gradient(to right, #dee8ff, #f2e9fb);
-  padding: 6rem 2rem;
-  text-align: center;
-  color: #37474f;
-  display: flex;
-  justify-content: center;
+.btn_2 {
+  background-color: #ebefed;
+  color: #232c2f;
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
+
+.btn_2:hover {
+  background: #B3E5FC;
+  transform: translateY(-3px);
+}
+
+.stats-section {
+  background-color: #f6f7fb; /* light background */
+  padding: 60px 0;
+  text-align: center;
+}
+
+.stats-section .container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stat-item h2 {
+  font-size: 2.5rem;
+  color: #a8e6cf; /* soft mint color */
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.stat-item p {
+  font-size: 1rem;
+  color: #7d8a99; /* gray text */
+  margin: 0;
+}
+
+
+/* Core Features Section */
 
 .journey-content {
   background: #ffffff;
@@ -146,12 +179,11 @@ footer a:hover {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* Core Features Section */
 .feature-card {
   background: #ffffff;
   width: 280px;
   height: 200px;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
@@ -178,12 +210,6 @@ footer a:hover {
   padding: 4rem 2rem;
 }
 
-.core-features .core-title {
-  font-size: 2rem;
-  color: #2f3e46;
-  margin-bottom: 2rem;
-  font-weight: 700;
-}
 
 /* 2x2 Grid Layout */
 .features-grid {
