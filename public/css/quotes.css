@@ -79,12 +79,6 @@ nav a:hover {
   transition: transform 0.3s ease;
 }
 
-.quotes-card {
-  font-size: 1.2rem;
-  color: #333;
-  margin-bottom: 2rem;
-}
-
 #quotes-text{
   font-family: 'Comfortaa', cursive;
   font-size: 2.5rem;
