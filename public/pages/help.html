@@ -5,24 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MindEase - Help</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/help.css">
 </head>
 <body style="background: #E8EAF6;"> <!-- Misty Lilac -->
   <header>
     <div class="logo">
-      <img src="https://via.placeholder.com/30?text=🧠" alt="Brain Icon">
+      <img src="/assets/icons/logo.png" alt="Brain Icon">
       <span>MindEase</span>
     </div>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="journal.html">Journal</a></li>
-        <li><a href="quotes.html">Quotes</a></li>
-        <li><a href="calm_corner.html">Calm Corner</a></li>
-        <li><a href="login.html">Login</a></li>
-        <li><a href="about_us.html">About Us</a></li>
-        <li><a href="help.html">Help</a></li>
-        <li><a href="privacy_policy.html">Privacy Policy</a></li>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="./journal.html">Journal</a></li>
+        <li><a href="./quotes.html">Quotes</a></li>
+        <li><a href="./calm_corner.html">Calm Corner</a></li>
+        <li><a href="./login.html">Login</a></li>
+        <li><a href="./about_us.html">About Us</a></li>
+        <li><a href="./help.html">Help</a></li>
+        <li><a href="./privacy.html">Privacy Policy</a></li>
       </ul>
     </nav>
   </header>
@@ -41,10 +41,12 @@
       </div>
       <div class="card">
         <h2>Contact Us</h2>
-        <input type="text" placeholder="Your Name" style="width: 100%; padding: 0.8rem; margin: 0.5rem 0; border: 1px solid #C7C9F2; border-radius: 5px;">
-        <input type="email" placeholder="Your Email" style="width: 100%; padding: 0.8rem; margin: 0.5rem 0; border: 1px solid #C7C9F2; border-radius: 5px;">
-        <textarea placeholder="Your Message" style="width: 100%; min-height: 100px; padding: 0.5rem; margin: 0.5rem 0; border: 1px solid #C7C9F2; border-radius: 5px;"></textarea>
-        <button class="btn">Send</button>
+        <form>
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <textarea placeholder="Your Message" required></textarea>
+          <button type="submit" class="btn">Send</button>
+        </form>
       </div>
     </section>
   </main>
