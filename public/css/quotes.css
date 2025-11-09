@@ -1,4 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
 
 body {
   background: #E8EAF6;
@@ -8,10 +15,11 @@ body {
   line-height: 1.6;
 }
 
+/* Header */
 header {
   background: #E8EAF6;
   /* Misty Lilac to Lavender */
-  padding: 1rem 2rem;
+  padding: 1rem 5rem;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -29,7 +37,7 @@ header {
 }
 
 .logo img {
-  width: 30px;
+  width: 50px;
   margin-right: 0.5rem;
 }
 
@@ -47,7 +55,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #B3E5FC;
+  color: #a8e6cf;
   /* Pale Aqua Blue */
 }
 
