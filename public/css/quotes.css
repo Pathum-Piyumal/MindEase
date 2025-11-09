@@ -61,19 +61,13 @@ nav a:hover {
 
 .quotes {
    background: linear-gradient(to bottom right, #C7C9F2, #FFD1BA);
-   min-height: 100vh;
-   padding: 60px 20px;
+   min-height: 80vh;
+   padding: 5rem;
    text-align: center;
 }
 
-.quotes h2{
-    font-size: 2em;
-    color: #4A4A7D;
-    margin-bottom: 30px;
-}
-
 .quotes-card {
-  background: #A6D1E6;
+  background: #a6d8f2;
   width: 70%;
   max-width: 600px;
   margin: 0 auto;
@@ -85,13 +79,15 @@ nav a:hover {
   transition: transform 0.3s ease;
 }
 
-#quotes-card {
+.quotes-card {
   font-size: 1.2rem;
   color: #333;
+  margin-bottom: 2rem;
 }
 
 #quotes-text{
   font-family: 'Comfortaa', cursive;
+  font-size: 2.5rem;
 }
 
 .quote-card:hover {
