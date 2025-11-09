@@ -42,7 +42,13 @@ const quotes = [
   "Breathe. It’s just a bad day, not a bad life.",
   "Be proud of how far you’ve come, and have faith in how far you can go.",
   "One day or day one. You decide.",
-  "Your future needs you, your past doesn’t."
+  "Your future needs you, your past doesn’t.",
+  "Every sunsise is a reminder that you have another chance to be better.",
+  "The only time you should ever look back, is to see how far you've come",
+  "One bad chapter does not define your whole story",
+  "You are doing enough",
+  "Nothing will work unless you do",
+  "Focus on improving yourself, not proving yourself"
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
