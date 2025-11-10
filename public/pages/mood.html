@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mood Tracker</title>
-    <link rel="stylesheet" href="mood.css">
+    <link rel="stylesheet" href="../css/mood.css">
     <script src="mood.js" defer></script>
 
     
@@ -12,31 +12,28 @@
 <body>
 
 <!-- Header Section -->
-    <header>
+  <header>
     <div class="logo">
-      <img src="https://via.placeholder.com/30?text=🧠" alt="Logo">
-      <br>
+      <img src="../assets/icons/logo.png" alt="Brain Icon">
       <span>MindEase</span>
     </div>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="journal.html">Journal</a></li>
-        <li><a href="quotes.html">Quotes</a></li>
-        <li><a href="calm_corner.html">Calm Corner</a></li>
-        <li><a href="login.html">Login</a></li>
-        <li><a href="about_us.html">About Us</a></li>
-        <li><a href="help.html">Help</a></li>
-        <li><a href="privacy_policy.html">Privacy Policy</a></li>
-        <li><a href="contact_us.html">Contact Us</a></li>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./pages/mood.html">Mood Tracker</a></li>
+        <li><a href="./pages/journal.html">Journal</a></li>
+        <li><a href="./pages/quotes.html">Quotes</a></li>
+        <li><a href="./pages/calm_corner.html">Calm Corner</a></li>
+        <li><a href="./pages/login.html">Login</a></li>
       </ul>
     </nav>
   </header>
+    
   <br><br><br>
 
 <!--Emoji-based mood selection grid-->
     <h1>how are you feeling today?&#128198</h1>
-    <br><br><br>
+    <br>
 
     <h2>Positive Moods</h2>
     <div class="mood-bar">
@@ -75,13 +72,13 @@
     </div>
     <br><br><br> 
 
-    <button type="button" onclick="">submit</button>
+    <button class="submit" type="button" onclick="">submit</button>
 
 <!--add chart to display mood trends-->  
     <h1>let's check your mood level&#128202</h1> 
     <p>Enter your mood level (0-100):<input type="number" id="moodLevel" name="moodLevel" min="0" max="100"></p>
     <br>
-    <button onclick="myfunction()">Show Mood</button>
+    <button class="showmood" myfunction()>Show Mood</button>
     <div class="mood-container"> 
         <div class="mood-bar" id="moodBar">0%</div> 
     </div>
