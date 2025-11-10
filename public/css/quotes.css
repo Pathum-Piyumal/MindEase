@@ -68,13 +68,13 @@ nav a:hover {
 }
 
 .quotes {
-   background: linear-gradient(135deg, #a8bce6, #B3E5FC);
+   background: linear-gradient(rgb(207, 235, 240), rgb(152, 215, 239));
    min-height: 80vh;
    text-align: center;
 }
 
 .quotes-card{
-  background: linear-gradient(135deg, #90c2d9, #c9abf7);
+  background: linear-gradient(#9dd0f4, #c1d8e0);
   width: 70%;
   max-width: 650px;
   margin: 0 auto;
@@ -82,7 +82,6 @@ nav a:hover {
   border-radius: 20px;
   box-shadow: 0 7px 17px rgba(0,0,0,0.1);
   font-size: 1.3em;
-  color: #333;
   transition: transform 0.3s ease;
 }
 
@@ -90,6 +89,7 @@ nav a:hover {
   font-size: 1.7rem;
   font-family: 'Comfortaa', cursive;
   font-size: 2.5rem;
+  color:#37474F;
 }
 
 .quote-card:hover {
