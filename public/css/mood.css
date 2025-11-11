@@ -2,7 +2,7 @@
 header {
   background: #E8EAF6;
   /* Misty Lilac to Lavender */
-  padding: 1rem 2rem;
+  padding: 1rem 5rem;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -10,6 +10,9 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+body{
+  background: linear-gradient(#ddccff,#b3ecff,#eeffcc);
 }
 
 .logo {
@@ -20,7 +23,7 @@ header {
 }
 
 .logo img {
-  width: 30px;
+  width: 50px;
   margin-right: 0.5rem;
 }
 
@@ -55,13 +58,28 @@ nav a:hover {
             flex: 1; 
             border: none; 
             border-radius: 10px; 
-            background-color: #00ff00; 
+            background-color: #898feb; 
             /* Light Blue */
             color: white; 
             font-size: 16px; 
             cursor: pointer;
 } 
-    
+
+.submit {
+            background-color: #b7ea9e; 
+            /* Green */
+            border: none; 
+            color: white; 
+            padding: 10px 20px; 
+            text-align: center; 
+            text-decoration: none; 
+            display: inline-block; 
+            font-size: 16px; 
+            margin: 4px 2px; 
+            cursor: pointer; 
+            border-radius: 12px; 
+        }
+
 .mood-container { 
             width: 60%; 
             background-color: #def39c; 
@@ -70,6 +88,20 @@ nav a:hover {
             padding: 5px; 
                 }    
 
+.showmood {
+            background-color: #d0f3ad; 
+            /* Orange */
+            border: none; 
+            color: white; 
+            padding: 10px 20px; 
+            text-align: center; 
+            text-decoration: none; 
+            display: inline-block; 
+            font-size: 16px; 
+            margin: 4px 2px; 
+            cursor: pointer; 
+            border-radius: 12px; 
+        }                
         
         /* Footer */
 footer {
