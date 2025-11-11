@@ -1,0 +1,50 @@
+body {
+    background-color: #d1ddf8;
+}
+
+.icon-calender {
+    height: 25px;
+    margin-right: 10px;;
+}
+
+#entryText {
+    padding:10px;
+    width: 100%;
+    min-height: 200px;
+    border-radius: 15px;
+    border-color: #e2e8f0;
+    border-width: 2px;
+}
+
+.content-box {
+  background: #ffffff;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.save {
+    transform: scale(1.05);
+}
+
+.entry-card {
+    margin: 2rem auto;
+    max-width: 1000px;
+    border-radius: 15px;
+    text-align: left;
+}
+
+.entry-title {
+    display: flex;
+    width: 100%;
+}
+
+.entry-icon {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    padding:5px;  
+} 
