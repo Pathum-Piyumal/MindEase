@@ -58,6 +58,7 @@ nav a:hover {
   /* Pale Aqua Blue */
 }
 
+
 /* Footer */
 footer {
   background: #E8EAF6;
@@ -87,6 +88,14 @@ footer a:hover {
 .hero h2,
 .hero p {
   margin: 0;
+}
+.hero-image {
+  animation: float 3s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+.hero-image:hover {
+  transform: scale(1.05);
 }
 
 .btn {
@@ -160,7 +169,19 @@ footer a:hover {
   margin: 0;
 }
 
+.stat-item {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
 
+.stat-item:nth-child(1) { animation-delay: 0.1s; }
+.stat-item:nth-child(2) { animation-delay: 0.2s; }
+.stat-item:nth-child(3) { animation-delay: 0.3s; }
+.stat-item:nth-child(4) { animation-delay: 0.4s; }
+
+.stat-item h2 {
+  animation: pulse 2s ease-in-out infinite;
+}
 /* Core Features Section */
 
 .journey-content {
@@ -316,121 +337,6 @@ footer a:hover {
   line-height: 1.8;
 }
 
-
-
-/* Calm section */
-/* .section-calm {
-  background: linear-gradient(135deg, #A8E6CF, #B3E5FC);
-  text-align: center;
-  padding: 3rem 1rem;
-}
-
-.section-calm h1 {
-  font-size: 2.5rem;
-  color: #37474f;
-  margin-bottom: 0.5rem;
-}
-
-.section-calm p {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-} */
-
-/* Shared container style */
-/* .content-box {
-  background: #ffffff;
-  padding: 1.5rem;
-  margin: 2rem auto;
-  max-width: 1000px;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.content-box h2 {
-  font-size: 1.8rem;
-  color: #37474f;
-  margin-bottom: 2rem;
-} */
-
-/* Breathing Circle */
-/* #breathingCircle {
-  width: 200px;
-  height: 200px;
-  margin: 3rem auto;
-  background: linear-gradient(135deg, #A8E6CF, #B3E5FC);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 4s ease-in-out;
-}
-
-.breathing-circle.active {
-  animation: breathe 8s ease-in-out infinite;
-}
-
-@keyframes breathe {
-
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.5);
-  }
-}
-
-.breathing-circle p {
-  color: white;
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
-.breathing-controls {
-  text-align: center;
-  margin-top: 2rem;
-}
-
-.breathing-text {
-  font-size: 1.1rem;
-  color: #546E7A;
-  margin-bottom: 0.5rem;
-}
-
-
- */
-
-/* Relaxation Tips Grid */
-/* .grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.tip {
-  background: #f9f9ff;
-  border: 1px solid #dcd6f7;
-  border-radius: 10px;
-  padding: 1rem;
-  color: #455a64;
-  transition: 0.3s ease;
-}
-
-.tip:hover {
-  box-shadow: 0 3px 10px rgba(150, 120, 200, 0.2);
-  transform: translateY(-3px);
-} */
-
-/* Responsive Grid */
-/* @media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-} */
-
 /* Responsive Design */
 @media (max-width: 768px) {
   header {
@@ -443,3 +349,166 @@ footer a:hover {
     text-align: center;
   }
 }
+
+/* ===== ANIMATIONS ===== */
+
+/* Smooth fade in */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Floating effect for hero image */
+.hero-image {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Button animations */
+.btn, .btn_2 {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn {
+  background: linear-gradient(135deg, #6fb1fc, #4364f7);
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 15px rgba(67, 100, 247, 0.3);
+}
+
+.btn_2 {
+  border: 2px solid #6fb1fc;
+  color: #6fb1fc;
+}
+
+.btn_2:hover {
+  background-color: #6fb1fc;
+  color: white;
+  transform: translateY(-4px);
+}
+
+
+
+/* Stats animation */
+.stat-item {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-8px);
+  color: #546d78;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Feature cards hover lift (always visible, smooth pop-in) */
+.feature-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.4s ease;
+  transform: scale(0.95);
+  opacity: 0;
+  animation: card-pop 0.8s ease-out forwards;
+}
+
+@keyframes card-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.feature-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.btn {
+  animation: pulse 3s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(111,177,252,0); }
+  50% { box-shadow: 0 0 20px rgba(111,177,252,0.4); }
+}
+.section-hero h1 {
+  animation: slideDown 1.5s ease-out;
+}
+
+.section-hero h2, .section-hero p {
+  animation: fadeUp 2s ease-out;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+/*  Floating Background Animation */
+.floating-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none; 
+}
+
+.floating-bg span {
+  position: absolute;
+  display: block;
+  width: 20px; height: 20px;
+  background: rgba(111, 177, 252, 0.15);
+  border-radius: 50%;
+  bottom: -30px;
+  animation: float-up 10s infinite ease-in;
+}
+
+@keyframes float-up {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-800px) scale(1.5); opacity: 0; }
+}
+
+/* Randomized positions & delays for variety */
+.floating-bg span:nth-child(1) { left: 10%; animation-delay: 0s; width: 15px; height: 15px; }
+.floating-bg span:nth-child(2) { left: 30%; animation-delay: 2s; width: 25px; height: 25px; }
+.floating-bg span:nth-child(3) { left: 50%; animation-delay: 4s; width: 18px; height: 18px; }
+.floating-bg span:nth-child(4) { left: 70%; animation-delay: 6s; width: 22px; height: 22px; }
+.floating-bg span:nth-child(5) { left: 90%; animation-delay: 8s; width: 20px; height: 20px; }
