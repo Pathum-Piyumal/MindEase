@@ -232,6 +232,37 @@ button:hover {
     text-decoration: underline;
 }
 
+/* NEW: Message Box Styles */
+.msg-box {
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    animation: fadeIn 0.3s ease;
+}
+
+/* NEW: Error */
+.msg-box.error {
+    background: #ffe0e0;
+    color: #d90429;
+    border-left: 4px solid #d90429;
+}
+
+/* NEW: Success */
+.msg-box.success {
+    background: #e0ffef;
+    color: #2b9348;
+    border-left: 4px solid #2b9348;
+}
+
+/* NEW: Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
 /* Responsive */
 @media (min-width: 768px) {
 

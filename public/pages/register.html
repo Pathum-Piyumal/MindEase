@@ -40,15 +40,15 @@
                         <p class="subtitle">Sign up to unlock exclusive features and content.</p>
                     </div>
 
-                    <form id="loginForm">
+                        <form id="registerForm" action="../../mindease-backend/src/config/register.php" method="POST">
                         <label for="name">Name</label>
-                        <input type="text" id="name" placeholder="Enter Your Name" required />
+                        <input type="text" id="name" placeholder="Enter Your Name" name="name" required />
 
                         <label for="email">Email</label>
-                        <input type="email" id="email" placeholder="your@email.com" required />
+                        <input type="email" id="email" placeholder="your@email.com" name="email" required />
 
                         <label for="password">Password</label>
-                        <input type="password" id="password" placeholder="••••••••" required />
+                        <input type="password" id="password" placeholder="••••••••" name="password" required />
 
                         <button type="submit">Sign up</button>
 
