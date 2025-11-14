@@ -1,79 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindEase - Welcome</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MindEase - Login</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/login.css">
-</head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  
+    <link rel="stylesheet" href="../css/login.css" />
+  </head>
+  <body>
+    
+    <header>
+      <div class="logo">
+        <img
+          src="https://placehold.co/40x40/A9E5BB/2A6E40?text=ME"
+          alt="MindEase Logo"
+        />
+        <span>MindEase</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="">Mood Tracker</a></li>
+          <li><a href="">Journal</a></li>
+          <li><a href="">Quotes</a></li>
+          <li><a href="">Calm Corner</a></li>
+          <li><a href="auth.html" class="active">Login</a></li>
+        </ul>
+      </nav>
+    </header>
 
-<body> <!-- Misty Lilac -->
-  <header>
-    <div class="logo">
-      <img src="../../assets/icons/logo.png" alt="Brain Icon">
-      <span>MindEase</span>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="./mood.html">Mood Tracker</a></li>
-        <li><a href="./journal.html">Journal</a></li>
-        <li><a href="./quotes.html">Quotes</a></li>
-        <li><a href="./calm_corner.html">Calm Corner</a></li>
-        <li><a href="./login.html">Login</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <section class="section-login">
-      <div class="container">
-        <div class="image-section">
-          <img src="../../assets/images/login-illustration.png" alt="Relax illustration" />
-        </div>
-
-        <div class="login-card">
-          <div class="login-header">
-                                    <h1>Welcome Back</h1>
-                        <p class="subtitle">Log in to continue your wellness journey</p>
-          
-          </div>
-
+    
+    <main>
+      <div class="auth-container">
+        <!-- Login -->
+        <div class="auth-card" id="loginView">
+          <h1>Welcome Back</h1>
+          <p class="subtitle">Log in to continue your wellness journey</p>
           <form id="loginForm">
             <label for="email">Email</label>
-            <input type="email" id="email" placeholder="your@email.com" required />
-
+            <input
+              type="email"
+              id="email"
+              placeholder="your@email.com"
+              required
+            />
             <label for="password">Password</label>
-            <input type="password" id="password" placeholder="••••••••" required />
-
+            <input
+              type="password"
+              id="password"
+              placeholder="••••••••"
+              required
+            />
             <button type="submit">Login</button>
-
-            <a href="#" class="forgot">Forgot Password?</a>
-
-            <p class="signup-text">
+            <a href="#" class="toggle-link" id="showForgotLink"
+              >Forgot Password?</a
+            >
+            <p class="bottom-text">
               Don’t have an account?
-              <a href="../pages/register.html" class="signup-link">Create Account</a>
+              <a href="#" class="toggle-link" id="showSignupLink"
+                >Create Account</a
+              >
+            </p>
+          </form>
+        </div>
+
+        <!--Sign Up -->
+        <div class="auth-card" id="signupView" style="display: none">
+          <h1>Create Account</h1>
+          <p class="subtitle">Start your wellness journey today</p>
+          <form id="signupForm">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="John Doe" required />
+            <label for="signup-email">Email</label>
+            <input
+              type="email"
+              id="signup-email"
+              placeholder="your@email.com"
+              required
+            />
+            <label for="signup-password">Password</label>
+            <input
+              type="password"
+              id="signup-password"
+              placeholder="••••••••"
+              required
+            />
+            <label for="confirm-password">Confirm Password</label>
+            <input
+              type="password"
+              id="confirm-password"
+              placeholder="••••••••"
+              required
+            />
+            <button type="submit">Create Account</button>
+            <p class="bottom-text">
+              Already have an account?
+              <a href="#" class="toggle-link" id="showLoginLink">Log In</a>
+            </p>
+          </form>
+        </div>
+
+        <!-- Forgot Password -->
+        <div class="auth-card" id="forgotPasswordView" style="display: none">
+          <h1>Forgot Password</h1>
+          <p class="subtitle">Enter your email to receive a reset link</p>
+          <form id="forgotPasswordForm">
+            <label for="forgot-email">Email</label>
+            <input
+              type="email"
+              id="forgot-email"
+              placeholder="your@email.com"
+              required
+            />
+            <button type="submit">Send Reset Link</button>
+            <p class="bottom-text">
+              Remembered your password?
+              <a href="#" class="toggle-link" id="showLoginFromForgotLink"
+                >Log In</a
+              >
             </p>
           </form>
         </div>
       </div>
+    </main>
 
-    </section>
-  </main>
+    <footer>
+      <p>
+        <a href="">Privacy Policy</a> | <a href="#">Contact</a> |
+        <a href="">Help</a> | <a href="#">About Us</a>
+      </p>
+      <p>© 2025 MindEase. All Rights Reserved.</p>
+    </footer>
 
-  <footer>
-    <p>
-      <a href="#">Privacy Policy</a> |
-      <a href="#">Contact</a> |
-      <a href="#">Help</a> |
-      <a href="#">About Us</a>
-    </p>
-    <p>© 2025 MindEase. All Rights Reserved.</p>
-  </footer>
-
-  <script src="../js/script.js"></script>
-</body>
-
+    <script src="../js/login.js"></script>
+  </body>
 </html>
