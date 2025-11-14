@@ -100,7 +100,7 @@ footer a:hover {
 
 .btn {
   background-color: #A8E6CF;
-  color: #37474F;
+  /* color: #37474F; */
   padding: 0.8rem 1.8rem;
   margin-right: 1rem;
   border-radius: 50px;
@@ -116,7 +116,7 @@ footer a:hover {
 
 .btn_2 {
   background-color: #ebefed;
-  color: #232c2f;
+  /* color: #232c2f; */
   padding: 0.8rem 1.8rem;
   border-radius: 50px;
   text-decoration: none;
@@ -384,8 +384,18 @@ footer a:hover {
 }
 
 .btn {
-  background: linear-gradient(135deg, #6fb1fc, #4364f7);
-  color: white;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #A8E6CF;
+  color: #546E7A;
 }
 
 .btn:hover {
@@ -394,14 +404,12 @@ footer a:hover {
 }
 
 .btn_2 {
-  border: 2px solid #6fb1fc;
-  color: #6fb1fc;
+    color: #546E7A;
 }
 
 .btn_2:hover {
-  background-color: #6fb1fc;
-  color: white;
-  transform: translateY(-4px);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 15px rgba(67, 100, 247, 0.3);
 }
 
 
