@@ -32,12 +32,19 @@
       </nav>
     </header>
 
-    <main>
-      <div class="auth-container">
-        <!-- Login-->
-        <div class="auth-card" id="loginView">
-          <h1>Welcome Back</h1>
-          <p class="subtitle">Log in to continue your wellness journey</p>
+  <main>
+    <section class="section-login">
+      <div class="container">
+        <div class="image-section">
+          <img src="../../assets/images/login-illustration.png" alt="Relax illustration" />
+        </div>
+
+        <div class="login-card">
+          <div class="login-header">
+            <h1>Welcome Back</h1>
+            <p class="subtitle">Log in to continue your wellness journey</p>
+          </div>
+
           <form id="loginForm">
             <label for="email">Email</label>
             <input
@@ -59,67 +66,7 @@
             >
             <p class="bottom-text">
               Don’t have an account?
-              <a href="#" class="toggle-link" id="showSignupLink"
-                >Create Account</a
-              >
-            </p>
-          </form>
-        </div>
-
-        <!-- Sign Up View -->
-        <div class="auth-card" id="signupView" style="display: none">
-          <h1>Create Account</h1>
-          <p class="subtitle">Start your wellness journey today</p>
-          <form id="signupForm">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" placeholder="John Doe" required />
-            <label for="signup-email">Email</label>
-            <input
-              type="email"
-              id="signup-email"
-              placeholder="your@email.com"
-              required
-            />
-            <label for="signup-password">Password</label>
-            <input
-              type="password"
-              id="signup-password"
-              placeholder="••••••••"
-              required
-            />
-            <label for="confirm-password">Confirm Password</label>
-            <input
-              type="password"
-              id="confirm-password"
-              placeholder="••••••••"
-              required
-            />
-            <button type="submit">Create Account</button>
-            <p class="bottom-text">
-              Already have an account?
-              <a href="#" class="toggle-link" id="showLoginLink">Log In</a>
-            </p>
-          </form>
-        </div>
-
-        <!-- Forgot Password -->
-        <div class="auth-card" id="forgotPasswordView" style="display: none">
-          <h1>Forgot Password</h1>
-          <p class="subtitle">Enter your email to receive a reset link</p>
-          <form id="forgotPasswordForm">
-            <label for="forgot-email">Email</label>
-            <input
-              type="email"
-              id="forgot-email"
-              placeholder="your@email.com"
-              required
-            />
-            <button type="submit">Send Reset Link</button>
-            <p class="bottom-text">
-              Remembered your password?
-              <a href="#" class="toggle-link" id="showLoginFromForgotLink"
-                >Log In</a
-              >
+              <a href="#" class="signup-link">Create Account</a>
             </p>
           </form>
         </div>
