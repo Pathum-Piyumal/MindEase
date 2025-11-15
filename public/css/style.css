@@ -113,6 +113,15 @@ footer a:hover {
   background: #B3E5FC;
   transform: translateY(-3px);
 }
+.section-hero {
+  height: 85vh;
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  padding: 5rem 8%; 
+  background: linear-gradient(135deg, #E8EAF6, #B3E5FC); 
+  flex-wrap: wrap;
+}
 
 /* Journey Section */
 
