@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../css/login.css">
 </head>
 
-<body> <!-- Misty Lilac -->
+<body>
   <header>
     <div class="logo">
       <img src="../../assets/icons/logo.png" alt="Brain Icon">
@@ -38,10 +38,12 @@
           <div class="login-header">
             <h1>Welcome Back</h1>
             <p class="subtitle">Log in to continue your wellness journey</p>
-
           </div>
 
-            <form id="loginForm" action="../../mindease-backend/src/config/login.php" method="POST">
+          <!-- MESSAGE CONTAINER FOR FEEDBACK -->
+          <div id="messageContainer"></div>
+
+          <form id="loginForm">
             <label for="email">Email</label>
             <input type="email" id="email" placeholder="your@email.com" name="email" required />
 
@@ -53,13 +55,12 @@
             <a href="#" class="forgot">Forgot Password?</a>
 
             <p class="signup-text">
-              Don’t have an account?
+              Don't have an account?
               <a href="../pages/register.html" class="signup-link">Create Account</a>
             </p>
           </form>
         </div>
       </div>
-
     </section>
   </main>
 
@@ -73,7 +74,70 @@
     <p>© 2025 MindEase. All Rights Reserved.</p>
   </footer>
 
-  <script src="../js/login.js"></script>
-</body>
+  <script>
+    // Function to display messages to user
+    function showMessage(message, type) {
+      const messageContainer = document.getElementById('messageContainer');
+      messageContainer.innerHTML = `<div class="msg-box ${type}">${message}</div>`;
+      
+      // Auto-remove message after 5 seconds
+      setTimeout(() => {
+        if (messageContainer.innerHTML.includes(message)) {
+          messageContainer.innerHTML = '';
+        }
+      }, 5000);
+    }
 
+    // Handle form submission
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+
+      // Show loading state
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = "Logging in...";
+      submitBtn.disabled = true;
+
+      // IMPORTANT: Check if this path is correct for your setup
+      fetch("../../mindease-backend/src/config/login.php", {
+        method: "POST",
+        body: formData
+      })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return res.text();
+      })
+      .then(data => {
+        console.log("Server Response:", data); // For debugging
+        
+        if (data.trim() === "success") {
+          showMessage("Login Successful! Redirecting...", "success");
+          setTimeout(() => {
+            window.location.href = "../index.html";
+          }, 1500);
+        } else if (data.trim() === "invalid") {
+          showMessage("Incorrect password. Please try again.", "error");
+        } else if (data.trim() === "notfound") {
+          showMessage("No account found with this email.", "error");
+        } else {
+          // If we get an unexpected response
+          showMessage("Login error: " + data, "error");
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        showMessage("Login failed. Please check your connection and try again.", "error");
+      })
+      .finally(() => {
+        // Reset button state
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      });
+    });
+  </script>
+</body>
 </html>
