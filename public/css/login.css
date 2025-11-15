@@ -14,15 +14,16 @@ body {
 
 /* Header */
 header {
-    background: #E8EAF6;
-    padding: 1rem 5rem;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background: #E8EAF6;
+  /* Misty Lilac to Lavender */
+  padding: 1rem 5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
@@ -33,33 +34,8 @@ header {
 }
 
 .logo img {
-    width: 50px;
-    margin-right: 0.5rem;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-}
-
-nav a {
-    color: #546E7A;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-nav a:hover {
-    color: #a8e6cf;
-}
-
-/* Footer */
-footer {
-    background: #E8EAF6;
-    padding: 2rem;
-    text-align: center;
-    margin-top: 2rem;
+   width: 50px;
+  margin-right: 0.5rem;
 }
 
 footer a {
@@ -276,4 +252,3 @@ button:disabled {
     .section-login {
         padding: 2rem 1rem;
     }
-}
