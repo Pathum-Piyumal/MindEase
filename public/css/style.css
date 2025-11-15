@@ -594,3 +594,196 @@ footer a:hover {
 .floating-bg span:nth-child(3) { left: 50%; animation-delay: 4s; width: 18px; height: 18px; }
 .floating-bg span:nth-child(4) { left: 70%; animation-delay: 6s; width: 22px; height: 22px; }
 .floating-bg span:nth-child(5) { left: 90%; animation-delay: 8s; width: 20px; height: 20px; }
+
+/* --- How It Works Section Styling --- */
+
+.how-it-works {
+    padding: 60px 20px;
+    background-color: #f7f9fa;
+    text-align: center;
+}
+
+.how-it-works .container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.how-it-works .section-title {
+    font-size: 2.5rem;
+    color: #546d78;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.how-it-works .section-subtitle {
+    font-size: 1.25rem;
+    color: #607d8b;
+    margin-bottom: 3rem;
+}
+
+.steps-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.step-card {
+    flex-basis: calc(33.333% - 20px);
+    min-width: 280px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.step-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    background-color: #546d78;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.steps-grid .step-card:nth-child(1) .step-icon {
+    background-color: #00bcd4;
+    box-shadow: 0 0 0 5px rgba(0, 188, 212, 0.2);
+}
+
+.steps-grid .step-card:nth-child(2) .step-icon {
+    background-color: #29b6f6;
+    box-shadow: 0 0 0 5px rgba(41, 182, 246, 0.2);
+}
+
+.steps-grid .step-card:nth-child(3) .step-icon {
+    background-color: #ff9800;
+    box-shadow: 0 0 0 5px rgba(255, 152, 0, 0.2);
+}
+
+.step-card h3 {
+    font-size: 1.5rem;
+    color: #546d78;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.step-card p {
+    color: #84969e;
+    line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+    .step-card {
+        flex-basis: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 600px) {
+    .step-card {
+        flex-basis: 100%;
+        min-width: unset;
+    }
+
+    .how-it-works .section-title {
+        font-size: 2rem;
+    }
+}
+/* --- Testimonials Section Styling --- */
+
+.testimonials {
+    padding: 80px 20px;
+    background-color: #eef3f6; /* Subtle grey background */
+    text-align: center;
+}
+
+.testimonials .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonials .section-title {
+    font-size: 2.5rem;
+    color: #546d78;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.testimonials .section-subtitle {
+    font-size: 1.25rem;
+    color: #607d8b;
+    margin-bottom: 3rem;
+}
+
+.testimonial-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.testimonial-card {
+    flex-basis: calc(33.333% - 20px);
+    min-width: 300px;
+    padding: 35px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    border-top: 5px solid #607D8B; /* Accent color on top */
+    text-align: left;
+}
+
+.testimonial-card .quote {
+    font-size: 1.15rem;
+    color: #546d78;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.testimonial-card .user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.testimonial-card .rating {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.testimonial-card .name {
+    font-weight: 600;
+    color: #84969e;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.share-story-btn {
+    /* Inherits button styling, but ensures it's centered if needed */
+    display: inline-block;
+}
+
+@media (max-width: 992px) {
+    .testimonial-card {
+        flex-basis: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 600px) {
+    .testimonial-card {
+        flex-basis: 100%;
+    }
+}
