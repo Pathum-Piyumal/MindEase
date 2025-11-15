@@ -106,7 +106,7 @@ footer a:hover {
 
 /* Calm section */
 .section-calm {
-  background: linear-gradient(135deg, #A8E6CF, #B3E5FC);
+  background: linear-gradient(to right, #A6D1E6, #C7C9F2, #FDFD96, #C8E6C9);
   text-align: center;
   padding: 3rem 1rem;
 }
