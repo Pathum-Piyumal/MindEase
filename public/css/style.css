@@ -113,22 +113,6 @@ footer a:hover {
   background: #B3E5FC;
   transform: translateY(-3px);
 }
-
-.btn_2 {
-  background-color: #ebefed;
-  /* color: #232c2f; */
-  padding: 0.8rem 1.8rem;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.btn_2:hover {
-  background: #B3E5FC;
-  transform: translateY(-3px);
-}
-
 .section-hero {
   height: 85vh;
   display: flex; 
@@ -139,10 +123,11 @@ footer a:hover {
   flex-wrap: wrap;
 }
 
-.stats-section {
-  background-color: #f6f7fb;
-  /* light background */
-  padding: 60px 0;
+/* Journey Section */
+
+.journey-section {
+  background: linear-gradient(to right, #dee8ff, #f2e9fb);
+  padding: 6rem 2rem;
   text-align: center;
 }
 
