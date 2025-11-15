@@ -34,16 +34,16 @@ loginForm.addEventListener("submit", function (e) {
         return;
     }
 
-     const demoEmail = "test@example.com";
-    const demoPassword = "123456";
+    //  const demoEmail = "test@example.com";
+    // const demoPassword = "123456";
 
-    if (email === demoEmail && password === demoPassword) {
-        showMessage("Login successful! Redirecting...", "success");
+    // if (email === demoEmail && password === demoPassword) {
+    //     showMessage("Login successful! Redirecting...", "success");
 
-        setTimeout(() => {
-            window.location.href = "../index.html"; // NEW: Redirect
-        }, 1500);
-    } else {
-        showMessage("Incorrect email or password. Please try again.", "error");
-    }
+    //     setTimeout(() => {
+    //         window.location.href = "../index.html"; // NEW: Redirect
+    //     }, 1500);
+    // } else {
+    //     showMessage("Incorrect email or password. Please try again.", "error");
+    // }
 });
