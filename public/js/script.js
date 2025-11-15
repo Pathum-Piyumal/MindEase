@@ -73,3 +73,22 @@ const statObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.stat-item').forEach(stat => statObserver.observe(stat));
 
 
+// --- FAQ Accordion Logic ---
+
+document.addEventListener('DOMContentLoaded', () => {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            // Get the corresponding answer
+            const answer = question.nextElementSibling;
+
+            // Toggle the 'active' class on the question button
+            question.classList.toggle('active');
+
+            // Toggle the 'open' class on the answer element
+            // This is what controls the max-height/padding for the transition effect
+            answer.classList.toggle('open');
+        });
+    });
+});
