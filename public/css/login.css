@@ -38,14 +38,41 @@ header {
   margin-right: 0.5rem;
 }
 
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: #546E7A;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #a8e6cf;
+}
+
+/* Footer */
+footer {
+  background: #E8EAF6;
+  /* Misty Lilac */
+  padding: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+  /* border-top: 1px solid #C7C9F2; */
+}
+
 footer a {
-    color: #546E7A;
-    text-decoration: none;
-    margin: 0 1rem;
+  color: #546E7A;
+  text-decoration: none;
+  margin: 0 1rem;
 }
 
 footer a:hover {
-    color: #B3E5FC;
+  color: #B3E5FC;
 }
 
 /* Login Section */
