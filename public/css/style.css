@@ -787,3 +787,87 @@ footer a:hover {
         flex-basis: 100%;
     }
 }
+
+/* --- FAQ Section Styling (Accordion) --- */
+
+.faq-section {
+    padding: 80px 20px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.faq-section .container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-title {
+    font-size: 2.5rem;
+    color: #546d78;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.faq-subtitle {
+    font-size: 1.25rem;
+    color: #607d8b;
+    margin-bottom: 3rem;
+}
+
+.faq-accordion {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.faq-item {
+    border-bottom: 1px solid #cfd8dc; /* Light separator */
+    margin-bottom: 10px;
+}
+
+.faq-question {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    padding: 20px 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #546d78;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.faq-question::after {
+    content: '+'; /* Simple plus sign icon */
+    font-size: 1.5rem;
+    color: #607D8B;
+    transition: transform 0.3s ease;
+}
+
+.faq-question.active::after {
+    content: '-'; /* Changes to minus sign when active */
+    transform: rotate(0deg);
+}
+
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    padding: 0 10px;
+}
+
+.faq-answer.open {
+    max-height: 500px; /* Needs to be large enough to contain the content */
+    padding: 0 10px 20px 10px;
+}
+
+.faq-answer p {
+    color: #607d8b;
+    line-height: 1.6;
+    margin: 0;
+}
