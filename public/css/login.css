@@ -5,8 +5,8 @@
   --calm-bg-light: #f0f4ff;
   --calm-bg-gradient: linear-gradient(
     180deg,
-    rgba(230, 240, 255, 0.7) 0%,
-    rgba(255, 255, 255, 0.7) 100%
+    rgba(146, 175, 221, 0.7) 0%,
+    rgba(245, 249, 249, 0.7) 100%
   );
   --text-dark: #333333;
   --text-light: #5a5a5a;
@@ -35,25 +35,29 @@ body {
 
 /* --- Header --- */
 header {
+  background: #E8EAF6;
+  /* Misty Lilac to Lavender */
+  padding: 1rem 5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 5%;
-  background-color: var(--calm-bg-light);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  font-size: 1.5rem;
   font-weight: 600;
-  font-size: 1.25rem;
-  color: var(--text-dark);
+  color: #546E7A;
 }
 
 .logo img {
-  border-radius: 50%;
+   width: 50px;
+  margin-right: 0.5rem;
 }
 
 header nav ul {
