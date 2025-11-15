@@ -7,17 +7,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-
-
-//calm corner js
+// Calm corner JS
 let isBreathing = false;
 
 function toggleBreathing() {
   isBreathing = !isBreathing;
-  var circle = document.getElementById("breathingCircle");
-  var status = document.getElementById("breathingStatus");
-  var text = document.getElementById("breathingText");
-  var btnText = document.getElementById("btnText");
+  const circle = document.getElementById("breathingCircle");
+  const status = document.getElementById("breathingStatus");
+  const text = document.getElementById("breathingText");
+  const btnText = document.getElementById("btnText");
 
   if (isBreathing) {
     circle.classList.add("active");
@@ -41,7 +39,8 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.2 });
 
-document.querySelectorAll('.fade-in, .section-hero, .core-features, .feature-hero, .ready-to-feel').forEach((el) => observer.observe(el));
+document.querySelectorAll('.fade-in, .section-hero, .core-features, .feature-hero, .ready-to-feel')
+  .forEach((el) => observer.observe(el));
 
 // ===== STAT COUNTER ANIMATION =====
 const statItems = document.querySelectorAll('.stat-item h2');
@@ -72,6 +71,5 @@ const statObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 
 document.querySelectorAll('.stat-item').forEach(stat => statObserver.observe(stat));
-
 
 
