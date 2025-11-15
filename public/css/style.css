@@ -700,3 +700,90 @@ footer a:hover {
         font-size: 2rem;
     }
 }
+/* --- Testimonials Section Styling --- */
+
+.testimonials {
+    padding: 80px 20px;
+    background-color: #eef3f6; /* Subtle grey background */
+    text-align: center;
+}
+
+.testimonials .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonials .section-title {
+    font-size: 2.5rem;
+    color: #546d78;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.testimonials .section-subtitle {
+    font-size: 1.25rem;
+    color: #607d8b;
+    margin-bottom: 3rem;
+}
+
+.testimonial-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.testimonial-card {
+    flex-basis: calc(33.333% - 20px);
+    min-width: 300px;
+    padding: 35px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    border-top: 5px solid #607D8B; /* Accent color on top */
+    text-align: left;
+}
+
+.testimonial-card .quote {
+    font-size: 1.15rem;
+    color: #546d78;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.testimonial-card .user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.testimonial-card .rating {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.testimonial-card .name {
+    font-weight: 600;
+    color: #84969e;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.share-story-btn {
+    /* Inherits button styling, but ensures it's centered if needed */
+    display: inline-block;
+}
+
+@media (max-width: 992px) {
+    .testimonial-card {
+        flex-basis: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 600px) {
+    .testimonial-card {
+        flex-basis: 100%;
+    }
+}
