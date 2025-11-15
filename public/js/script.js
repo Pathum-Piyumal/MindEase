@@ -73,3 +73,5 @@ const statObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.stat-item').forEach(stat => statObserver.observe(stat));
 
+
+
