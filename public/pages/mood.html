@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mood Tracker</title>
-    <link rel="stylesheet" href="../css/mood.css">
-    <script src="mood.js" defer></script>
 
-    
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mood Tracker</title>
+  <link rel="stylesheet" href="../css/mood.css">
 </head>
+
 <body>
 
-<!-- Header Section -->
+  <!-- Header Section -->
   <header>
     <div class="logo">
       <img src="../../assets/icons/logo.png" alt="Brain Icon">
@@ -28,87 +27,59 @@
       </ul>
     </nav>
   </header>
-    
-  <br><br><br>
 
-<!--Emoji-based mood selection grid-->
-    <h1>how are you feeling today?&#128198</h1>
-    <br>
+  <!--Emoji-based mood selection grid-->
 
-    <h2>Positive Moods</h2>
-    <div class="mood-bar">
-      <button class="mood" type="button" onclick="">&#128518;Happy</button>
-      <button class="mood" type="button" onclick="">&#128512;Excited</button>
-      <button class="mood" type="button" onclick="">&#128522;Calm</button>
-      <button class="mood" type="button" onclick="">&#128519;Content</button>
-      <button class="mood" type="button" onclick="">&#128515;Grateful</button>
-      <button class="mood" type="button" onclick="">&#128524;Proud</button>
-      <button class="mood" type="button" onclick="">&#128512;Hopeful</button>
-      <button class="mood" type="button" onclick="">&#128525;Loving</button> 
-    </div>
-    <br><br><br>
+  <body>
+    <div class="container">
 
-    <h2>Negative Moods</h2>
-    <div class="mood-bar">
-      <button class="mood" type="button" onclick="">&#128532;Sad</button>
-      <button class="mood" type="button" onclick="">&#128545;Angry</button>
-      <button class="mood" type="button" onclick="">&#128547;Anxious</button>
-      <button class="mood" type="button" onclick="">&#128555;Lonely</button>
-      <button class="mood" type="button" onclick="">&#129327;Stressed</button>
-      <button class="mood" type="button" onclick="">&#128564;Bored</button> 
-      <button class="mood" type="button" onclick="">&#128577;Guilty</button>
-      <button class="mood" type="button" onclick="">&#129488;Jealous</button> 
-    </div>
-    <br><br><br>
-    
-    <h2>Neutral or Mixed Moods</h2>
-    <div class="mood-bar">
-      <button class="mood" type="button" onclick="">&#128559;Confused</button>
-      <button class="mood" type="button" onclick="">&#129300;Curious</button>
-      <button class="mood" type="button" onclick="">&#129301;Restless</button>
-    </div>
-    <br><br><br> 
+      <div class="card">
+        <h1 class="card-title">Track Your Mood</h1>
+        <p class="card-description">How are you feeling today? Select the emoji that matches your mood.</p>
 
-    <button class="submit" type="button" onclick="">submit</button>
+        <div class="moods-grid" id="moodsGrid">
+          <button class="mood-button happy" data-mood="happy">
+            <span class="mood-icon">😊</span>
+            <span>Happy</span>
+          </button>
+          <button class="mood-button calm" data-mood="calm">
+            <span class="mood-icon">💕</span>
+            <span>Calm</span>
+          </button>
+          <button class="mood-button anxious" data-mood="anxious">
+            <span class="mood-icon">😰</span>
+            <span>Anxious</span>
+          </button>
+          <button class="mood-button sad" data-mood="sad">
+            <span class="mood-icon">😢</span>
+            <span>Sad</span>
+          </button>
 
-<!--add chart to display mood trends-->  
-    <h1>let's check your mood level&#128202</h1> 
-    <p>Enter your mood level (0-100):<input type="number" id="moodLevel" name="moodLevel" min="0" max="100"></p>
-    <br>
-    <button class="showmood" myfunction()>Show Mood</button>
-    <div class="mood-container"> 
-        <div class="mood-bar" id="moodBar">0%</div> 
+          <button class="mood-button angry" data-mood="angry">
+            <span class="mood-icon">😠</span>
+            <span>Angry</span>
+          </button>
+        </div>
+
+        <button class="submit-button" id="submitButton">Submit Mood</button>
+
+        <div class="progress-section">
+          <h3 class="card-title">Weekly Mood Trend</h3>
+          <div class="progress-label">
+            <span>Positive Moods</span>
+            <span id="progressPercent">75%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 75%"></div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <script>
-        function myfunction() {
-            var moodLevel = document.getElementById("moodLevel").value;
-            let bar = document.getElementById('moodBar');
-            bar.style.width = moodLevel + "%";
-            bar.textContent = moodLevel + "%";
-
-    //give min and max level of moodLevel
-        if(moodLevel<0)moodLevel=0;
-        if(moodLevel>100)moodLevel=100;
-    
-    
-    //change color based on mood
-        if(moodLevel<20){
-            bar.style.backgroundColor = "#00ff00";
-        }
-        else if(moodLevel<50){
-            bar.style.backgroundColor = '#00b300';
-        }
-        else if(moodLevel<80){
-            bar.style.backgroundColor = '#ffff00';
-        }
-        else{
-            bar.style.backgroundColor = '#00ffbf';
-        }
-        }
-    </script>
-
-<!-- Footer Section -->
+    <div class="toast" id="toast">
+      <div id="toastMessage"></div>
+    </div>
+  <!-- Footer Section -->
   <footer>
     <p>
       <a href="privacy_policy.html">Privacy Policy</a> |
@@ -119,5 +90,7 @@
     <p>© 2025 MindEase. All Rights Reserved.</p>
   </footer>
 
+  <script src="../js/mood.js"></script>
 </body>
+
 </html>
