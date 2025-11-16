@@ -67,6 +67,10 @@ nav a:hover {
   /* Pale Aqua Blue */
 }
 
+.nav-active{
+  color: #a8e6cf !important;
+}
+
 .quotes {
    background: linear-gradient(rgb(207, 235, 240), rgb(152, 215, 239));
    min-height: 80vh;
