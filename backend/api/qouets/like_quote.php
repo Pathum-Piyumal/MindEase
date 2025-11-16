@@ -1,0 +1,72 @@
+<?php
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST');
+header('Content-Type: application/json');
+
+require_once '../../config/database.php';
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    echo json_encode(['status' => 'error', 'message' => 'invalid_request']);
+    exit;
+}
+
+// Get user from session or request
+session_start();
+$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+$quote_text = isset($_POST['quote_text']) ? trim($_POST['quote_text']) : '';
+
+if (!$user_id) {
+    echo json_encode(['status' => 'error', 'message' => 'not_logged_in']);
+    exit;
+}
+
+if (empty($quote_text)) {
+    echo json_encode(['status' => 'error', 'message' => 'empty_quote']);
+    exit;
+}
+
+$conn = getDBConnection();
+
+// Check if user already liked this quote
+$check_stmt = $conn->prepare("SELECT id FROM quote_likes WHERE user_id = ? AND quote_text = ?");
+$check_stmt->bind_param("is", $user_id, $quote_text);
+$check_stmt->execute();
+$result = $check_stmt->get_result();
+
+if ($result->num_rows > 0) {
+    // Unlike - remove the like
+    $delete_stmt = $conn->prepare("DELETE FROM quote_likes WHERE user_id = ? AND quote_text = ?");
+    $delete_stmt->bind_param("is", $user_id, $quote_text);
+    $delete_stmt->execute();
+    $delete_stmt->close();
+    
+    $action = 'unliked';
+} else {
+    // Like - add the like
+    $insert_stmt = $conn->prepare("INSERT INTO quote_likes (user_id, quote_text) VALUES (?, ?)");
+    $insert_stmt->bind_param("is", $user_id, $quote_text);
+    $insert_stmt->execute();
+    $insert_stmt->close();
+    
+    $action = 'liked';
+}
+
+$check_stmt->close();
+
+// Get total like count for this quote
+$count_stmt = $conn->prepare("SELECT COUNT(*) as count FROM quote_likes WHERE quote_text = ?");
+$count_stmt->bind_param("s", $quote_text);
+$count_stmt->execute();
+$count_result = $count_stmt->get_result();
+$count_data = $count_result->fetch_assoc();
+$like_count = $count_data['count'];
+$count_stmt->close();
+
+$conn->close();
+
+echo json_encode([
+    'status' => 'success',
+    'action' => $action,
+    'like_count' => $like_count
+]);
+?>
