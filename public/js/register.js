@@ -10,7 +10,7 @@ document.getElementById("registerForm").addEventListener("submit", async functio
     formData.append("email", email);
     formData.append("password", password);
 
-    let response = await fetch("http://localhost/mindeaseBackend/auth/register.php", {
+    let response = await fetch("../../backend/auth/register.php", {
         method: "POST",
         body: formData
     });
