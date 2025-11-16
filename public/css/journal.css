@@ -9,6 +9,10 @@ body {
    background: linear-gradient(135deg, #A6D1E6, #E4C1F9, #C8E6C9);
 }
 
+h1 {
+  color: #546E7A;
+}
+
 
 /* Header */
 header {
@@ -34,6 +38,12 @@ header {
 .logo img {
   width: 50px;
   margin-right: 0.5rem;
+}
+
+header .logo span {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #546E7A;
 }
 
 nav ul {
@@ -80,7 +90,8 @@ footer a:hover {
 
 .icon-calender {
     height: 25px;
-    margin-right: 10px;;
+    margin-right: 10px;
+    color: #546E7A;
 }
 
 #entryText {
