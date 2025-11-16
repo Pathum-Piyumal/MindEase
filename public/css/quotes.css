@@ -1,0 +1,172 @@
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #E8EAF6;
+  /* Misty Lilac */
+  color: #546E7A;
+  /* Slate Gray */
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background: #E8EAF6;
+  /* Misty Lilac to Lavender */
+  padding: 1rem 5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.logo img {
+  width: 50px;
+  margin-right: 0.5rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: #546E7A;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #a8e6cf;
+  /* Pale Aqua Blue */
+}
+
+.quotes {
+   background: linear-gradient(rgb(207, 235, 240), rgb(152, 215, 239));
+   min-height: 80vh;
+   text-align: center;
+}
+
+.quotes-card{
+  background: linear-gradient(#9dd0f4, #c1d8e0);
+  width: 70%;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 7px 17px rgba(0,0,0,0.1);
+  font-size: 1.3em;
+  transition: transform 0.3s ease;
+}
+
+#quotes-text{
+  font-size: 1.7rem;
+  font-family: 'Comfortaa', cursive;
+  font-size: 2.5rem;
+  color:#37474F;
+}
+
+.quote-card:hover {
+  transform: scale(1.02);
+}
+
+.quotes-group {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+button {
+  background-color: #E8EAF6;
+  border: 2px solid #6ca8c4;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #89c4e1;
+  transform: scale(1.05);
+}
+
+#like-btn i {
+  color: black;
+  margin-right: 6px;
+  transition: color 0.3s;
+}
+
+#like-btn.liked i {
+  color: #ff4d4d;
+  animation: pop 0.3s forwards;
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.5); }
+  100% { transform: scale(1); }
+}
+
+#save-btn.saved i{
+    color: #27ae60;
+    animation: pop 0.3s forwards;
+}
+
+footer {
+  background: #E8EAF6;
+  /* Misty Lilac */
+  padding: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+  /* border-top: 1px solid #C7C9F2; */
+}
+
+footer a {
+  color: #546E7A;
+  text-decoration: none;
+  margin: 0 1rem;
+}
+
+footer a:hover {
+  color: #B3E5FC;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    text-align: center;
+  }
+}

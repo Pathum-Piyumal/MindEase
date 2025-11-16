@@ -1,0 +1,206 @@
+/* Font and global styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  color: #546E7A; /* Slate Gray */
+  background: #E8EAF6; /* Misty Lilac */
+}
+
+/* Header */
+header {
+  background: linear-gradient(90deg, #E8EAF6, #C7C9F2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+header .logo img {
+  width: 40px;
+  height: 40px;
+}
+
+header .logo span {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #546E7A;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #546E7A;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav a:hover {
+  color: #A8E6CF; /* Soft Teal */
+  transform: scale(1.05);
+}
+
+/* About Section */
+.section.about h1 {
+  font-size: 3rem;
+  color: #546E7A;
+  margin-bottom: 2rem;
+  animation: fadeInDown 1.2s ease;
+  margin-right: 3rem;
+}
+
+.card {
+  background: #FAFAFA; /* White Smoke */
+  margin: 1.5rem auto;
+  padding: 1rem;
+  max-width: 800px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(199, 201, 242, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(168, 230, 207, 0.4);
+}
+
+.card h2 {
+  color: #546E7A;
+  margin-bottom: 1rem;
+}
+
+.card p {
+  line-height: 1.7;
+  color: #607D8B;
+}
+
+.card img {
+  border-radius: 15px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Team grid: show members in a row (flex) and wrap on small screens */
+.team-grid {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap; /* allow wrapping on small screens */
+  margin-top: 1rem;
+  padding: 0;
+}
+
+.team-member {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 1rem;
+  width: 180px; /* card width - controls how many fit per row */
+  box-shadow: 0 6px 18px rgba(84, 110, 122, 0.06);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.team-member img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.team-member h4 {
+  margin: 0;
+  color: #37474F;
+  font-size: 1.05rem;
+}
+
+.team-member p {
+  margin: 0;
+  color: #78909C;
+  font-size: 0.95rem;
+}
+
+/* Responsive: make cards take half width on narrow screens, full width on very small screens */
+@media (max-width: 600px) {
+  .team-member {
+    width: calc(50% - 1rem);
+  }
+}
+
+@media (max-width: 380px) {
+  .team-member {
+    width: calc(100% - 1rem);
+  }
+}
+
+/* Footer */
+footer {
+  background: #E8EAF6;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 3rem;
+  border-top: 1px solid rgba(84, 110, 122, 0.1);
+}
+
+footer a {
+  color: #546E7A;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #A8E6CF;
+}
+
+footer p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+/* Simple Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+}

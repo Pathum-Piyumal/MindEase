@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindEase - Register</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="../../assets/icons/logo.png" alt="Brain Icon">
+            <span>MindEase</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="./mood.html">Mood Tracker</a></li>
+                <li><a href="./journal.html">Journal</a></li>
+                <li><a href="./quotes.html">Quotes</a></li>
+                <li><a href="./calm_corner.html">Calm Corner</a></li>
+                <li><a href="./login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section-login">
+            <div class="container">
+                <div class="image-section">
+                    <img src="../../assets/images/login-illustration.png" alt="Relax illustration" />
+                </div>
+
+                <div class="login-card">
+                    <div class="login-header">
+                        <h1>Create Your Account</h1>
+                        <p class="subtitle">Sign up to unlock exclusive features and content.</p>
+                    </div>
+
+                    <!-- MESSAGE CONTAINER -->
+                    <div id="messageContainer"></div>
+
+                    <form id="registerForm" action="http://localhost/mindeaseBackend/auth/register.php" method="post">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Enter Your Name" name="name" required />
+
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="your@email.com" name="email" required />
+
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="••••••••" name="password" required />
+
+                        <button type="submit">Sign up</button>
+
+                        <p class="signup-text">
+                            Already have an account?
+                            <a href="./login.html" class="signup-link">Login here</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Contact</a> |
+            <a href="#">Help</a> |
+            <a href="#">About Us</a>
+        </p>
+        <p>© 2025 MindEase. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JAVASCRIPT CODE GOES HERE
+    <script>
+        document.getElementById("registerForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.textContent = "Creating Account...";
+            submitBtn.disabled = true;
+
+            fetch("../../mindease-backend/src/config/register.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(res => res.text())
+            .then(data => {
+                console.log("Server Response:", data);
+                
+                if (data === "success") {
+                    showMessage("Registration Successful! Redirecting...", "success");
+                    setTimeout(() => {
+                        window.location.href = "./login.html";
+                    }, 1500);
+                } else if (data === "email_exists") {
+                    showMessage("Email already exists!", "error");
+                } else if (data === "empty_fields") {
+                    showMessage("Please fill all fields!", "error");
+                } else if (data === "db_error") {
+                    showMessage("Database error!", "error");
+                } else {
+                    showMessage("Error: " + data, "error");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showMessage("Network error!", "error");
+            })
+            .finally(() => {
+                submitBtn.textContent = "Sign up";
+                submitBtn.disabled = false;
+            });
+        });
+
+        function showMessage(message, type) {
+            const messageContainer = document.getElementById('messageContainer');
+            messageContainer.innerHTML = `<div class="msg-box ${type}">${message}</div>`;
+            
+            if (type !== 'success') {
+                setTimeout(() => {
+                    if (messageContainer.innerHTML.includes(message)) {
+                        messageContainer.innerHTML = '';
+                    }
+                }, 5000);
+            }
+        }
+    </script> -->
+</body>
+</html>

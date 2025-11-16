@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mood Tracker</title>
+  <link rel="stylesheet" href="../css/mood.css">
+</head>
+
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <div class="logo">
+      <img src="../../assets/icons/logo.png" alt="Brain Icon">
+      <span>MindEase</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="./mood.html">Mood Tracker</a></li>
+        <li><a href="./journal.html">Journal</a></li>
+        <li><a href="./quotes.html">Quotes</a></li>
+        <li><a href="./calm_corner.html">Calm Corner</a></li>
+        <li><a href="./login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!--Emoji-based mood selection grid-->
+
+  <body>
+    <div class="container">
+
+      <div class="card">
+        <h1 class="card-title">Track Your Mood</h1>
+        <p class="card-description">How are you feeling today? Select the emoji that matches your mood.</p>
+
+        <div class="moods-grid" id="moodsGrid">
+          <button class="mood-button happy" data-mood="happy">
+            <span class="mood-icon">😊</span>
+            <span>Happy</span>
+          </button>
+          <button class="mood-button calm" data-mood="calm">
+            <span class="mood-icon">💕</span>
+            <span>Calm</span>
+          </button>
+          <button class="mood-button anxious" data-mood="anxious">
+            <span class="mood-icon">😰</span>
+            <span>Anxious</span>
+          </button>
+          <button class="mood-button sad" data-mood="sad">
+            <span class="mood-icon">😢</span>
+            <span>Sad</span>
+          </button>
+
+          <button class="mood-button angry" data-mood="angry">
+            <span class="mood-icon">😠</span>
+            <span>Angry</span>
+          </button>
+        </div>
+
+        <button class="submit-button" id="submitButton">Submit Mood</button>
+
+        <div class="progress-section">
+          <h3 class="card-title">Weekly Mood Trend</h3>
+          <div class="progress-label">
+            <span>Positive Moods</span>
+            <span id="progressPercent">75%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 75%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast">
+      <div id="toastMessage"></div>
+    </div>
+  <!-- Footer Section -->
+  <footer>
+    <p>
+      <a href="privacy_policy.html">Privacy Policy</a> |
+      <a href="help.html">Help</a> |
+      <a href="about_us.html">About Us</a> |
+      <a href="contact_us.html">Contact Us</a>
+    </p>
+    <p>© 2025 MindEase. All Rights Reserved.</p>
+  </footer>
+
+  <script src="../js/mood.js"></script>
+</body>
+
+</html>
