@@ -231,3 +231,12 @@ footer a:hover {
 #save-btn.saved i {
   color: #3498db;
 }
+#like-count {
+    transition: transform 0.2s ease, color 0.3s ease;
+    display: inline-block;
+    font-weight: 600;
+}
+
+#like-btn:hover #like-count {
+    color: #e74c3c;
+}

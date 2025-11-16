@@ -42,6 +42,7 @@ async function loadQuoteStatus() {
     formData.append('quote_text', currentQuote);
     
     const response = await fetch(CONFIG.getApiEndpoint("/api/quotes/get_quote_status.php"), {
+      credentials: 'include',
       method: "POST",
       body: formData
     });
@@ -83,12 +84,14 @@ likeBtn.addEventListener('click', async () => {
     
     const response = await fetch(CONFIG.getApiEndpoint("/api/quotes/like_quote.php"), {
       method: "POST",
+      credentials: 'include',
       body: formData
     });
     
     const data = await response.json();
     
     if (data.status === 'success') {
+      // Update like button appearance
       if (data.action === 'liked') {
         likeBtn.classList.add('liked');
         likeBtn.querySelector('i').classList.replace('fa-regular', 'fa-solid');
@@ -97,12 +100,15 @@ likeBtn.addEventListener('click', async () => {
         likeBtn.querySelector('i').classList.replace('fa-solid', 'fa-regular');
       }
       
+      // Update like count immediately from response
       likeCount.textContent = data.like_count;
       
       // Animation
-      likeBtn.style.transform = 'scale(1.2)';
+      likeBtn.style.transform = 'scale(1.3)';
+      likeCount.style.transform = 'scale(1.3)';
       setTimeout(() => {
         likeBtn.style.transform = 'scale(1)';
+        likeCount.style.transform = 'scale(1)';
       }, 200);
     } else if (data.message === 'not_logged_in') {
       alert('Please login to like quotes!');
@@ -122,6 +128,7 @@ saveBtn.addEventListener('click', async () => {
     
     const response = await fetch(CONFIG.getApiEndpoint("/api/quotes/save_quote.php"), {
       method: "POST",
+      credentials: 'include',
       body: formData
     });
     
@@ -181,7 +188,8 @@ showSavedBtn.addEventListener('click', async () => {
 async function loadSavedQuotes() {
   try {
     const response = await fetch(CONFIG.getApiEndpoint("/api/quotes/get_saved_quotes.php"), {
-      method: "GET"
+      method: "GET",
+      credentials: 'include'
     });
     
     const data = await response.json();
