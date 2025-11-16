@@ -204,3 +204,132 @@ footer p {
     padding: 1.5rem;
   }
 }
+
+/* Photo hover effect and member info overlay */
+.photo-wrap {
+  width: 150px;
+  height: 150px;
+  perspective: 1000px; /* enable 3D space for flip */
+  border-radius: 8px;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 400ms cubic-bezier(.2,.8,.2,1), box-shadow 300ms ease;
+  transform-origin: 50% 50%;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+  backface-visibility: hidden;
+}
+
+.team-member {
+  position: relative; /* for overlay positioning */
+}
+
+.team-member:hover .photo {
+  transform: rotateY(18deg) scale(1.06) translateY(-6px);
+  box-shadow: 0 10px 30px rgba(84,110,122,0.12);
+}
+
+.member-info {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  bottom: -8px;
+  width: 260px;
+  background: rgba(255,255,255,0.98);
+  border-radius: 10px;
+  padding: 0.75rem;
+  box-shadow: 0 8px 30px rgba(36,63,86,0.08);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 280ms ease, transform 300ms cubic-bezier(.2,.8,.2,1);
+  text-align: left;
+  color: #37474F;
+  font-size: 0.95rem;
+}
+
+.team-member:hover .member-info {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(-12px);
+}
+
+.member-info .summary {
+  margin: 0 0 0.5rem 0;
+  color: #607D8B;
+  font-size: 0.9rem;
+}
+
+.member-info .links {
+  margin: 0;
+  font-size: 0.85rem;
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.member-info .links .social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #5FC3A6;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.25rem 0.4rem;
+  border-radius: 6px;
+  transition: background 180ms ease, transform 160ms ease;
+}
+
+.member-info .links .social-link:focus,
+.member-info .links .social-link:hover {
+  background: rgba(95,195,166,0.08);
+  transform: translateY(-2px);
+}
+
+.member-info .links .icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  flex: 0 0 16px;
+}
+
+/* Ensure icon and text stay on one line and style LinkedIn blue */
+.member-info .links .social-link {
+  white-space: nowrap;
+}
+
+.member-info .links .social-link.linkedin {
+  color: #0077B5; /* LinkedIn blue */
+}
+
+.member-info .links .social-link.github {
+  color: #333333; /* GitHub dark gray */
+}
+
+/* Mobile: do not rely on hover — show info below the card */
+@media (max-width: 600px) {
+  .member-info {
+    position: static;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+    width: 100%;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    text-align: center;
+  }
+
+  .team-member {
+    gap: 0.25rem;
+  }
+
+  .team-member:hover .photo {
+    transform: none;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+  }
+}
