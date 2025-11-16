@@ -43,7 +43,7 @@
                     <!-- MESSAGE CONTAINER -->
                     <div id="messageContainer"></div>
 
-                    <form id="registerForm" action="http://localhost/mindeaseBackend/auth/register.php" method="post">
+                    <form id="registerForm" method="post">
                         <label for="name">Name</label>
                         <input type="text" id="name" placeholder="Enter Your Name" name="name" required />
 
@@ -75,61 +75,91 @@
         <p>© 2025 MindEase. All Rights Reserved.</p>
     </footer>
 
-    <!-- JAVASCRIPT CODE GOES HERE
     <script>
-        document.getElementById("registerForm").addEventListener("submit", function(e) {
-            e.preventDefault();
-
-            const formData = new FormData(this);
-            const submitBtn = this.querySelector('button[type="submit"]');
-            submitBtn.textContent = "Creating Account...";
-            submitBtn.disabled = true;
-
-            fetch("../../mindease-backend/src/config/register.php", {
-                method: "POST",
-                body: formData
-            })
-            .then(res => res.text())
-            .then(data => {
-                console.log("Server Response:", data);
-                
-                if (data === "success") {
-                    showMessage("Registration Successful! Redirecting...", "success");
-                    setTimeout(() => {
-                        window.location.href = "./login.html";
-                    }, 1500);
-                } else if (data === "email_exists") {
-                    showMessage("Email already exists!", "error");
-                } else if (data === "empty_fields") {
-                    showMessage("Please fill all fields!", "error");
-                } else if (data === "db_error") {
-                    showMessage("Database error!", "error");
-                } else {
-                    showMessage("Error: " + data, "error");
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                showMessage("Network error!", "error");
-            })
-            .finally(() => {
-                submitBtn.textContent = "Sign up";
-                submitBtn.disabled = false;
-            });
-        });
-
         function showMessage(message, type) {
             const messageContainer = document.getElementById('messageContainer');
             messageContainer.innerHTML = `<div class="msg-box ${type}">${message}</div>`;
             
             if (type !== 'success') {
                 setTimeout(() => {
-                    if (messageContainer.innerHTML.includes(message)) {
-                        messageContainer.innerHTML = '';
-                    }
+                    messageContainer.innerHTML = '';
                 }, 5000);
             }
         }
-    </script> -->
+
+        document.getElementById("registerForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = "Creating Account...";
+            submitBtn.disabled = true;
+
+            // Log for debugging
+            const fetchURL = "../../backend/auth/register.php";
+            console.log("Attempting to fetch:", fetchURL);
+            console.log("Form data:", {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                password: '****'
+            });
+
+            fetch(fetchURL, {
+                method: "POST",
+                body: formData
+            })
+            .then(res => {
+                console.log("Response status:", res.status);
+                console.log("Response OK:", res.ok);
+                
+                if (!res.ok) {
+                    throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+                }
+                return res.text();
+            })
+            .then(data => {
+                console.log("Server Response:", data);
+                console.log("Response length:", data.length);
+                
+                const cleanData = data.trim();
+                
+                if (cleanData === "success") {
+                    showMessage("✅ Registration Successful! Redirecting...", "success");
+                    setTimeout(() => {
+                        window.location.href = "./login.html";
+                    }, 1500);
+                } else if (cleanData === "email_exists") {
+                    showMessage("❌ Email already registered!", "error");
+                } else if (cleanData === "empty_fields") {
+                    showMessage("⚠️ Please fill all fields!", "error");
+                } else if (cleanData === "invalid_email") {
+                    showMessage("⚠️ Invalid email format!", "error");
+                } else if (cleanData === "password_too_short") {
+                    showMessage("⚠️ Password must be 6+ characters!", "error");
+                } else if (cleanData === "db_error") {
+                    showMessage("❌ Database error. Check if database exists!", "error");
+                } else {
+                    showMessage("❌ Unexpected response: " + cleanData, "error");
+                }
+            })
+            .catch(error => {
+                console.error('Fetch Error:', error);
+                
+                if (error.message.includes('404')) {
+                    showMessage("❌ Backend file not found! Check folder structure.", "error");
+                } else if (error.message.includes('Failed to fetch')) {
+                    showMessage("❌ Cannot connect to server. Is XAMPP running?", "error");
+                } else {
+                    showMessage("❌ Error: " + error.message, "error");
+                }
+            })
+            .finally(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        });
+    </script>
 </body>
 </html>

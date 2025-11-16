@@ -1,0 +1,52 @@
+# NEVER push database credentials!
+backend/config/database.php
+
+# Environment files
+.env
+.env.local
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+
+# IDE/Editor Files
+.vscode/
+.idea/
+*.code-workspace
+
+# Logs
+*.log
+error_log
+access_log
+php_errors.log
+
+# Temporary files
+tmp/
+temp/
+cache/
+
+# User uploads (if you add file upload later)
+uploads/
+mindease-backend/uploads/
+public/uploads/
+
+# Node modules (if you add npm later)
+node_modules/
+package-lock.json
+
+# Backup files
+*.bak
+*.backup
+*.sql.backup
+
+# macOS
+.AppleDouble
+.LSOverride
+
+# Windows
+ehthumbs.db
+Desktop.ini

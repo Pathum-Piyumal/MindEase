@@ -43,7 +43,7 @@
           <!-- MESSAGE CONTAINER FOR FEEDBACK -->
           <div id="messageContainer"></div>
 
-          <form id="loginForm" action="login.php" method="post">
+          <form id="loginForm" action="../../backend/auth/login.php" method="post">
             <label for="email">Email</label>
             <input type="email" id="email" placeholder="your@email.com" name="email" required />
 
@@ -100,8 +100,7 @@
       submitBtn.textContent = "Logging in...";
       submitBtn.disabled = true;
 
-      // IMPORTANT: Check if this path is correct for your setup
-      fetch("../../mindease-backend/src/config/login.php", {
+      fetch("../../backend/auth/login.php", {
         method: "POST",
         body: formData
       })
