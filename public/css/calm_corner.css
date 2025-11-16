@@ -57,6 +57,11 @@ nav a:hover {
   color: #a8e6cf;
 }
 
+.nav-active{
+  color: #a8e6cf !important;
+}
+
+
 /* Footer */
 footer {
   background: #E8EAF6;

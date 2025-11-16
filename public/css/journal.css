@@ -54,6 +54,9 @@ nav a:hover {
   /* Pale Aqua Blue */
 }
 
+.nav-active{
+  color: #a8e6cf !important;
+}
 
 /* Footer */
 footer {
