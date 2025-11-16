@@ -1,49 +1,29 @@
-// Select form and inputs
-const loginForm = document.getElementById("loginForm");
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
-
-// NEW: Message display function using CSS classes
-function showMessage(text, type) {
-    let msgBox = document.querySelector(".msg-box");
-
-    if (!msgBox) {
-        msgBox = document.createElement("div");
-        msgBox.classList.add("msg-box"); // NEW
-        loginForm.prepend(msgBox);      // NEW
-    }
-
-    msgBox.textContent = text;
-
-    // NEW: Remove old classes
-    msgBox.classList.remove("error", "success");
-
-    // NEW: Add new (error/success)
-    msgBox.classList.add(type);
-}
-
-// NEW: Form validation logic
-loginForm.addEventListener("submit", function (e) {
+document.getElementById("loginForm").addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
 
-    if (email === "" || password === "") {
-        showMessage("Please enter both email and password.", "error");
-        return;
+    let formData = new FormData();
+    formData.append("email", email);
+    formData.append("password", password);
+
+    let response = await fetch("../../backend/auth/login.php", {
+        method: "POST",
+        body: formData
+    });
+
+    let result = await response.text();
+
+    try {
+        let json = JSON.parse(result);
+
+        if (json.status === "success") {
+            localStorage.setItem("user_id", json.user_id);
+            window.location.href = "mood.html"; // redirect after login
+        }
+    } catch (error) {
+        if (result === "wrong_password") alert("Incorrect password!");
+        if (result === "no_user") alert("User not found!");
     }
-
-    //  const demoEmail = "test@example.com";
-    // const demoPassword = "123456";
-
-    // if (email === demoEmail && password === demoPassword) {
-    //     showMessage("Login successful! Redirecting...", "success");
-
-    //     setTimeout(() => {
-    //         window.location.href = "../index.html"; // NEW: Redirect
-    //     }, 1500);
-    // } else {
-    //     showMessage("Incorrect email or password. Please try again.", "error");
-    // }
 });
