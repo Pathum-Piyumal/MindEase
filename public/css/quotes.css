@@ -173,12 +173,12 @@ footer a:hover {
     flex-direction: column;
     text-align: center;
   }
-  
+
 }
 /* Saved Quotes Section */
 .saved-section {
   max-width: 800px;
-  margin: 4rem auto;
+  margin: 0rem auto;
   padding: 2rem;
 }
 
@@ -189,21 +189,20 @@ footer a:hover {
 }
 
 .btn-secondary {
-  background: #667eea;
-  color: white;
-  border: none;
-  padding: 0.8rem 2rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  display: block;
-  margin: 0 auto;
+  background-color: #A8E6CF;
+  /* color: #37474F; */
+  padding: 0.8rem 1.8rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
   transition: all 0.3s ease;
 }
 
-.btn-secondary:hover {
-  background: #5568d3;
-  transform: translateY(-2px);
+.btn:hover {
+  background: #B3E5FC;
+  transform: translateY(-3px);
 }
 
 .saved-quote-item {
