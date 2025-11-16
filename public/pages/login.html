@@ -43,7 +43,7 @@
           <!-- MESSAGE CONTAINER FOR FEEDBACK -->
           <div id="messageContainer"></div>
 
-          <form id="loginForm" action="../../backend/auth/login.php" method="post">
+          <form id="loginForm" method="post">
             <label for="email">Email</label>
             <input type="email" id="email" placeholder="your@email.com" name="email" required />
 
@@ -74,6 +74,9 @@
     <p>© 2025 MindEase. All Rights Reserved.</p>
   </footer>
 
+  <!-- Load config first -->
+  <script src="../js/config.js"></script>
+
   <script>
     // Function to display messages to user
     function showMessage(message, type) {
@@ -100,7 +103,8 @@
       submitBtn.textContent = "Logging in...";
       submitBtn.disabled = true;
 
-      fetch("../../backend/auth/login.php", {
+      // Use CONFIG for dynamic URL
+      fetch(CONFIG.getApiEndpoint("../../backend/auth/login.php"), {
         method: "POST",
         body: formData
       })
