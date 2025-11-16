@@ -57,29 +57,27 @@ $insert_stmt = $conn->prepare("INSERT INTO password_resets (email, reset_code, e
 $insert_stmt->bind_param("sss", $email, $reset_code, $expires_at);
 
 if ($insert_stmt->execute()) {
-    // In production, send email here
-    // For now, we'll just log it (you can see it in browser console during testing)
+    //  Send email with reset code
     
-    // OPTION 1: Show code in response (DEVELOPMENT ONLY!)
-    // Remove this line in production
-    error_log("Reset code for $email: $reset_code");
-    
-    // OPTION 2: Send email (uncomment when ready)
-    /*
     $subject = "MindEase - Password Reset Code";
     $message = "Hi {$user['name']},\n\n";
     $message .= "Your password reset code is: $reset_code\n\n";
     $message .= "This code will expire in 15 minutes.\n\n";
     $message .= "If you didn't request this, please ignore this email.\n\n";
-    $message .= "- MindEase Team";
+    $message .= "Thank you,\n";
+    $message .= "The MindEase Team";
     
     $headers = "From: noreply@mindease.com\r\n";
     $headers .= "Reply-To: support@mindease.com\r\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
     
-    mail($email, $subject, $message, $headers);
-    */
-    
-    echo "code_sent";
+    if (mail($email, $subject, $message, $headers)) {
+        echo "code_sent";
+    } else {
+        // If email fails, log it but don't expose error to user
+        error_log("Failed to send reset email to: $email");
+        echo "email_failed";
+    }
 } else {
     echo "error_sending";
 }
