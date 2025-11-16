@@ -7,7 +7,7 @@
 }
 
 body {
-  background: linear-gradient(135deg, #b2fefa, #a1c4fd, #d1c4e9, #fff9c4);
+  
   color: #546E7A;
   line-height: 1.6;
 }
@@ -60,7 +60,6 @@ footer {
   background: #E8EAF6;
   padding: 2rem;
   text-align: center;
-  margin-top: 2rem;
 }
 
 footer a {
@@ -95,7 +94,9 @@ button:disabled {
 }
 
 .container{
-  height: 80vh;
+  background: linear-gradient(135deg, #b2fefa, #a1c4fd, #d1c4e9, #fff9c4);
+  height: 100vh;
+  padding: 3rem 1rem;
 }
 
 .card {
@@ -327,6 +328,10 @@ button:disabled {
 } */
 
 @media (max-width: 768px) {
+.container{
+  height: 120vh;
+}
+
   .card{
     margin: 1rem;
   }
