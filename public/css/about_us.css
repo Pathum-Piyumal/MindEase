@@ -2,8 +2,10 @@
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
-  color: #546E7A; /* Slate Gray */
-  background: #E8EAF6; /* Misty Lilac */
+  color: #546E7A;
+  /* Slate Gray */
+  background: #E8EAF6;
+  /* Misty Lilac */
 }
 
 /* Header */
@@ -52,7 +54,8 @@ nav a {
 }
 
 nav a:hover {
-  color: #A8E6CF; /* Soft Teal */
+  color: #A8E6CF;
+  /* Soft Teal */
   transform: scale(1.05);
 }
 
@@ -66,7 +69,8 @@ nav a:hover {
 }
 
 .card {
-  background: #FAFAFA; /* White Smoke */
+  background: #FAFAFA;
+  /* White Smoke */
   margin: 1.5rem auto;
   padding: 1rem;
   max-width: 800px;
@@ -101,7 +105,8 @@ nav a:hover {
   gap: 1.25rem;
   justify-content: center;
   align-items: stretch;
-  flex-wrap: wrap; /* allow wrapping on small screens */
+  flex-wrap: wrap;
+  /* allow wrapping on small screens */
   margin-top: 1rem;
   padding: 0;
 }
@@ -110,7 +115,8 @@ nav a:hover {
   background: #FFFFFF;
   border-radius: 12px;
   padding: 1rem;
-  width: 180px; /* card width - controls how many fit per row */
+  width: 180px;
+  /* card width - controls how many fit per row */
   box-shadow: 0 6px 18px rgba(84, 110, 122, 0.06);
   text-align: center;
   display: flex;
@@ -182,6 +188,7 @@ footer p {
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -209,7 +216,8 @@ footer p {
 .photo-wrap {
   width: 150px;
   height: 150px;
-  perspective: 1000px; /* enable 3D space for flip */
+  perspective: 1000px;
+  /* enable 3D space for flip */
   border-radius: 8px;
 }
 
@@ -218,19 +226,20 @@ footer p {
   height: 100%;
   object-fit: cover;
   border-radius: 8px;
-  transition: transform 400ms cubic-bezier(.2,.8,.2,1), box-shadow 300ms ease;
+  transition: transform 400ms cubic-bezier(.2, .8, .2, 1), box-shadow 300ms ease;
   transform-origin: 50% 50%;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
   backface-visibility: hidden;
 }
 
 .team-member {
-  position: relative; /* for overlay positioning */
+  position: relative;
+  /* for overlay positioning */
 }
 
 .team-member:hover .photo {
   transform: rotateY(18deg) scale(1.06) translateY(-6px);
-  box-shadow: 0 10px 30px rgba(84,110,122,0.12);
+  box-shadow: 0 10px 30px rgba(84, 110, 122, 0.12);
 }
 
 .member-info {
@@ -239,13 +248,13 @@ footer p {
   transform: translateX(-50%) translateY(10px);
   bottom: -8px;
   width: 260px;
-  background: rgba(255,255,255,0.98);
+  background: rgba(255, 255, 255, 0.98);
   border-radius: 10px;
   padding: 0.75rem;
-  box-shadow: 0 8px 30px rgba(36,63,86,0.08);
+  box-shadow: 0 8px 30px rgba(36, 63, 86, 0.08);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 280ms ease, transform 300ms cubic-bezier(.2,.8,.2,1);
+  transition: opacity 280ms ease, transform 300ms cubic-bezier(.2, .8, .2, 1);
   text-align: left;
   color: #37474F;
   font-size: 0.95rem;
@@ -281,12 +290,12 @@ footer p {
   font-weight: 600;
   padding: 0.25rem 0.4rem;
   border-radius: 6px;
-  transition: background 180ms ease, transform 160ms ease;
+  transition: background 180ms ease, transform 180ms ease;
 }
 
 .member-info .links .social-link:focus,
 .member-info .links .social-link:hover {
-  background: rgba(95,195,166,0.08);
+  background: rgba(95, 195, 166, 0.08);
   transform: translateY(-2px);
 }
 
@@ -303,11 +312,13 @@ footer p {
 }
 
 .member-info .links .social-link.linkedin {
-  color: #0077B5; /* LinkedIn blue */
+  color: #0077B5;
+  /* LinkedIn blue */
 }
 
 .member-info .links .social-link.github {
-  color: #333333; /* GitHub dark gray */
+  color: #333333;
+  /* GitHub dark gray */
 }
 
 /* Mobile: do not rely on hover — show info below the card */
@@ -330,6 +341,46 @@ footer p {
 
   .team-member:hover .photo {
     transform: none;
-    box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
   }
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  padding-top: 1rem;
+  padding-left: 3rem;
+  z-index: 999;
+  background-color: #E8EAF6;
+  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.sidebar li {
+  width: 100%;
+}
+
+.sidebar a {
+  width: 100%;
+}
+
+.menu-button {
+  display: none;
+}
+
+@media(max-width: 768px) {
+  .hideOnMobile {
+    display: none;
+  }
+
+  .menu-button {
+    display: block;
+  }
+
 }
