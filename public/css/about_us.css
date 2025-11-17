@@ -21,29 +21,22 @@ header {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-header .logo {
+.logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-}
-
-header .logo img {
-  width: 40px;
-  height: 40px;
-}
-
-header .logo span {
-  font-weight: 600;
   font-size: 1.5rem;
-  color: #546E7A;
+  font-weight: 600;
+}
+
+.logo img {
+  width: 50px;
+  margin-right: 0.5rem;
 }
 
 nav ul {
   display: flex;
   list-style: none;
   gap: 1.5rem;
-  margin: 0;
-  padding: 0;
 }
 
 nav a {
@@ -55,8 +48,6 @@ nav a {
 
 nav a:hover {
   color: #A8E6CF;
-  /* Soft Teal */
-  transform: scale(1.05);
 }
 
 /* About Section */
@@ -197,16 +188,6 @@ footer p {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  nav ul {
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
   .card {
     padding: 1.5rem;
   }
