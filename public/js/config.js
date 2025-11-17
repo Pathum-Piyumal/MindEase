@@ -5,7 +5,7 @@ const CONFIG = {
     
     get apiUrl() {
         if (this.isLocal) {
-            return 'http://localhost/MINDEASE/backend';
+            return 'http://localhost/mindEase/backend';
         } else {
             return 'https://yourdomain.com/mindease-backend'; // UPDATE WHEN DEPLOYING
         }
