@@ -16,13 +16,23 @@
       <span>MindEase</span>
     </div>
     <nav>
-      <ul>
+        <ul class="sidebar">
+        <li onclick=hideSidebar()><a href="#"><img src="../../assets/icons/close_icon.png" alt="close_icon"></a></li>
         <li><a href="../index.html">Home</a></li>
         <li><a href="./mood.html">Mood Tracker</a></li>
         <li><a href="./journal.html">Journal</a></li>
         <li><a href="./quotes.html">Quotes</a></li>
         <li><a class="nav-active" href="./calm_corner.html">Calm Corner</a></li>
         <li><a href="./login.html">Login</a></li>
+      </ul>
+      <ul>
+        <li class="hideOnMobile"><a href="../index.html">Home</a></li>
+        <li class="hideOnMobile"><a href="./mood.html">Mood Tracker</a></li>
+        <li class="hideOnMobile"><a href="./journal.html">Journal</a></li>
+        <li class="hideOnMobile"><a href="./quotes.html">Quotes</a></li>
+        <li class="hideOnMobile"><a class="nav-active" href="./calm_corner.html">Calm Corner</a></li>
+        <li class="hideOnMobile"><a href="./login.html">Login</a></li>
+        <li class="menu-button" onclick=showSidebar()><a href="#"><img src="../../assets/icons/menu_icon.svg" alt="menu_icon"></a></li>
       </ul>
     </nav>
   </header>
