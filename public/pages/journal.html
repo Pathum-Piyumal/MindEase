@@ -16,20 +16,30 @@
       <span>MindEase</span>
     </div>
     <nav>
-      <ul>
+      <ul class="sidebar">
+        <li onclick=hideSidebar()><a href="#"><img src="../../assets/icons/close_icon.png" alt="close_icon"></a></li>
         <li><a href="../index.html">Home</a></li>
         <li><a href="./mood.html">Mood Tracker</a></li>
-        <li><a href="./journal.html">Journal</a></li>
+        <li><a class="nav-active" href="./journal.html">Journal</a></li>
         <li><a href="./quotes.html">Quotes</a></li>
         <li><a href="./calm_corner.html">Calm Corner</a></li>
         <li><a href="./login.html">Login</a></li>
+      </ul>
+      <ul>
+        <li class="hideOnMobile"><a href="../index.html">Home</a></li>
+        <li class="hideOnMobile"><a href="./mood.html">Mood Tracker</a></li>
+        <li class="hideOnMobile"><a class="nav-active" href="./journal.html">Journal</a></li>
+        <li class="hideOnMobile"><a href="./quotes.html">Quotes</a></li>
+        <li class="hideOnMobile"><a href="./calm_corner.html">Calm Corner</a></li>
+        <li class="hideOnMobile"><a href="./login.html">Login</a></li>
+        <li class="menu-button" onclick=showSidebar()><a href="#"><img src="../../assets/icons/menu_icon.svg" alt="menu_icon"></a></li>
       </ul>
     </nav>
   </header>
 
   <main>
     <section class="section-jou" style="padding: 2rem; text-align: left">
-      
+
       <!-- Create/Edit Entry Section -->
       <div class="content-box" style="text-align: left">
         <div>
@@ -39,22 +49,22 @@
           </h1>
         </div>
         <p id="currentDate" style="margin-bottom: 15px"></p>
-        
+
         <!-- Hidden field for entry ID (used when editing) -->
         <input type="hidden" id="entryId" value="">
-        
+
         <div class="entryText">
-          <input type="text" id="entryTitle" placeholder="Entry title (optional)" 
-                 style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;">
+          <input type="text" id="entryTitle" placeholder="Entry title (optional)"
+            style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;">
           <textarea id="entryText" placeholder="Write your thoughts..."></textarea>
         </div>
-        
+
         <div style="margin-top: 10px">
           <button class="btn save" id="saveBtn" onclick="saveEntry()">Save Entry</button>
           <button class="btn clear" id="clearBtn" onclick="clearForm()">Clear</button>
           <button class="btn cancel" id="cancelBtn" onclick="cancelEdit()" style="display: none;">Cancel Edit</button>
         </div>
-        
+
         <div id="messageContainer" style="margin-top: 1rem;"></div>
       </div>
 
