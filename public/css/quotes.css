@@ -163,18 +163,6 @@ footer a:hover {
   color: #B3E5FC;
 }
 
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  nav ul {
-    flex-direction: column;
-    text-align: center;
-  }
-
-}
 /* Saved Quotes Section */
 .saved-section {
   max-width: 800px;
@@ -239,4 +227,44 @@ footer a:hover {
 
 #like-btn:hover #like-count {
     color: #e74c3c;
+}
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    padding-top: 1rem;
+    padding-left: 3rem;
+    z-index: 999;
+    background-color: #E8EAF6;
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.sidebar li{
+    width: 100%;
+}
+
+.sidebar a{
+    width: 100%;
+}
+
+.menu-button {
+    display: none;
+}
+
+@media(max-width: 768px){
+    .hideOnMobile{
+        display: none;
+    }
+
+    .menu-button {
+    display: block;
+}
+
 }
