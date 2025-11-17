@@ -7,15 +7,14 @@
 }
 
 body {
-    background: #E8EAF6;
+    background: linear-gradient(135deg, #F5F7FA, #E8F5E9);
     color: #546E7A;
     line-height: 1.6;
 }
 
 /* Header */
 header {
-  background: #E8EAF6;
-  /* Misty Lilac to Lavender */
+  background: linear-gradient(90deg, #F5F7FA, #E8F5E9);
   padding: 1rem 5rem;
   position: sticky;
   top: 0;
@@ -61,8 +60,7 @@ nav a:hover {
 
 /* Footer */
 footer {
-  background: #E8EAF6;
-  /* Misty Lilac */
+  background: linear-gradient(90deg, #F5F7FA, #E8F5E9);
   padding: 2rem;
   text-align: center;
   margin-top: 2rem;
@@ -81,7 +79,7 @@ footer a:hover {
 
 /* Login Section */
 .section-login {
-    background: linear-gradient(135deg, #40b2cf, #a55feb);
+    background: linear-gradient(120deg, #E8EAF6, #A8E6CF);
     flex: 1;
     display: flex;
     align-items: center;
@@ -113,11 +111,12 @@ footer a:hover {
 
 /* Login Card */
 .login-card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(15px);
     padding: 3rem;
-    border-radius: 1.5rem;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(84, 110, 122, 0.12);
+    border: 1px solid rgba(168, 230, 207, 0.2);
 }
 
 .login-header {
@@ -127,14 +126,15 @@ footer a:hover {
 
 .login-header h1 {
     font-size: 2rem;
-    font-weight: 600;
-    color: #2e3a47;
+    font-weight: 700;
+    color: #546E7A;
     margin-bottom: 8px;
 }
 
 .subtitle {
-    color: #7a8a97;
+    color: #607D8B;
     margin-bottom: 25px;
+    font-weight: 500;
 }
 
 /* Form Styles */
@@ -145,56 +145,76 @@ form {
 
 label {
     font-size: 0.9rem;
-    color: #4a5568;
+    color: #546E7A;
     margin-bottom: 6px;
+    font-weight: 600;
 }
 
 input {
-    padding: 12px;
+    padding: 12px 14px;
     margin-bottom: 18px;
-    border: 1px solid #d3dce6;
+    border: 1.5px solid #D0D0D0;
     border-radius: 10px;
     font-size: 0.95rem;
-    transition: all 0.2s ease;
+    color: #546E7A;
+    transition: all 0.3s ease;
+    background: #FAFAFA;
+}
+
+input::placeholder {
+    color: #99AAB5;
 }
 
 input:focus {
     outline: none;
-    border-color: #a6d1e6;
-    box-shadow: 0 0 5px rgba(166, 209, 230, 0.5);
+    border-color: #A8E6CF;
+    box-shadow: 0 0 8px rgba(168, 230, 207, 0.3);
+    background: #FFFFFF;
 }
 
 button {
-    background-color: #b5ead7;
-    color: #2e3a47;
+    background-color: #A8E6CF;
+    color: #FFFFFF;
     border: none;
-    border-radius: 25px;
-    padding: 12px;
+    border-radius: 10px;
+    padding: 12px 16px;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(168, 230, 207, 0.3);
 }
 
 button:hover {
-    background-color: #a3dfc8;
+    background-color: #82D4BB;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(168, 230, 207, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
 }
 
 button:disabled {
-    background-color: #d3dce6;
+    background-color: #D0D0D0;
     cursor: not-allowed;
+    box-shadow: none;
+    color: #999999;
 }
 
 .forgot {
     text-align: center;
     margin-top: 15px;
-    color: #8cd9c1;
+    color: #A8E6CF;
     text-decoration: none;
     font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .forgot:hover {
-    text-decoration: underline;
+    color: #82D4BB;
+    text-decoration: none;
 }
 
 .signup-text {
@@ -205,13 +225,14 @@ button:disabled {
 }
 
 .signup-link {
-    color: #8cd9c1;
+    color: #A8E6CF;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
+    transition: color 0.3s ease;
 }
 
 .signup-link:hover {
-    text-decoration: underline;
+    color: #82D4BB;
 }
 
 /* Message Box Styles */

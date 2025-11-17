@@ -7,8 +7,8 @@
 }
 
 body {
-  background: #E8EAF6;
-  /* Misty Lilac */
+  background: linear-gradient(135deg, #F5F7FA, #E8F5E9);
+  /* Soft off-white to soft green */
   color: #546E7A;
   /* Slate Gray */
   line-height: 1.6;
@@ -16,8 +16,8 @@ body {
 
 /* Header */
 header {
-  background: #E8EAF6;
-  /* Misty Lilac to Lavender */
+  background: linear-gradient(90deg, #F5F7FA, #E8F5E9);
+  /* Soft off-white to soft green */
   padding: 1rem 5rem;
   position: sticky;
   top: 0;
@@ -64,8 +64,8 @@ nav a:hover {
 
 /* Footer */
 footer {
-  background: #E8EAF6;
-  /* Misty Lilac */
+  background: linear-gradient(90deg, #F5F7FA, #E8F5E9);
+  /* Soft off-white to soft green */
   padding: 2rem;
   text-align: center;
   margin-top: 2rem;
@@ -137,22 +137,21 @@ footer a:hover {
   align-items: center;
   justify-content: space-between;
   padding: 5rem 8%;
-  background: linear-gradient(135deg, #E8EAF6, #B3E5FC);
+  background: linear-gradient(135deg, #F5F7FA, #E8F5E9);
   flex-wrap: wrap;
 }
 
 /* Journey Section */
 
 .journey-section {
-  background: linear-gradient(to right, #dee8ff, #f2e9fb);
+  background: linear-gradient(to right, #E8F5E9, #F0F4F8);
   padding: 6rem 2rem;
   text-align: center;
 }
 
 .stats-section {
     padding: 60px 20px;
-    background: linear-gradient(135deg, #e0f7fa 0%, #f0e6ff 100%);
-    
+    background: linear-gradient(135deg, #E8F5E9 0%, #F5F7FA 100%);
     margin: 0;
     font-family: 'Poppins', sans-serif;
 }
@@ -212,7 +211,7 @@ footer a:hover {
 }
 
 .feature-card {
-  background: linear-gradient(135deg, #e0f7fa, #d0f0ff); /* soft calming blue gradient */
+  background: linear-gradient(135deg, #E8F5E9, #F0F8F5);
   width: 300px;
   height: 250px;
   padding: 2rem;
@@ -225,7 +224,7 @@ footer a:hover {
   color: #37474f;
   text-decoration: none;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(200, 200, 255, 0.2);
+  border: 1px solid rgba(168, 230, 207, 0.2);
   backdrop-filter: blur(4px);
   transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
   transform-style: preserve-3d;
@@ -235,7 +234,7 @@ footer a:hover {
 .feature-card:hover {
   transform: translateY(-10px) rotateX(5deg) rotateY(5deg) scale(1.05);
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(135deg, #d0f0ff, #e0f7fa); /* subtle shift */
+  background: linear-gradient(135deg, #F0F8F5, #E8F5E9);
 }
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
@@ -244,14 +243,14 @@ footer a:hover {
 }
 
 .feature-card {
-  background: linear-gradient(135deg, #e0f7fa, #d0f0ff);
+  background: linear-gradient(135deg, #E8F5E9, #F0F8F5);
   background-size: 200% 200%;
   animation: gradientShift 10s ease infinite;
 }
 
 
 .core-features {
-  background: linear-gradient(to bottom right, #f0faff, #eaf4ff);
+  background: linear-gradient(to bottom right, #E8F5E9, #F5F7FA);
   text-align: center;
   padding: 4rem 2rem;
 }
@@ -279,7 +278,7 @@ footer a:hover {
 
 .feature-hero {
   padding: 4rem 5%;
-  background: linear-gradient(135deg, #E3F2FD, #C8E6C9);
+  background: linear-gradient(135deg, #E8F5E9, #F5F7FA);
   color: rgb(37, 30, 30);
   text-align: center;
 }
@@ -341,7 +340,7 @@ footer a:hover {
 /* ===== CALM GALLERY SECTION ===== */
 .calm-gallery {
   padding: 4rem 8%;
-  background: linear-gradient(135deg, #f4fbff, #e7f7f1);
+  background: linear-gradient(135deg, #E8F5E9, #F5F7FA);
   text-align: center;
 }
 
@@ -414,7 +413,7 @@ footer a:hover {
 /*ready-to-feel section*/
 .ready-to-feel {
   padding: 4rem 5%;
-  background: linear-gradient(135deg, #f0faff, #eaf4ff);
+  background: linear-gradient(135deg, #E8F5E9, #F5F7FA);
   text-align: center;
   color: rgb(37, 30, 30);
   text-align: center;
@@ -735,7 +734,7 @@ footer a:hover {
 
 .testimonials {
     padding: 80px 20px;
-    background-color: #eef3f6; /* Subtle grey background */
+    background: linear-gradient(135deg, #E8F5E9, #F5F7FA);
     text-align: center;
 }
 
@@ -823,7 +822,7 @@ footer a:hover {
 
 .faq-section {
     padding: 80px 20px;
-    background-color: #ffffff;
+    background: linear-gradient(135deg, #F5F7FA, #E8F5E9);
     text-align: center;
 }
 
