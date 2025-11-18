@@ -9,14 +9,16 @@
   <link rel="stylesheet" href="../css/contact_us.css">
 </head>
 
-<body style="background: #E8EAF6;"> 
+<body style="background: #E8EAF6;">
   <header>
     <div class="logo">
       <img src="../../assets/icons/logo.png" alt="Brain Icon">
       <span>MindEase</span>
     </div>
     <nav>
-      <ul>
+      <ul class="sidebar">
+        <li onclick=hideSidebar()><a href="#"><img src="../../assets/icons/close_icon.png" alt="close_icon"></a>
+        </li>
         <li><a href="../index.html">Home</a></li>
         <li><a href="./mood.html">Mood Tracker</a></li>
         <li><a href="./journal.html">Journal</a></li>
@@ -24,13 +26,23 @@
         <li><a href="./calm_corner.html">Calm Corner</a></li>
         <li><a href="./login.html">Login</a></li>
       </ul>
+      <ul>
+        <li class="hideOnMobile"><a href="../index.html">Home</a></li>
+        <li class="hideOnMobile"><a href="./mood.html">Mood Tracker</a></li>
+        <li class="hideOnMobile"><a href="./journal.html">Journal</a></li>
+        <li class="hideOnMobile"><a href="./quotes.html">Quotes</a></li>
+        <li class="hideOnMobile"><a href="./calm_corner.html">Calm Corner</a></li>
+        <li class="hideOnMobile"><a href="./login.html">Login</a></li>
+        <li class="menu-button" onclick=showSidebar()><a href="#"><img src="../../assets/icons/menu_icon.svg"
+              alt="menu_icon"></a></li>
+      </ul>
     </nav>
   </header>
 
   <main>
     <section class="section contact" style="padding: 2rem; text-align: center;">
       <h1>Contact Us</h1>
-        <div class="card" style="max-width: 700px; margin: 2rem auto;">
+      <div class="card" style="max-width: 700px; margin: 2rem auto;">
         <h2>Get in Touch</h2>
         <p>We're here to help! Reach out with any questions or feedback.</p>
         <form>
@@ -40,15 +52,19 @@
           <button type="submit" class="btn">Send Message</button>
         </form>
       </div>
-      <div class="contact-wrapper" style="width: 100%; padding: 2rem 1.5rem; box-sizing: border-box; text-align: center;">
+      <div class="contact-wrapper"
+        style="width: 100%; padding: 2rem 1.5rem; box-sizing: border-box; text-align: center;">
         <h2>Other Ways to Reach Us</h2>
         <div class="contact-list" role="list" aria-label="Other contact methods">
           <div class="contact-item" role="listitem">
             <span class="contact-icon" aria-hidden="true">
               <!-- envelope svg -->
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3 6.5C3 5.11929 4.11929 4 5.5 4H18.5C19.8807 4 21 5.11929 21 6.5V17.5C21 18.8807 19.8807 20 18.5 20H5.5C4.11929 20 3 18.8807 3 17.5V6.5Z" stroke="#546E7A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M21 6L12 12.5L3 6" stroke="#546E7A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path
+                  d="M3 6.5C3 5.11929 4.11929 4 5.5 4H18.5C19.8807 4 21 5.11929 21 6.5V17.5C21 18.8807 19.8807 20 18.5 20H5.5C4.11929 20 3 18.8807 3 17.5V6.5Z"
+                  stroke="#546E7A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M21 6L12 12.5L3 6" stroke="#546E7A" stroke-width="1.2" stroke-linecap="round"
+                  stroke-linejoin="round" />
               </svg>
             </span>
             <div class="contact-text"><a href="mailto:support@mindease.com">support@mindease.com</a></div>
@@ -57,7 +73,9 @@
             <span class="contact-icon" aria-hidden="true">
               <!-- phone svg -->
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M22 16.92V20C22 20.5304 21.7893 21.0391 21.4142 21.4142C21.0391 21.7893 20.5304 22 20 22C12.268 22 5.99998 15.732 5.99998 8C5.99998 7.4696 6.21069 6.96086 6.58579 6.58579C6.96086 6.21069 7.4696 6 8 6H11.09C11.5979 6 12.0719 6.21418 12.4142 6.58579L14.29 8.5C14.6833 8.90852 14.8464 9.47084 14.7308 10.0025L14.06 13.03C13.9895 13.3225 14.0834 13.626 14.3092 13.8519L16.148 15.69C16.3739 15.916 16.6775 16.01 16.97 15.9395L19.998 15.2689C20.5292 15.1536 21.0916 15.3164 21.5 15.71L23.4142 17.5858C23.7858 17.9281 24 18.4021 24 18.91V21C24 21.5304 23.7893 22.0391 23.4142 22.4142C23.0391 22.7893 22.5304 23 22 23H19.92C19.4107 23 18.9367 22.7866 18.5941 22.4441C17.3457 21.1957 16.338 19.7124 15.62 18.06C14.902 16.4076 14.482 14.6159 14.39 12.79C14.298 10.9641 14.5367 9.12307 15.106 7.384C15.3321 6.68169 15.9089 6.09303 16.5965 5.83634L19 4.8" stroke="#546E7A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path
+                  d="M22 16.92V20C22 20.5304 21.7893 21.0391 21.4142 21.4142C21.0391 21.7893 20.5304 22 20 22C12.268 22 5.99998 15.732 5.99998 8C5.99998 7.4696 6.21069 6.96086 6.58579 6.58579C6.96086 6.21069 7.4696 6 8 6H11.09C11.5979 6 12.0719 6.21418 12.4142 6.58579L14.29 8.5C14.6833 8.90852 14.8464 9.47084 14.7308 10.0025L14.06 13.03C13.9895 13.3225 14.0834 13.626 14.3092 13.8519L16.148 15.69C16.3739 15.916 16.6775 16.01 16.97 15.9395L19.998 15.2689C20.5292 15.1536 21.0916 15.3164 21.5 15.71L23.4142 17.5858C23.7858 17.9281 24 18.4021 24 18.91V21C24 21.5304 23.7893 22.0391 23.4142 22.4142C23.0391 22.7893 22.5304 23 22 23H19.92C19.4107 23 18.9367 22.7866 18.5941 22.4441C17.3457 21.1957 16.338 19.7124 15.62 18.06C14.902 16.4076 14.482 14.6159 14.39 12.79C14.298 10.9641 14.5367 9.12307 15.106 7.384C15.3321 6.68169 15.9089 6.09303 16.5965 5.83634L19 4.8"
+                  stroke="#546E7A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </span>
             <div class="contact-text"><a href="tel:+94112248717">+94 112248717</a></div>
@@ -66,8 +84,12 @@
             <span class="contact-icon" aria-hidden="true">
               <!-- map pin svg -->
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M21 10C21 16 12 22 12 22C12 22 3 16 3 10C3 7.34784 4.05357 4.8043 6.05025 3.05025C8.04693 1.2962 10.6366 1 12 1C13.3634 1 15.9531 1.2962 17.9498 3.05025C19.9464 4.8043 21 7.34784 21 10Z" stroke="#546E7A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M12 11.5C13.2426 11.5 14.25 10.4926 14.25 9.25C14.25 8.00736 13.2426 7 12 7C10.7574 7 9.75 8.00736 9.75 9.25C9.75 10.4926 10.7574 11.5 12 11.5Z" stroke="#546E7A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path
+                  d="M21 10C21 16 12 22 12 22C12 22 3 16 3 10C3 7.34784 4.05357 4.8043 6.05025 3.05025C8.04693 1.2962 10.6366 1 12 1C13.3634 1 15.9531 1.2962 17.9498 3.05025C19.9464 4.8043 21 7.34784 21 10Z"
+                  stroke="#546E7A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                <path
+                  d="M12 11.5C13.2426 11.5 14.25 10.4926 14.25 9.25C14.25 8.00736 13.2426 7 12 7C10.7574 7 9.75 8.00736 9.75 9.25C9.75 10.4926 10.7574 11.5 12 11.5Z"
+                  stroke="#546E7A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </span>
             <div class="contact-text">NO 12 MindEase Head Quarters, Colombo 10</div>
@@ -81,7 +103,7 @@
     <p>
       <a href="./privacy.html">Privacy Policy</a> |
       <a href="./help.html">Help</a> |
-      <a href="./about_us.html">About Us</a> |
+      <a href="./about_us.html">About Us</a>
     </p>
     <p>© 2025 MindEase. All Rights Reserved.</p>
   </footer>

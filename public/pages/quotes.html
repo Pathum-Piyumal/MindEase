@@ -4,10 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <title>MindEase - Daily Quotes</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/quotes.css" />
 </head>
@@ -19,7 +17,8 @@
       <span>MindEase</span>
     </div>
     <nav>
-      <ul>
+      <ul class="sidebar">
+        <li onclick=hideSidebar()><a href="#"><img src="../../assets/icons/close_icon.png" alt="close_icon"></a></li>
         <li><a href="../index.html">Home</a></li>
         <li><a href="./mood.html">Mood Tracker</a></li>
         <li><a href="./journal.html">Journal</a></li>
@@ -27,26 +26,45 @@
         <li><a href="./calm_corner.html">Calm Corner</a></li>
         <li><a href="./login.html">Login</a></li>
       </ul>
+      <ul>
+        <li class="hideOnMobile"><a href="../index.html">Home</a></li>
+        <li class="hideOnMobile"><a href="./mood.html">Mood Tracker</a></li>
+        <li class="hideOnMobile"><a href="./journal.html">Journal</a></li>
+        <li class="hideOnMobile"><a class="nav-active" href="./quotes.html">Quotes</a></li>
+        <li class="hideOnMobile"><a href="./calm_corner.html">Calm Corner</a></li>
+        <li class="hideOnMobile"><a href="./login.html">Login</a></li>
+        <li class="menu-button" onclick=showSidebar()><a href="#"><img src="../../assets/icons/menu_icon.svg" alt="menu_icon"></a></li>
+      </ul>
     </nav>
   </header>
 
   <main class="quotes">
-    <div class="quotes-container">
-      <div class="quotes-image">
-        <img src="/assets/images/quates.jpg" alt="Inspiration">
-      </div>
-      <div class="quotes-content">
-        <h1 style="font-size: 3rem; color: #546d78; font-weight: 700">Daily Motivation</h1>
-        <p style="font-size: 1rem; color: #546d78; font-weight: 500; margin-bottom: 2rem;">Inspiring words to brighten your day</p>
-        <div class="quotes-card">
-          <p id="quotes-text"></p>
-        </div>
+    <h1 style="font-size: 3rem; color: #546d78; font-weight: 700">Daily Motivation</h1>
+    <p style="font-size: 1rem; color: #546d78; font-weight: 500; margin-bottom: 2rem;">Inspiring words to brighten your
+      day</p>
 
-        <div class="quotes-group">
-          <button id="like-btn"><i class="fa-regular fa-heart"></i><span id="like-count">0</span></button>
-          <button id="save-btn"><i class="fa-regular fa-bookmark"></i></button>
-          <button id="next-btn">Next</button>
-        </div>
+    <div class="quotes-card">
+      <p id="quotes-text">Loading...</p>
+    </div>
+
+    <div class="quotes-group">
+      <button id="like-btn" title="Like this quote">
+        <i class="fa-regular fa-heart"></i>
+        <span id="like-count">0</span>
+      </button>
+      <button id="save-btn" title="Save to favorites">
+        <i class="fa-regular fa-bookmark"></i>
+      </button>
+      <button id="next-btn">Next Quote</button>
+    </div>
+
+    <!-- Saved Quotes Section -->
+    <div class="saved-section">
+      <h2>💾 My Saved Quotes</h2>
+      <button id="show-saved-btn" class="btn-secondary">Show Saved Quotes</button>
+
+      <div id="saved-quotes-container" style="display: none; margin-top: 1rem;">
+        <div id="saved-quotes-list"></div>
       </div>
     </div>
   </main>
@@ -61,6 +79,7 @@
     <p>© 2025 MindEase. All Rights Reserved.</p>
   </footer>
 
+  <script src="../js/config.js"></script>
   <script src="../js/quotes.js"></script>
 </body>
 

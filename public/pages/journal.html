@@ -10,14 +10,14 @@
 </head>
 
 <body>
-  <!-- Soft Blue -->
   <header>
     <div class="logo">
       <img src="../../assets/icons/logo.png" alt="Brain Icon" />
       <span>MindEase</span>
     </div>
     <nav>
-      <ul>
+      <ul class="sidebar">
+        <li onclick=hideSidebar()><a href="#"><img src="../../assets/icons/close_icon.png" alt="close_icon"></a></li>
         <li><a href="../index.html">Home</a></li>
         <li><a href="./mood.html">Mood Tracker</a></li>
         <li><a class="nav-active" href="./journal.html">Journal</a></li>
@@ -25,40 +25,54 @@
         <li><a href="./calm_corner.html">Calm Corner</a></li>
         <li><a href="./login.html">Login</a></li>
       </ul>
+      <ul>
+        <li class="hideOnMobile"><a href="../index.html">Home</a></li>
+        <li class="hideOnMobile"><a href="./mood.html">Mood Tracker</a></li>
+        <li class="hideOnMobile"><a class="nav-active" href="./journal.html">Journal</a></li>
+        <li class="hideOnMobile"><a href="./quotes.html">Quotes</a></li>
+        <li class="hideOnMobile"><a href="./calm_corner.html">Calm Corner</a></li>
+        <li class="hideOnMobile"><a href="./login.html">Login</a></li>
+        <li class="menu-button" onclick=showSidebar()><a href="#"><img src="../../assets/icons/menu_icon.svg" alt="menu_icon"></a></li>
+      </ul>
     </nav>
   </header>
 
   <main>
     <section class="section-jou" style="padding: 2rem; text-align: left">
+
+      <!-- Create/Edit Entry Section -->
       <div class="content-box" style="text-align: left">
         <div>
           <h1>
-            <img src="../../assets/journal-icons/calendar.svg" class="icon-calender" alt="Calender" />Daily Journal
+            <img src="../../assets/journal-icons/calendar.svg" class="icon-calender" alt="Calendar" />
+            Daily Journal
           </h1>
         </div>
         <p id="currentDate" style="margin-bottom: 15px"></p>
+
+        <!-- Hidden field for entry ID (used when editing) -->
+        <input type="hidden" id="entryId" value="">
+
         <div class="entryText">
+          <input type="text" id="entryTitle" placeholder="Entry title (optional)"
+            style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;">
           <textarea id="entryText" placeholder="Write your thoughts..."></textarea>
         </div>
+
         <div style="margin-top: 10px">
-          <button class="btn save" onclick="saveEntry()">Save Entry</button>
-          <button class="btn clear" style="margin-left: 20px;">Clear</button>
+          <button class="btn save" id="saveBtn" onclick="saveEntry()">Save Entry</button>
+          <button class="btn clear" id="clearBtn" onclick="clearForm()">Clear</button>
+          <button class="btn cancel" id="cancelBtn" onclick="cancelEdit()" style="display: none;">Cancel Edit</button>
         </div>
+
+        <div id="messageContainer" style="margin-top: 1rem;"></div>
       </div>
 
+      <!-- Previous Entries Section -->
       <div class="entry-card">
-        <h2>Previous Entries</h2>
-        <div class="content-box" style="text-align: left">
-          <div class="entry-title">
-            <p id="dateShort"></p>
-            <div class="entry-icon" style="margin-left: 800px;">
-              <img src="../../assets/journal-icons/pencil-square.svg" class="pencil-icon" alt="Pencil" />
-              <img src="../../assets/journal-icons/trash.svg" class="trash-icon" alt="Trash" style="margin-left: 20px;"/>
-            </div>
-          </div>
-          <p style="margin-top: 1rem">
-            Totay was a good day.I felt calm and productive
-          </p>
+        <h2>Previous Entries (<span id="entryCount">0</span>)</h2>
+        <div id="entriesList">
+          <p style="text-align: center; color: #999;">Loading...</p>
         </div>
       </div>
     </section>
@@ -74,39 +88,8 @@
     <p>© 2025 MindEase. All Rights Reserved.</p>
   </footer>
 
-  <script src="../js/script.js"></script>
-  <script>
-    function saveEntry() {
-      const date = document.getElementById("entryDate").value;
-      const text = document.getElementById("entryText").value;
-      const mood = document.getElementById("entryMood").value;
-      if (text && date) {
-        const entry = document.createElement("div");
-        entry.className = "card";
-        entry.innerHTML = `<p><strong>${date}</strong> (${mood})</p><p>${text}</p>
-          <button class="btn" onclick="this.parentElement.remove()">Delete</button>`;
-        document.getElementById("entries").prepend(entry);
-        document.getElementById("entryText").value = "";
-      }
-    }
-
-    const today = new Date();
-    const options = {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    };
-    const formattedDate = today.toLocaleDateString("en-US", options);
-    document.getElementById("currentDate").textContent = formattedDate;
-
-    const today1 = new Date();
-    const month = today.getMonth() + 1;
-    const day = today.getDate();
-    const year = today.getFullYear();
-    const formattedDate1 = `${month}/${day}/${year}`;
-    document.getElementById("dateShort").textContent = formattedDate1;
-  </script>
+  <script src="../js/config.js"></script>
+  <script src="../js/journal.js"></script>
 </body>
 
 </html>

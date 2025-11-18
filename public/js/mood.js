@@ -1,33 +1,41 @@
-/**
- * Mood Tracker Application
- * Manages mood selection, tracking, and data persistence
- */
+// mood-simple.js
+    function showSidebar(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'flex'
+    }
+    
+    function hideSidebar(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'none'
+    }
 
-// ============================================
-// CONSTANTS
-// ============================================
-const MOOD_CONFIG = {
-  POSITIVE_MOODS: ['happy', 'calm'],
-  VALID_MOODS: ['happy', 'calm', 'anxious', 'sad', 'angry'],
-  STORAGE_KEY: 'mindease_mood_history',
-  TOAST_DURATION: 3000
-};
+document.addEventListener('DOMContentLoaded', function() {
+    const moodButtons = document.querySelectorAll('.mood-button');
+    const submitButton = document.getElementById('submitButton');
+    const progressFill = document.getElementById('progressFill');
+    const progressPercent = document.getElementById('progressPercent');
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toastMessage');
 
-const PROGRESS_COLORS = {
-  HIGH: 'linear-gradient(90deg, #A8E6CF, #82D4BB)',
-  MEDIUM: 'linear-gradient(90deg, #fbbf24, #f59e0b)',
-  LOW: 'linear-gradient(90deg, #f87171, #ef4444)'
-};
+    let selectedMood = null;
+    let moodHistory = [];
+    let positiveCount = 0;
+    let totalCount = 0;
 
-// ============================================
-// STATE
-// ============================================
-const state = {
-  selectedMood: null,
-  moodHistory: [],
-  positiveCount: 0,
-  totalCount: 0
-};
+    // Set up event listeners
+    moodButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            // Remove selected class from all buttons
+            moodButtons.forEach(function(btn) {
+                btn.classList.remove('selected');
+            });
+
+            // Add selected class to clicked button
+            this.classList.add('selected');
+            selectedMood = this.getAttribute('data-mood');
+            submitButton.disabled = false;
+        });
+    });
 
 // ============================================
 // DOM ELEMENTS

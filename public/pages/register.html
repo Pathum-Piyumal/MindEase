@@ -16,13 +16,25 @@
             <span>MindEase</span>
         </div>
         <nav>
-            <ul>
+            <ul class="sidebar">
+                <li onclick=hideSidebar()><a href="#"><img src="../../assets/icons/close_icon.png" alt="close_icon"></a>
+                </li>
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="./mood.html">Mood Tracker</a></li>
                 <li><a href="./journal.html">Journal</a></li>
                 <li><a href="./quotes.html">Quotes</a></li>
                 <li><a href="./calm_corner.html">Calm Corner</a></li>
                 <li><a href="./login.html">Login</a></li>
+            </ul>
+            <ul>
+                <li class="hideOnMobile"><a href="../index.html">Home</a></li>
+                <li class="hideOnMobile"><a href="./mood.html">Mood Tracker</a></li>
+                <li class="hideOnMobile"><a href="./journal.html">Journal</a></li>
+                <li class="hideOnMobile"><a href="./quotes.html">Quotes</a></li>
+                <li class="hideOnMobile"><a href="./calm_corner.html">Calm Corner</a></li>
+                <li class="hideOnMobile"><a href="./login.html">Login</a></li>
+                <li class="menu-button" onclick=showSidebar()><a href="#"><img src="../../assets/icons/menu_icon.svg"
+                            alt="menu_icon"></a></li>
             </ul>
         </nav>
     </header>
@@ -77,12 +89,21 @@
 
     <!-- Load config first -->
     <script src="../js/config.js"></script>
-    
+
     <script>
+        function showSidebar() {
+            const sidebar = document.querySelector('.sidebar')
+            sidebar.style.display = 'flex'
+        }
+
+        function hideSidebar() {
+            const sidebar = document.querySelector('.sidebar')
+            sidebar.style.display = 'none'
+        }
         function showMessage(message, type) {
             const messageContainer = document.getElementById('messageContainer');
             messageContainer.innerHTML = `<div class="msg-box ${type}">${message}</div>`;
-            
+
             if (type !== 'success') {
                 setTimeout(() => {
                     messageContainer.innerHTML = '';
@@ -90,13 +111,13 @@
             }
         }
 
-        document.getElementById("registerForm").addEventListener("submit", function(e) {
+        document.getElementById("registerForm").addEventListener("submit", function (e) {
             e.preventDefault();
 
             const formData = new FormData(this);
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
-            
+
             submitBtn.textContent = "Creating Account...";
             submitBtn.disabled = true;
 
@@ -113,56 +134,57 @@
                 method: "POST",
                 body: formData
             })
-            .then(res => {
-                console.log("Response status:", res.status);
-                console.log("Response OK:", res.ok);
-                
-                if (!res.ok) {
-                    throw new Error(`HTTP ${res.status}: ${res.statusText}`);
-                }
-                return res.text();
-            })
-            .then(data => {
-                console.log("Server Response:", data);
-                console.log("Response length:", data.length);
-                
-                const cleanData = data.trim();
-                
-                if (cleanData === "success") {
-                    showMessage("✅ Registration Successful! Redirecting...", "success");
-                    setTimeout(() => {
-                        window.location.href = "./login.html";
-                    }, 1500);
-                } else if (cleanData === "email_exists") {
-                    showMessage("❌ Email already registered!", "error");
-                } else if (cleanData === "empty_fields") {
-                    showMessage("⚠️ Please fill all fields!", "error");
-                } else if (cleanData === "invalid_email") {
-                    showMessage("⚠️ Invalid email format!", "error");
-                } else if (cleanData === "password_too_short") {
-                    showMessage("⚠️ Password must be 6+ characters!", "error");
-                } else if (cleanData === "db_error") {
-                    showMessage("❌ Database error. Check if database exists!", "error");
-                } else {
-                    showMessage("❌ Unexpected response: " + cleanData, "error");
-                }
-            })
-            .catch(error => {
-                console.error('Fetch Error:', error);
-                
-                if (error.message.includes('404')) {
-                    showMessage("❌ Backend file not found! Check folder structure.", "error");
-                } else if (error.message.includes('Failed to fetch')) {
-                    showMessage("❌ Cannot connect to server. Is XAMPP running?", "error");
-                } else {
-                    showMessage("❌ Error: " + error.message, "error");
-                }
-            })
-            .finally(() => {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            });
+                .then(res => {
+                    console.log("Response status:", res.status);
+                    console.log("Response OK:", res.ok);
+
+                    if (!res.ok) {
+                        throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+                    }
+                    return res.text();
+                })
+                .then(data => {
+                    console.log("Server Response:", data);
+                    console.log("Response length:", data.length);
+
+                    const cleanData = data.trim();
+
+                    if (cleanData === "success") {
+                        showMessage("✅ Registration Successful! Redirecting...", "success");
+                        setTimeout(() => {
+                            window.location.href = "./login.html";
+                        }, 1500);
+                    } else if (cleanData === "email_exists") {
+                        showMessage("❌ Email already registered!", "error");
+                    } else if (cleanData === "empty_fields") {
+                        showMessage("⚠️ Please fill all fields!", "error");
+                    } else if (cleanData === "invalid_email") {
+                        showMessage("⚠️ Invalid email format!", "error");
+                    } else if (cleanData === "password_too_short") {
+                        showMessage("⚠️ Password must be 6+ characters!", "error");
+                    } else if (cleanData === "db_error") {
+                        showMessage("❌ Database error. Check if database exists!", "error");
+                    } else {
+                        showMessage("❌ Unexpected response: " + cleanData, "error");
+                    }
+                })
+                .catch(error => {
+                    console.error('Fetch Error:', error);
+
+                    if (error.message.includes('404')) {
+                        showMessage("❌ Backend file not found! Check folder structure.", "error");
+                    } else if (error.message.includes('Failed to fetch')) {
+                        showMessage("❌ Cannot connect to server. Is XAMPP running?", "error");
+                    } else {
+                        showMessage("❌ Error: " + error.message, "error");
+                    }
+                })
+                .finally(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                });
         });
     </script>
 </body>
+
 </html>

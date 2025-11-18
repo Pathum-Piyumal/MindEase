@@ -407,47 +407,6 @@ button:disabled {
 }
 
 
-@media (max-width: 768px) {
-  .container{
-    min-height: 120vh;
-    padding: 2rem 0.5rem;
-  }
-
-  .card{
-    margin: 1rem;
-    padding: 2rem 1.5rem;
-  }
-
-  .moods-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1.25rem;
-  }
-
-  .mood-icon {
-    width: 70px;
-    height: 70px;
-  }
-
-  .mood-button {
-    padding: 1.75rem 1rem;
-    min-height: 160px;
-  }
-
-  .card-title h1 {
-    font-size: 1.8rem;
-  }
-
-  .card-title p {
-    font-size: 1.1rem;
-  }
-
-  .toast {
-    right: 1rem;
-    left: 1rem;
-    min-width: auto;
-  }
-}
-
 .sidebar{
   position: fixed;
   top: 0;
@@ -477,12 +436,53 @@ button:disabled {
   display: none;
 }
 
-@media(max-width: 768px){
-  .hideOnMobile{
-    display: none;
+  /* header {
+    flex-direction: column;
+    gap: 1rem;
   }
 
-  .menu-button {
+  nav ul {
+    flex-direction: column;
+    text-align: center;
+  } */
+}
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    padding-top: 1rem;
+    padding-left: 3rem;
+    z-index: 999;
+    background-color: #E8EAF6;
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.sidebar li{
+    width: 100%;
+}
+
+.sidebar a{
+    width: 100%;
+}
+
+.menu-button {
+    display: none;
+}
+
+@media(max-width: 768px){
+    .hideOnMobile{
+        display: none;
+    }
+
+    .menu-button {
     display: block;
-  }
+}
+
 }

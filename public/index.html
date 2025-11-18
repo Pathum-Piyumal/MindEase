@@ -16,7 +16,8 @@
       <span>MindEase</span>
     </div>
     <nav>
-      <ul>
+      <ul class="sidebar">
+        <li onclick=hideSidebar()><a href="#"><img src="../assets/icons/close_icon.png" alt="close_icon"></a></li>
         <li><a class="nav-active" href="./index.html">Home</a></li>
         <li><a href="./pages/mood.html">Mood Tracker</a></li>
         <li><a href="./pages/journal.html">Journal</a></li>
@@ -24,15 +25,24 @@
         <li><a href="./pages/calm_corner.html">Calm Corner</a></li>
         <li><a href="./pages/login.html">Login</a></li>
       </ul>
+      <ul>
+        <li class="hideOnMobile"><a class="nav-active" href="./index.html">Home</a></li>
+        <li class="hideOnMobile"><a href="./pages/mood.html">Mood Tracker</a></li>
+        <li class="hideOnMobile"><a href="./pages/journal.html">Journal</a></li>
+        <li class="hideOnMobile"><a href="./pages/quotes.html">Quotes</a></li>
+        <li class="hideOnMobile"><a href="./pages/calm_corner.html">Calm Corner</a></li>
+        <li class="hideOnMobile"><a href="./pages/login.html">Login</a></li>
+        <li class="menu-button" onclick=showSidebar()><a href="#"><img src="../assets/icons/menu_icon.svg" alt="menu_icon"></a></li>
+      </ul>
     </nav>
   </header>
 
   <main>
     <!-- Hero Section -->
     <section class="section-hero">
-       <!-- Floating Background Animation -->
+      <!-- Floating Background Animation -->
       <div class="floating-bg">
-         <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
       </div>
       <div style="flex: 1; min-width: 280px; margin-right: 2rem;">
         <h1 style="font-size: 4rem; color: #546d78; margin-bottom: 0.5rem; font-weight: 700;">
@@ -76,7 +86,7 @@
 
     <!-- How It Works Section -->
 
-<section class="how-it-works">
+    <section class="how-it-works">
       <div class="container">
         <h2 class="section-title">Your Path to Wellness in 3 Simple Steps</h2>
         <p class="section-subtitle">MindEase makes mental well-being accessible, daily, and effective.</p>
@@ -97,7 +107,8 @@
           <div class="step-card">
             <div class="step-icon">3</div>
             <h3>Find Your Calm</h3>
-            <p>Access evidence-based coping techniques, meditations, and breathing exercises instantly when you need them.</p>
+            <p>Access evidence-based coping techniques, meditations, and breathing exercises instantly when you need
+              them.</p>
           </div>
         </div>
       </div>
@@ -135,100 +146,104 @@
         </a>
       </div>
     </section>
-<section class="testimonials">
-        <div class="container">
-            <h2 class="section-title">Hear From Our Community</h2>
-            <p class="section-subtitle">Real results from people transforming their well-being with MindEase.</p>
+    <section class="testimonials">
+      <div class="container">
+        <h2 class="section-title">Hear From Our Community</h2>
+        <p class="section-subtitle">Real results from people transforming their well-being with MindEase.</p>
 
-            <div class="testimonial-grid">
-                
-                <div class="testimonial-card">
-                    <p class="quote">"MindEase helped me recognize my anxiety triggers and manage my stress daily. The Mood Tracker is a game-changer!"</p>
-                    <div class="user-info">
-                        <span class="rating">⭐⭐⭐⭐⭐</span>
-                        <p class="name">— Sarah M., Verified User</p>
-                    </div>
-                </div>
+        <div class="testimonial-grid">
 
-                <div class="testimonial-card">
-                    <p class="quote">"The Digital Journal feature gives me the space to reflect without judgment. It’s truly my peaceful corner of the internet."</p>
-                    <div class="user-info">
-                        <span class="rating">⭐⭐⭐⭐⭐</span>
-                        <p class="name">— David K., New York</p>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p class="quote">"I look forward to my daily quote and my calm corner session. It’s a simple, effective routine that has boosted my overall mood."</p>
-                    <div class="user-info">
-                        <span class="rating">⭐⭐⭐⭐⭐</span>
-                        <p class="name">— Emily J., London</p>
-                    </div>
-                </div>
+          <div class="testimonial-card">
+            <p class="quote">"MindEase helped me recognize my anxiety triggers and manage my stress daily. The Mood
+              Tracker is a game-changer!"</p>
+            <div class="user-info">
+              <span class="rating">⭐⭐⭐⭐⭐</span>
+              <p class="name">— Sarah M., Verified User</p>
             </div>
+          </div>
 
-            <a href="./pages/journal.html" class="btn share-story-btn">Start Your Story Today</a>
+          <div class="testimonial-card">
+            <p class="quote">"The Digital Journal feature gives me the space to reflect without judgment. It’s truly my
+              peaceful corner of the internet."</p>
+            <div class="user-info">
+              <span class="rating">⭐⭐⭐⭐⭐</span>
+              <p class="name">— David K., New York</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="quote">"I look forward to my daily quote and my calm corner session. It’s a simple, effective
+              routine that has boosted my overall mood."</p>
+            <div class="user-info">
+              <span class="rating">⭐⭐⭐⭐⭐</span>
+              <p class="name">— Emily J., London</p>
+            </div>
+          </div>
         </div>
+
+        <a href="./pages/journal.html" class="btn share-story-btn">Start Your Story Today</a>
+      </div>
     </section>
-    
+
     <!-- Calm Photo Gallery Section -->
-<section class="calm-gallery">
-  <h2 class="gallery-title">Find Your Calm</h2>
-  <p class="gallery-subtitle">A collection of soothing images to help you relax your mind</p>
+    <section class="calm-gallery">
+      <h2 class="gallery-title">Find Your Calm</h2>
+      <p class="gallery-subtitle">A collection of soothing images to help you relax your mind</p>
 
-  <div class="gallery-grid">
+      <div class="gallery-grid">
 
-    <div class="gallery-item">
-      <img src="../assets/images/first.jpg" alt="Calm Nature">
-    </div>
+        <div class="gallery-item">
+          <img src="../assets/images/hero-meditation-1.jpg" alt="Calm Nature">
+        </div>
 
-    <div class="gallery-item tall">
-      <img src="../assets/images/hero-meditation-2.jpg" alt="Meditation">
-    </div>
+        <div class="gallery-item tall">
+          <img src="../assets/images/hero-meditation-2.jpg" alt="Meditation">
+        </div>
 
-    <div class="gallery-item wide">
-      <img src="../assets/images/hero-meditation-3.jpg" alt="Forest Serenity">
-    </div>
+        <div class="gallery-item wide">
+          <img src="../assets/images/hero-meditation-3.jpg" alt="Forest Serenity">
+        </div>
 
-    <div class="gallery-item">
-      <img src="../assets/images/hero-meditation-4.jpg" alt="Relaxing View">
-    </div>
+        <div class="gallery-item">
+          <img src="../assets/images/hero-meditation-4.jpg" alt="Relaxing View">
+        </div>
 
-    <div class="gallery-item">
-      <img src="../assets/images/hero-meditation-5.jpg" alt="Calm Water">
-    </div>
+        <div class="gallery-item">
+          <img src="../assets/images/hero-meditation-5.jpg" alt="Calm Water">
+        </div>
 
-    <div class="gallery-item wide">
-      <img src="../assets/images/bachalpsee-7572681_1280.jpg" alt="beach view">
-    </div>
-    <div class="gallery-item wide">
-      <img src="../assets/images/field-9295186_1280.jpg" alt="field">
-    </div>
+        <div class="gallery-item wide">
+          <img src="../assets/images/bachalpsee-7572681_1280.jpg" alt="beach view">
+        </div>
+        <div class="gallery-item wide">
+          <img src="../assets/images/field-9295186_1280.jpg" alt="field">
+        </div>
 
-    <div class="gallery-item wide">
-      <img src="../assets/images/waterfall.webp" alt="waterfall">
-    </div>
+        <div class="gallery-item wide">
+          <img src="../assets/images/waterfall.webp" alt="waterfall">
+        </div>
 
-    <div class="gallery-item wide">
-      <img src="../assets/images/sunset-7133867_1280.jpg" alt="sunset">
-    </div>
+        <div class="gallery-item wide">
+          <img src="../assets/images/sunset-7133867_1280.jpg" alt="sunset">
+        </div>
 
-    <div class="gallery-item wide">
-      <img src="../assets/images/tree-7619791_1280.jpg" alt="tree">
-    </div>
+        <div class="gallery-item wide">
+          <img src="../assets/images/tree-7619791_1280.jpg" alt="tree">
+        </div>
 
-    <div class="gallery-item wide">
-      <img src="../assets/images/fisherman-2739115_1280.jpg" alt="fisherman">
-    </div>
+        <div class="gallery-item wide">
+          <img src="../assets/images/fisherman-2739115_1280.jpg" alt="fisherman">
+        </div>
 
-  </div>
-</section>
+      </div>
+    </section>
 
     <section class="feature-hero">
       <div class="hero-content">
-        <h2  style="font-size: 2.5rem; color: #546d78; margin-bottom: 1rem; font-weight: 700;">Your Journey to Mental
+        <h2 style="font-size: 2.5rem; color: #546d78; margin-bottom: 1rem; font-weight: 700;">Your Journey to Mental
           Wellness Starts Here</h2>
-        <p  style="color: #84969e;">MindEase is more than just an app—it's your daily companion for mental health and emotional well-being.
+        <p style="color: #84969e;">MindEase is more than just an app—it's your daily companion for mental health and
+          emotional well-being.
           Whether you're tracking your mood, journaling your thoughts, or finding calm through guided breathing, we're
           here to support you every step of the way.</p>
 
@@ -250,38 +265,45 @@
     </section>
 
     <!-- FAQ Section -->
-<section class="faq-section">
+    <section class="faq-section">
       <div class="container">
         <h2 class="faq-title">Got Questions? We Have Answers.</h2>
         <p class="faq-subtitle">Everything you need to know about MindEase.</p>
 
         <div class="faq-accordion">
-          
+
           <div class="faq-item">
             <button class="faq-question">Is my personal data 100% private and secure?</button>
             <div class="faq-answer">
-              <p>Yes, absolutely. We prioritize your privacy above all else. All your journaling entries and mood data are encrypted and stored securely. We never share or sell your personal information to third parties.</p>
+              <p>Yes, absolutely. We prioritize your privacy above all else. All your journaling entries and mood data
+                are encrypted and stored securely. We never share or sell your personal information to third parties.
+              </p>
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question">Is MindEase a substitute for professional therapy?</button>
             <div class="faq-answer">
-              <p>No. MindEase is a powerful companion tool for self-care, reflection, and managing day-to-day stress. However, it is not a substitute for clinical diagnosis or treatment. For serious mental health concerns, please consult a qualified mental health professional.</p>
+              <p>No. MindEase is a powerful companion tool for self-care, reflection, and managing day-to-day stress.
+                However, it is not a substitute for clinical diagnosis or treatment. For serious mental health concerns,
+                please consult a qualified mental health professional.</p>
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question">Do I need to pay to use the core features?</button>
             <div class="faq-answer">
-              <p>The core features, including the Mood Tracker, Digital Journal, and basic Calm Corner exercises, are completely free to use. We offer an optional premium subscription for users who want access to advanced analytics and guided courses.</p>
+              <p>The core features, including the Mood Tracker, Digital Journal, and basic Calm Corner exercises, are
+                completely free to use. We offer an optional premium subscription for users who want access to advanced
+                analytics and guided courses.</p>
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question">How often should I use the Mood Tracker?</button>
             <div class="faq-answer">
-              <p>For the best results, we recommend using the Mood Tracker at least once per day, ideally at the end of the day. Consistency helps you identify long-term patterns and triggers more effectively.</p>
+              <p>For the best results, we recommend using the Mood Tracker at least once per day, ideally at the end of
+                the day. Consistency helps you identify long-term patterns and triggers more effectively.</p>
             </div>
           </div>
 
