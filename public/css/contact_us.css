@@ -12,57 +12,30 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 3rem;
+  padding: 1rem 5rem;
   position: sticky;
   top: 0;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-/* Contact Us page styles */
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  color: #546E7A;
-  background: #E8EAF6;
-}
 
-/* Header */
-header {
-  background: linear-gradient(90deg, #E8EAF6, #C7C9F2);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 3rem;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-header .logo {
+.logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-}
-
-header .logo img {
-  width: 40px;
-  height: 40px;
-}
-
-header .logo span {
-  font-weight: 600;
   font-size: 1.5rem;
-  color: #546E7A;
+  font-weight: 600;
+}
+
+.logo img {
+  width: 50px;
+  margin-right: 0.5rem;
 }
 
 nav ul {
   display: flex;
   list-style: none;
   gap: 1.5rem;
-  margin: 0;
-  padding: 0;
 }
 
 nav a {
@@ -329,18 +302,6 @@ footer p {
 
 /* Responsive design */
 @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    padding: 1rem;
-    gap: 1rem;
-  }
-
-  nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.8rem;
-  }
-
   .section.contact {
     padding: 1rem;
   }
@@ -361,4 +322,44 @@ footer p {
   .contact-content {
     grid-template-columns: 1fr !important;
   }
+}
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    padding-top: 1rem;
+    padding-left: 3rem;
+    z-index: 999;
+    background-color: #E8EAF6;
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.sidebar li{
+    width: 100%;
+}
+
+.sidebar a{
+    width: 100%;
+}
+
+.menu-button {
+    display: none;
+}
+
+@media(max-width: 768px){
+    .hideOnMobile{
+        display: none;
+    }
+
+    .menu-button {
+    display: block;
+}
+
 }

@@ -1,3 +1,13 @@
+function showSidebar() {
+  const sidebar = document.querySelector('.sidebar')
+  sidebar.style.display = 'flex'
+}
+
+function hideSidebar() {
+  const sidebar = document.querySelector('.sidebar')
+  sidebar.style.display = 'none'
+}
+
 // Display current date
 const today = new Date();
 const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
@@ -25,7 +35,7 @@ async function saveEntry() {
 
   try {
     let endpoint, method;
-    
+
     if (entryId) {
       // Update existing entry
       endpoint = "/api/journal/update_entry.php";
@@ -78,15 +88,15 @@ async function loadEntries() {
       displayEntries(data.entries);
       document.getElementById("entryCount").textContent = data.count;
     } else if (data.message === "not_logged_in") {
-      document.getElementById("entriesList").innerHTML = 
+      document.getElementById("entriesList").innerHTML =
         '<p style="text-align: center;">Please <a href="./login.html">login</a> to view your journal entries.</p>';
     } else {
-      document.getElementById("entriesList").innerHTML = 
+      document.getElementById("entriesList").innerHTML =
         '<p style="text-align: center; color: red;">Failed to load entries.</p>';
     }
   } catch (error) {
     console.error("Error loading entries:", error);
-    document.getElementById("entriesList").innerHTML = 
+    document.getElementById("entriesList").innerHTML =
       '<p style="text-align: center; color: red;">Connection error.</p>';
   }
 }
@@ -134,14 +144,14 @@ function editEntry(id, title, content) {
   document.getElementById("entryId").value = id;
   document.getElementById("entryTitle").value = title;
   document.getElementById("entryText").value = content;
-  
+
   // Change button text
   document.getElementById("saveBtn").textContent = "Update Entry";
   document.getElementById("cancelBtn").style.display = "inline-block";
-  
+
   // Scroll to top
   window.scrollTo({ top: 0, behavior: "smooth" });
-  
+
   showMessage("✏️ Editing entry. Make changes and click Update.", "info");
 }
 
@@ -194,7 +204,7 @@ function clearForm() {
 function showMessage(message, type) {
   const container = document.getElementById("messageContainer");
   container.innerHTML = `<div class="msg-box ${type}">${message}</div>`;
-  
+
   setTimeout(() => {
     container.innerHTML = "";
   }, 5000);

@@ -1,3 +1,13 @@
+    function showSidebar(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'flex'
+    }
+    
+    function hideSidebar(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'none'
+    }
+
 const quotes = [
   "Stop waiting to feel ready. Ready is not a feeling. It's a decision.",
   "You are stronger than you think and braver than you feel.",

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MindEase - Login</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="../css/login.css" rel="stylesheet">
   <link rel="stylesheet" href="../css/login.css">
 </head>
 
@@ -16,13 +16,24 @@
       <span>MindEase</span>
     </div>
     <nav>
-      <ul>
+      <ul class="sidebar">
+        <li onclick=hideSidebar()><a href="#"><img src="../../assets/icons/close_icon.png" alt="close_icon"></a></li>
         <li><a href="../index.html">Home</a></li>
         <li><a href="./mood.html">Mood Tracker</a></li>
         <li><a href="./journal.html">Journal</a></li>
         <li><a href="./quotes.html">Quotes</a></li>
         <li><a href="./calm_corner.html">Calm Corner</a></li>
         <li><a class="nav-active" href="./login.html">Login</a></li>
+      </ul>
+      <ul>
+        <li class="hideOnMobile"><a href="../index.html">Home</a></li>
+        <li class="hideOnMobile"><a href="./mood.html">Mood Tracker</a></li>
+        <li class="hideOnMobile"><a href="./journal.html">Journal</a></li>
+        <li class="hideOnMobile"><a href="./quotes.html">Quotes</a></li>
+        <li class="hideOnMobile"><a href="./calm_corner.html">Calm Corner</a></li>
+        <li class="hideOnMobile"><a class="nav-active" href="./login.html">Login</a></li>
+        <li class="menu-button" onclick=showSidebar()><a href="#"><img src="../../assets/icons/menu_icon.svg"
+              alt="menu_icon"></a></li>
       </ul>
     </nav>
   </header>
@@ -31,7 +42,7 @@
     <section class="section-login">
       <div class="container">
         <div class="image-section">
-          <img src="../../assets/images/login-illustration.png" alt="Relax illustration" />
+          <img src="/assets/loginpage/pexels-olly-3771836.jpg" alt="Relax illustration" />
         </div>
 
         <div class="login-card">
@@ -66,10 +77,10 @@
 
   <footer>
     <p>
-      <a href="#">Privacy Policy</a> |
-      <a href="#">Contact</a> |
-      <a href="#">Help</a> |
-      <a href="#">About Us</a>
+      <a href="./privacy.html">Privacy Policy</a> |
+      <a href="./contact_us.html">Contact</a> |
+      <a href="./help.html">Help</a> |
+      <a href="./about_us.html">About Us</a>
     </p>
     <p>© 2025 MindEase. All Rights Reserved.</p>
   </footer>
@@ -78,11 +89,20 @@
   <script src="../js/config.js"></script>
 
   <script>
+    function showSidebar() {
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'flex'
+    }
+
+    function hideSidebar() {
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'none'
+    }
     // Function to display messages to user
     function showMessage(message, type) {
       const messageContainer = document.getElementById('messageContainer');
       messageContainer.innerHTML = `<div class="msg-box ${type}">${message}</div>`;
-      
+
       // Auto-remove message after 5 seconds
       setTimeout(() => {
         if (messageContainer.innerHTML.includes(message)) {
@@ -92,7 +112,7 @@
     }
 
     // Handle form submission
-    document.getElementById("loginForm").addEventListener("submit", function(e) {
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
       e.preventDefault();
 
       const formData = new FormData(this);
@@ -108,39 +128,40 @@
         method: "POST",
         body: formData
       })
-      .then(res => {
-        if (!res.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return res.text();
-      })
-      .then(data => {
-        console.log("Server Response:", data); // For debugging
-        
-        if (data.trim() === "success") {
-          showMessage("Login Successful! Redirecting...", "success");
-          setTimeout(() => {
-            window.location.href = "../index.html";
-          }, 1500);
-        } else if (data.trim() === "invalid") {
-          showMessage("Incorrect password. Please try again.", "error");
-        } else if (data.trim() === "notfound") {
-          showMessage("No account found with this email.", "error");
-        } else {
-          // If we get an unexpected response
-          showMessage("Login error: " + data, "error");
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        showMessage("Login failed. Please check your connection and try again.", "error");
-      })
-      .finally(() => {
-        // Reset button state
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-      });
+        .then(res => {
+          if (!res.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return res.text();
+        })
+        .then(data => {
+          console.log("Server Response:", data); // For debugging
+
+          if (data.trim() === "success") {
+            showMessage("Login Successful! Redirecting...", "success");
+            setTimeout(() => {
+              window.location.href = "../index.html";
+            }, 1500);
+          } else if (data.trim() === "invalid") {
+            showMessage("Incorrect password. Please try again.", "error");
+          } else if (data.trim() === "notfound") {
+            showMessage("No account found with this email.", "error");
+          } else {
+            // If we get an unexpected response
+            showMessage("Login error: " + data, "error");
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          showMessage("Login failed. Please check your connection and try again.", "error");
+        })
+        .finally(() => {
+          // Reset button state
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        });
     });
   </script>
 </body>
+
 </html>

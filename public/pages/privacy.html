@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/about_us.css" />
 </head>
+
 <body style="background: #E8EAF6;">
 
   <!--Header -->
@@ -16,13 +18,24 @@
       <span>MindEase</span>
     </div>
     <nav>
-      <ul>
-      <li><a href="../index.html">Home</a></li>
+      <ul class="sidebar">
+        <li onclick=hideSidebar()><a href="#"><img src="../../assets/icons/close_icon.png" alt="close_icon"></a></li>
+        <li><a href="../index.html">Home</a></li>
         <li><a href="./mood.html">Mood Tracker</a></li>
         <li><a href="./journal.html">Journal</a></li>
         <li><a href="./quotes.html">Quotes</a></li>
         <li><a href="./calm_corner.html">Calm Corner</a></li>
         <li><a href="./login.html">Login</a></li>
+      </ul>
+      <ul>
+        <li class="hideOnMobile"><a href="../index.html">Home</a></li>
+        <li class="hideOnMobile"><a href="./mood.html">Mood Tracker</a></li>
+        <li class="hideOnMobile"><a href="./journal.html">Journal</a></li>
+        <li class="hideOnMobile"><a href="./quotes.html">Quotes</a></li>
+        <li class="hideOnMobile"><a href="./calm_corner.html">Calm Corner</a></li>
+        <li class="hideOnMobile"><a href="./login.html">Login</a></li>
+        <li class="menu-button" onclick=showSidebar()><a href="#"><img src="../../assets/icons/menu_icon.svg"
+              alt="menu_icon"></a></li>
       </ul>
     </nav>
   </header>
@@ -34,37 +47,44 @@
       <div class="card">
         <h2>Your Privacy Matters to Us</h2>
         <p>
-          At <strong>MindEase</strong>, we value and respect your privacy. This policy explains how we collect, use, and protect your personal information when you use our services.
+          At <strong>MindEase</strong>, we value and respect your privacy. This policy explains how we collect, use, and
+          protect your personal information when you use our services.
         </p>
       </div>
 
       <div class="card">
         <h2>Information We Collect</h2>
         <ul style="text-align: left; max-width: 700px; margin: 0 auto; line-height: 1.7;">
-          <li><strong>Personal Information:</strong> Such as your name, email address, or account details when you create an account.</li>
-          <li><strong>Activity Data:</strong> Information related to your journal entries, mood tracking, and app usage to enhance your wellness experience.</li>
-          <li><strong>Technical Data:</strong> Browser type, device information, and general analytics for improving app performance.</li>
+          <li><strong>Personal Information:</strong> Such as your name, email address, or account details when you
+            create an account.</li>
+          <li><strong>Activity Data:</strong> Information related to your journal entries, mood tracking, and app usage
+            to enhance your wellness experience.</li>
+          <li><strong>Technical Data:</strong> Browser type, device information, and general analytics for improving app
+            performance.</li>
         </ul>
       </div>
 
       <div class="card">
         <h2>How We Use Your Information</h2>
         <p>
-          The data we collect is used to provide you with a personalized and supportive mental wellness experience. We never sell or share your personal information with third parties for marketing purposes.
+          The data we collect is used to provide you with a personalized and supportive mental wellness experience. We
+          never sell or share your personal information with third parties for marketing purposes.
         </p>
       </div>
 
       <div class="card">
         <h2>Data Security</h2>
         <p>
-          We use secure encryption and data storage systems to ensure your information remains private and protected from unauthorized access.
+          We use secure encryption and data storage systems to ensure your information remains private and protected
+          from unauthorized access.
         </p>
       </div>
 
       <div class="card">
         <h2>Your Rights</h2>
         <p>
-          You have the right to access, edit, or delete your data at any time. You can contact us if you want your account information permanently removed.
+          You have the right to access, edit, or delete your data at any time. You can contact us if you want your
+          account information permanently removed.
         </p>
       </div>
 
@@ -81,7 +101,6 @@
   <!-- Footer -->
   <footer>
     <p>
-      <a href="./privacy.html">Privacy Policy</a> |
       <a href="./help.html">Help</a> |
       <a href="./contact_us.html">Contact Us</a> |
       <a href="./about_us.html">About Us</a>
@@ -91,4 +110,5 @@
 
   <script src="../js/script.js"></script>
 </body>
+
 </html>
