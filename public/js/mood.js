@@ -1,41 +1,21 @@
 // mood-simple.js
-    function showSidebar(){
-      const sidebar = document.querySelector('.sidebar')
-      sidebar.style.display = 'flex'
-    }
-    
-    function hideSidebar(){
-      const sidebar = document.querySelector('.sidebar')
-      sidebar.style.display = 'none'
-    }
 
-document.addEventListener('DOMContentLoaded', function() {
-    const moodButtons = document.querySelectorAll('.mood-button');
-    const submitButton = document.getElementById('submitButton');
-    const progressFill = document.getElementById('progressFill');
-    const progressPercent = document.getElementById('progressPercent');
-    const toast = document.getElementById('toast');
-    const toastMessage = document.getElementById('toastMessage');
+// ============================================
+// CONFIGURATION
+// ============================================
+const MOOD_CONFIG = {
+  VALID_MOODS: ['happy', 'calm', 'anxious', 'sad', 'angry']
+};
 
-    let selectedMood = null;
-    let moodHistory = [];
-    let positiveCount = 0;
-    let totalCount = 0;
-
-    // Set up event listeners
-    moodButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            // Remove selected class from all buttons
-            moodButtons.forEach(function(btn) {
-                btn.classList.remove('selected');
-            });
-
-            // Add selected class to clicked button
-            this.classList.add('selected');
-            selectedMood = this.getAttribute('data-mood');
-            submitButton.disabled = false;
-        });
-    });
+// ============================================
+// STATE MANAGEMENT
+// ============================================
+const state = {
+  selectedMood: null,
+  moodHistory: [],
+  totalCount: 0,
+  positiveCount: 0
+};
 
 // ============================================
 // DOM ELEMENTS
@@ -48,7 +28,10 @@ const elements = {
   progressPercent: null,
   progressStats: null,
   toast: null,
-  toastMessage: null
+  toastMessage: null,
+  showHistoryBtn: null,
+  moodHistoryContainer: null,
+  moodHistoryList: null
 };
 
 // ============================================
@@ -74,6 +57,55 @@ function initializeElements() {
   elements.progressStats = document.getElementById('progressStats');
   elements.toast = document.getElementById('toast');
   elements.toastMessage = document.getElementById('toastMessage');
+  elements.showHistoryBtn = document.getElementById('showHistoryBtn');
+  elements.moodHistoryContainer = document.getElementById('moodHistoryContainer');
+  elements.moodHistoryList = document.getElementById('moodHistoryList');
+}
+
+/**
+ * Load mood data from backend
+ */
+async function loadMoodData() {
+  try {
+    const response = await fetch('../backend/api/mood/get_mood_stats.php');
+    const data = await response.json();
+    if (data.success) {
+      state.totalCount = data.total_moods || 0;
+      state.positiveCount = data.positive_moods || 0;
+      updateUI();
+    }
+  } catch (error) {
+    console.error('Error loading mood data:', error);
+  }
+}
+
+/**
+ * Load mood statistics (alias for loadMoodData)
+ */
+function loadMoodStats() {
+  loadMoodData();
+}
+
+/**
+ * Update UI elements
+ */
+function updateUI() {
+  const percentage = state.totalCount > 0 ? Math.round((state.positiveCount / state.totalCount) * 100) : 0;
+  elements.progressFill.style.width = percentage + '%';
+  elements.progressPercent.textContent = percentage + '%';
+
+  // Update progress bar color
+  if (percentage >= 70) {
+    elements.progressFill.style.background = 'linear-gradient(135deg, #10b981 0%, #34d399 100%)';
+  } else if (percentage >= 40) {
+    elements.progressFill.style.background = 'linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%)';
+  } else {
+    elements.progressFill.style.background = 'linear-gradient(135deg, #ef4444 0%, #f87171 100%)';
+  }
+
+  if (elements.progressStats) {
+    elements.progressStats.textContent = state.totalCount === 0 ? 'No moods recorded yet. Start tracking your emotional journey! 🌱' : `You've recorded ${state.totalCount} moods, with ${state.positiveCount} positive ones.`;
+  }
 }
 
 /**
@@ -83,12 +115,12 @@ function setupEventListeners() {
   // Mood button selection
   elements.moodButtons.forEach(button => {
     button.addEventListener('click', handleMoodSelection);
-    
-    // Add hover sound effect (optional)
+
+    // Add hover effect
     button.addEventListener('mouseenter', () => {
       button.style.transform = 'translateY(-8px)';
     });
-    
+
     button.addEventListener('mouseleave', () => {
       if (!button.classList.contains('selected')) {
         button.style.transform = 'translateY(0)';
@@ -103,6 +135,11 @@ function setupEventListeners() {
   if (elements.resetButton) {
     elements.resetButton.addEventListener('click', handleReset);
   }
+
+  // Show history
+  if (elements.showHistoryBtn) {
+    elements.showHistoryBtn.addEventListener('click', handleShowHistory);
+  }
 }
 
 /**
@@ -113,7 +150,7 @@ function addSmoothAnimations() {
   elements.moodButtons.forEach((button, index) => {
     button.style.opacity = '0';
     button.style.transform = 'translateY(20px)';
-    
+
     setTimeout(() => {
       button.style.transition = 'all 0.5s ease';
       button.style.opacity = '1';
@@ -150,7 +187,7 @@ function handleMoodSelection(event) {
 
   // Add selection animation
   button.style.transform = 'translateY(-4px) scale(1.05)';
-  
+
   // Enable submit button
   elements.submitButton.disabled = false;
   elements.submitButton.style.opacity = '1';
@@ -158,107 +195,140 @@ function handleMoodSelection(event) {
 }
 
 /**
+ * Clear mood selection
+ */
+function clearMoodSelection() {
+  elements.moodButtons.forEach(button => {
+    button.classList.remove('selected');
+    button.setAttribute('aria-pressed', 'false');
+    button.style.transform = 'translateY(0) scale(1)';
+  });
+  state.selectedMood = null;
+  elements.submitButton.disabled = true;
+  elements.submitButton.style.opacity = '0.6';
+  elements.submitButton.style.transform = 'scale(0.95)';
+}
+
+/**
  * Handle mood submission
  */
-function handleMoodSubmit() {
+async function handleMoodSubmit() {
   if (!state.selectedMood) {
     showToast('Please select a mood first!', 'error');
     return;
   }
 
   try {
-    // Record mood
-    recordMood(state.selectedMood);
+    const response = await fetch('../backend/api/mood/save_mood.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ mood: state.selectedMood })
+    });
 
-    // Save to storage
-    saveMoodData();
+    const data = await response.json();
 
-    // Update UI with animation
-    updateUI();
+    if (data.success) {
+      // Update local state
+      state.totalCount++;
+      if (state.selectedMood === 'happy' || state.selectedMood === 'calm') {
+        state.positiveCount++;
+      }
 
-    // Show success message with emoji
-    const moodEmoji = getMoodEmoji(state.selectedMood);
-    const moodName = state.selectedMood.charAt(0).toUpperCase() + state.selectedMood.slice(1);
-    showToast(`${moodEmoji} Your ${moodName} mood has been recorded!`, 'success');
+      // Add to history
+      const now = new Date();
+      state.moodHistory.push({
+        mood: state.selectedMood,
+        time: now.toLocaleTimeString()
+      });
 
-    // Reset selection with smooth transition
-    setTimeout(() => {
+      updateUI();
+
+      // Show success message
+      showToast('Your ' + state.selectedMood + ' mood has been recorded!', 'success');
+
+      // Reset selection
       clearMoodSelection();
-      state.selectedMood = null;
-      elements.submitButton.disabled = true;
-      elements.submitButton.style.opacity = '0.5';
-    }, 300);
 
+      console.log('Total moods:', state.totalCount, 'Positive:', state.positiveCount, 'Percentage:', Math.round((state.positiveCount / state.totalCount) * 100) + '%');
+    } else {
+      showToast('Failed to save mood: ' + (data.message || 'Unknown error'), 'error');
+    }
   } catch (error) {
     console.error('Error submitting mood:', error);
-    showToast('Failed to save your mood. Please try again.', 'error');
+    showToast('Error submitting mood. Please try again.', 'error');
   }
 }
 
 /**
- * Handle reset button click
+ * Handle reset history
  */
 function handleReset() {
-  if (state.totalCount === 0) {
-    showToast('No mood history to reset', 'error');
+  if (confirm('Are you sure you want to reset your mood history? This action cannot be undone.')) {
+    state.moodHistory = [];
+    state.totalCount = 0;
+    state.positiveCount = 0;
+    updateUI();
+    showToast('Mood history has been reset.', 'success');
+  }
+}
+
+/**
+ * Handle show history
+ */
+async function handleShowHistory() {
+  if (elements.moodHistoryContainer.style.display === 'none') {
+    try {
+      const response = await fetch('../backend/api/mood/get_mood_history.php');
+      const data = await response.json();
+      if (data.success) {
+        displayMoodHistory(data.history || []);
+      } else {
+        showToast('Failed to load mood history.', 'error');
+      }
+    } catch (error) {
+      console.error('Error loading mood history:', error);
+      showToast('Error loading mood history.', 'error');
+    }
+    elements.moodHistoryContainer.style.display = 'block';
+    elements.showHistoryBtn.textContent = 'Hide History';
+  } else {
+    elements.moodHistoryContainer.style.display = 'none';
+    elements.showHistoryBtn.textContent = 'Show History';
+  }
+}
+
+/**
+ * Display mood history
+ * @param {Array} history - Array of mood history items
+ */
+function displayMoodHistory(history) {
+  if (!elements.moodHistoryList) return;
+
+  elements.moodHistoryList.innerHTML = '';
+
+  if (history.length === 0) {
+    elements.moodHistoryList.innerHTML = '<p>No mood history available.</p>';
     return;
   }
 
-  const confirmed = confirm('Are you sure you want to reset your mood history? This cannot be undone.');
-  
-  if (confirmed) {
-    resetMoodData();
-    updateUI();
-    showToast('✨ Mood history has been reset', 'success');
-  }
-}
-
-// ============================================
-// MOOD LOGIC
-// ============================================
-
-/**
- * Record a new mood entry
- * @param {string} mood - The mood to record
- */
-function recordMood(mood) {
-  const now = new Date();
-  const entry = {
-    mood: mood,
-    timestamp: now.toISOString(),
-    date: now.toLocaleDateString('en-US', { 
-      weekday: 'long', 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    }),
-    time: now.toLocaleTimeString('en-US', { 
-      hour: '2-digit', 
-      minute: '2-digit' 
-    })
-  };
-
-  state.moodHistory.push(entry);
-  state.totalCount++;
-
-  if (MOOD_CONFIG.POSITIVE_MOODS.includes(mood)) {
-    state.positiveCount++;
-  }
+  history.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'mood-history-item';
+    div.innerHTML = `
+      <span class="mood-emoji">${getMoodEmoji(item.mood)}</span>
+      <span class="mood-name">${item.mood.charAt(0).toUpperCase() + item.mood.slice(1)}</span>
+      <span class="mood-time">${new Date(item.created_at).toLocaleString()}</span>
+    `;
+    elements.moodHistoryList.appendChild(div);
+  });
 }
 
 /**
- * Calculate positive mood percentage
- * @returns {number} Percentage of positive moods
- */
-function calculatePercentage() {
-  if (state.totalCount === 0) return 0;
-  return Math.round((state.positiveCount / state.totalCount) * 100);
-}
-
-/**
- * Get emoji for a given mood
- * @param {string} mood - Mood type
- * @returns {string} Emoji character
+ * Get emoji for mood
+ * @param {string} mood - Mood name
+ * @returns {string} Emoji
  */
 function getMoodEmoji(mood) {
   const emojis = {
@@ -268,244 +338,21 @@ function getMoodEmoji(mood) {
     sad: '😢',
     angry: '😠'
   };
-  return emojis[mood] || '😊';
+  return emojis[mood] || '😐';
 }
 
 /**
- * Clear all mood button selections
- */
-function clearMoodSelection() {
-  elements.moodButtons.forEach(button => {
-    button.classList.remove('selected');
-    button.setAttribute('aria-pressed', 'false');
-    button.style.transform = 'translateY(0)';
-  });
-}
-
-// ============================================
-// UI UPDATES
-// ============================================
-
-/**
- * Update all UI elements
- */
-function updateUI() {
-  updateProgressBar();
-  updateProgressStats();
-}
-
-/**
- * Update progress bar display with smooth animation
- */
-function updateProgressBar() {
-  const percentage = calculatePercentage();
-
-  // Update width with smooth transition
-  elements.progressFill.style.transition = 'width 0.6s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease';
-  elements.progressFill.style.width = `${percentage}%`;
-  elements.progressPercent.textContent = `${percentage}%`;
-
-  // Update ARIA attribute
-  const progressBar = elements.progressFill.parentElement;
-  progressBar.setAttribute('aria-valuenow', percentage);
-
-  // Update color based on percentage with matching gradient style
-  let color = PROGRESS_COLORS.LOW;
-  if (percentage >= 70) {
-    color = PROGRESS_COLORS.HIGH;
-  } else if (percentage >= 40) {
-    color = PROGRESS_COLORS.MEDIUM;
-  }
-
-  elements.progressFill.style.background = color;
-}
-
-/**
- * Update progress statistics text
- */
-function updateProgressStats() {
-  if (state.totalCount === 0) {
-    elements.progressStats.textContent = 'No moods recorded yet. Start tracking your emotional journey! 🌱';
-    return;
-  }
-
-  const percentage = calculatePercentage();
-  const negative = state.totalCount - state.positiveCount;
-
-  elements.progressStats.textContent = 
-    `${state.totalCount} total mood${state.totalCount !== 1 ? 's' : ''} recorded · ` +
-    `${state.positiveCount} positive · ${negative} negative · ${percentage}% positive rate`;
-}
-
-// ============================================
-// DATA PERSISTENCE
-// ============================================
-
-/**
- * Load mood data from localStorage
- */
-function loadMoodData() {
-  try {
-    const saved = localStorage.getItem(MOOD_CONFIG.STORAGE_KEY);
-    
-    if (saved) {
-      const data = JSON.parse(saved);
-      state.moodHistory = data.moodHistory || [];
-      
-      // Recalculate counts from history
-      recalculateStats();
-    }
-  } catch (error) {
-    console.error('Error loading mood data:', error);
-    showToast('Failed to load saved mood data', 'error');
-  }
-}
-
-/**
- * Save mood data to localStorage
- */
-function saveMoodData() {
-  try {
-    const data = {
-      moodHistory: state.moodHistory,
-      lastUpdated: new Date().toISOString(),
-      stats: {
-        totalCount: state.totalCount,
-        positiveCount: state.positiveCount,
-        percentage: calculatePercentage()
-      }
-    };
-    
-    localStorage.setItem(MOOD_CONFIG.STORAGE_KEY, JSON.stringify(data));
-  } catch (error) {
-    console.error('Error saving mood data:', error);
-    throw new Error('Failed to save mood data');
-  }
-}
-
-/**
- * Reset all mood data
- */
-function resetMoodData() {
-  state.moodHistory = [];
-  state.positiveCount = 0;
-  state.totalCount = 0;
-  
-  try {
-    localStorage.removeItem(MOOD_CONFIG.STORAGE_KEY);
-  } catch (error) {
-    console.error('Error resetting mood data:', error);
-  }
-}
-
-/**
- * Recalculate statistics from mood history
- */
-function recalculateStats() {
-  state.totalCount = state.moodHistory.length;
-  state.positiveCount = state.moodHistory.filter(entry => 
-    MOOD_CONFIG.POSITIVE_MOODS.includes(entry.mood)
-  ).length;
-}
-
-// ============================================
-// TOAST NOTIFICATIONS
-// ============================================
-
-/**
- * Show toast notification with smooth animation
+ * Show toast notification
  * @param {string} message - Message to display
- * @param {string} type - Toast type ('success' or 'error')
+ * @param {string} type - Type of toast (success, error, etc.)
  */
-function showToast(message, type = 'success') {
-  // Set message and type
-  elements.toastMessage.textContent = message;
-  elements.toast.className = `toast ${type}`;
-  
-  // Show with smooth animation
-  setTimeout(() => {
-    elements.toast.classList.add('show');
-  }, 10);
+function showToast(message, type = 'info') {
+  if (!elements.toast || !elements.toastMessage) return;
 
-  // Auto-hide after duration
+  elements.toastMessage.textContent = message;
+  elements.toast.className = 'toast ' + type + ' show';
+
   setTimeout(() => {
     elements.toast.classList.remove('show');
-  }, MOOD_CONFIG.TOAST_DURATION);
-}
-
-// ============================================
-// UTILITY FUNCTIONS
-// ============================================
-
-/**
- * Get mood statistics for a date range
- * @param {number} days - Number of days to look back
- * @returns {Object} Statistics object
- */
-function getMoodStats(days = 7) {
-  const cutoffDate = new Date();
-  cutoffDate.setDate(cutoffDate.getDate() - days);
-
-  const recentMoods = state.moodHistory.filter(entry => 
-    new Date(entry.timestamp) >= cutoffDate
-  );
-
-  const moodCounts = {};
-  recentMoods.forEach(entry => {
-    moodCounts[entry.mood] = (moodCounts[entry.mood] || 0) + 1;
-  });
-
-  return {
-    total: recentMoods.length,
-    moodCounts,
-    mostCommon: Object.keys(moodCounts).reduce((a, b) => 
-      moodCounts[a] > moodCounts[b] ? a : b, 'none'
-    ),
-    positivePercentage: recentMoods.length > 0 
-      ? Math.round((recentMoods.filter(e => MOOD_CONFIG.POSITIVE_MOODS.includes(e.mood)).length / recentMoods.length) * 100)
-      : 0
-  };
-}
-
-/**
- * Export mood data as JSON
- * @returns {string} JSON string of mood history
- */
-function exportMoodData() {
-  return JSON.stringify({
-    exported: new Date().toISOString(),
-    totalMoods: state.totalCount,
-    positivePercentage: calculatePercentage(),
-    history: state.moodHistory
-  }, null, 2);
-}
-
-/**
- * Get weekly mood summary
- * @returns {Object} Weekly summary
- */
-function getWeeklySummary() {
-  const stats = getMoodStats(7);
-  return {
-    weeklyTotal: stats.total,
-    mostCommonMood: stats.mostCommon,
-    positiveRate: stats.positivePercentage,
-    moodDistribution: stats.moodCounts
-  };
-}
-
-// ============================================
-// CONSOLE HELPER (for debugging)
-// ============================================
-console.log('🧠 MindEase Mood Tracker Loaded Successfully');
-console.log('💡 Tip: Use exportMoodData() to export your mood history');
-
-// Export functions for testing or external use
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    getMoodStats,
-    exportMoodData,
-    calculatePercentage,
-    getWeeklySummary
-  };
+  }, 3000);
 }
