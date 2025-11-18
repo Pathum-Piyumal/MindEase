@@ -221,20 +221,20 @@ footer a:hover {
 }
 
 .toggle-saved-btn {
-  background-color: #7CB4D2;
-  color: white;
-  padding: 12px 24px;
-  font-size: 0.95rem;
-  border-radius: 10px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 4px 12px rgba(124, 180, 210, 0.3);
+  background-color: #A8E6CF;
+  /* color: #37474F; */
+  padding: 0.8rem 1.8rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .toggle-saved-btn:hover {
-  background-color: #5A9BB8;
-  transform: translateY(-2px);
+  background: #B3E5FC;
+  transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(124, 180, 210, 0.4);
 }
 
