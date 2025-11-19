@@ -45,6 +45,49 @@
 
       <div class="content-box">
         <h2 style="color: #546E7A; font-size: 2rem;">Breathing Exercise</h2>
+
+        <!-- Breathing Pattern Selector -->
+        <div class="breathing-options">
+          <label for="patternSelect">Choose Pattern:</label>
+          <select id="patternSelect" onchange="updatePattern()">
+            <option value="standard">Standard (4-4)</option>
+            <option value="4-7-8">4-7-8 Technique</option>
+            <option value="box">Box Breathing</option>
+          </select>
+        </div>
+
+        <!-- Custom Durations -->
+        <div class="duration-controls">
+          <div class="duration-item">
+            <label for="inhaleSlider">Inhale (s):</label>
+            <input type="range" id="inhaleSlider" min="2" max="10" value="4" onchange="updateDurations()">
+            <span id="inhaleValue">4</span>
+          </div>
+          <div class="duration-item">
+            <label for="holdSlider">Hold (s):</label>
+            <input type="range" id="holdSlider" min="0" max="10" value="4" onchange="updateDurations()">
+            <span id="holdValue">4</span>
+          </div>
+          <div class="duration-item">
+            <label for="exhaleSlider">Exhale (s):</label>
+            <input type="range" id="exhaleSlider" min="2" max="10" value="4" onchange="updateDurations()">
+            <span id="exhaleValue">4</span>
+          </div>
+        </div>
+
+        <!-- Progress Displays -->
+        <div class="progress-displays">
+          <div class="progress-item">
+            <span>Session Time: <span id="sessionTimer">00:00</span></span>
+          </div>
+          <div class="progress-item">
+            <span>Breaths: <span id="breathCounter">0</span></span>
+          </div>
+          <div class="progress-item">
+            <span>Sessions This Week: <span id="weeklySessions">0</span></span>
+          </div>
+        </div>
+
         <div class="breathing-circle" id="breathingCircle">
           <p id="breathingStatus">Ready</p>
         </div>

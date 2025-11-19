@@ -221,6 +221,86 @@ background: linear-gradient(135deg, #e9fff9, #e3f2fd, #f9fbe7);
   }
 }
 
+/* Breathing Options */
+.breathing-options {
+  margin-bottom: 1.5rem;
+}
+
+.breathing-options label {
+  font-weight: 500;
+  margin-right: 0.5rem;
+}
+
+.breathing-options select {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+/* Duration Controls */
+.duration-controls {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.duration-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+}
+
+.duration-item label {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.duration-item input {
+  width: 60px;
+  margin-bottom: 0.5rem;
+}
+
+.duration-item span {
+  font-weight: 600;
+  color: #37474f;
+}
+
+/* Progress Displays */
+.progress-displays {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.progress-item {
+  font-size: 0.9rem;
+  color: #546E7A;
+}
+
+.progress-item span {
+  font-weight: 600;
+  color: #37474f;
+}
+
+/* Responsive Breathing Controls */
+@media (max-width: 768px) {
+  .duration-controls {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .progress-displays {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 .sidebar{
     position: fixed;
     top: 0;
