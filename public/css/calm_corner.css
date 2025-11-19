@@ -1,4 +1,4 @@
-/* Reset and Base Styles */
+/* Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -7,8 +7,8 @@
 }
 
 body {
-  background: #E8EAF6;
-  /* Misty Lilac */
+  background: linear-gradient(135deg, #F5F7FA, #E8F5E9);
+  /* Soft off-white to soft green */
   color: #546E7A;
   /* Slate Gray */
   line-height: 1.6;
@@ -16,8 +16,8 @@ body {
 
 /* Header */
 header {
-  background: #E8EAF6;
-  /* Misty Lilac to Lavender */
+  background: linear-gradient(90deg, #F5F7FA, #E8F5E9);
+  /* Soft off-white to soft green */
   padding: 1rem 5rem;
   position: sticky;
   top: 0;
@@ -55,12 +55,12 @@ nav a {
 
 nav a:hover {
   color: #a8e6cf;
+  /* Pale Aqua Blue */
 }
 
 .nav-active{
   color: #a8e6cf !important;
 }
-
 
 /* Footer */
 footer {
@@ -191,9 +191,6 @@ background: linear-gradient(135deg, #e9fff9, #e3f2fd, #f9fbe7);
   color: #546E7A;
   margin-bottom: 0.5rem;
 }
-
-
-
 
 /* Relaxation Tips Grid */
 .grid {
