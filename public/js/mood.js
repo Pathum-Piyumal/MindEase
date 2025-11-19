@@ -1,8 +1,5 @@
-// mood.js - Complete Backend Integration
-
 // API Base URL
-const API_BASE = 'http://localhost/MindEase/backend/api/mood';
-
+const API_BASE = CONFIG.apiUrl + '/api/quotes';
 // DOM Elements
 const moodButtons = document.querySelectorAll('.mood-button');
 const submitButton = document.getElementById('submitButton');
@@ -17,18 +14,17 @@ const moodHistoryList = document.getElementById('moodHistoryList');
 
 let selectedMood = null;
 
-// ============================================
 // INITIALIZATION
-// ============================================
+
 document.addEventListener('DOMContentLoaded', function() {
     loadMoodStats();
     setupEventListeners();
     addSmoothAnimations();
 });
 
-// ============================================
+
 // SETUP EVENT LISTENERS
-// ============================================
+
 function setupEventListeners() {
     // Mood button selection
     moodButtons.forEach(function(button) {
@@ -72,12 +68,11 @@ function setupEventListeners() {
     }
 }
 
-// ============================================
+
 // LOAD MOOD STATISTICS
-// ============================================
 async function loadMoodStats() {
     try {
-        const response = await fetch(API_BASE + '/get_mood_stats.php', {
+        const response = await fetch(API_BASE + '/api/mood/get_mood_stats.php', {
             method: 'GET',
             credentials: 'include'
         });
@@ -116,9 +111,9 @@ async function loadMoodStats() {
     }
 }
 
-// ============================================
+
 // SUBMIT MOOD
-// ============================================
+
 async function handleMoodSubmit() {
     if (!selectedMood) {
         showToast('Please select a mood first!', 'error');
@@ -133,7 +128,7 @@ async function handleMoodSubmit() {
         const formData = new FormData();
         formData.append('mood', selectedMood);
 
-        const response = await fetch(API_BASE + '/save_mood.php', {
+        const response = await fetch(API_BASE + '/api/mood/save_mood.php', {
             method: 'POST',
             credentials: 'include',
             body: formData
@@ -172,16 +167,16 @@ async function handleMoodSubmit() {
     }
 }
 
-// ============================================
+
 // SHOW MOOD HISTORY
-// ============================================
+
 async function handleShowHistory() {
     if (moodHistoryContainer.style.display === 'none') {
         showHistoryBtn.textContent = 'Loading...';
         showHistoryBtn.disabled = true;
         
         try {
-            const response = await fetch(API_BASE + '/get_mood_history.php', {
+            const response = await fetch(API_BASE + '/api/mood/get_mood_history.php', {
                 method: 'GET',
                 credentials: 'include'
             });
@@ -209,9 +204,9 @@ async function handleShowHistory() {
     }
 }
 
-// ============================================
+
 // DISPLAY MOOD HISTORY
-// ============================================
+
 function displayMoodHistory(entries) {
     if (!moodHistoryList) return;
 
@@ -262,9 +257,9 @@ function displayMoodHistory(entries) {
     }).join('');
 }
 
-// ============================================
+
 // SMOOTH ANIMATIONS
-// ============================================
+
 function addSmoothAnimations() {
     moodButtons.forEach((button, index) => {
         button.style.opacity = '0';
@@ -278,9 +273,9 @@ function addSmoothAnimations() {
     });
 }
 
-// ============================================
+
 // TOAST NOTIFICATION
-// ============================================
+
 function showToast(message, type = 'info') {
     if (!toast || !toastMessage) return;
 
