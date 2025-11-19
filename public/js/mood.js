@@ -69,10 +69,13 @@ async function loadMoodData() {
   try {
     const response = await fetch('../backend/api/mood/get_mood_stats.php');
     const data = await response.json();
-    if (data.success) {
-      state.totalCount = data.total_moods || 0;
-      state.positiveCount = data.positive_moods || 0;
+    if (data.status === 'success') {
+      state.totalCount = data.total_entries || 0;
+      state.positiveCount = Math.round((data.positive_percentage / 100) * data.total_entries) || 0;
       updateUI();
+    } else if (data.status === 'error' && data.message === 'not_logged_in') {
+      // User not logged in, show login prompt or handle accordingly
+      console.log('User not logged in');
     }
   } catch (error) {
     console.error('Error loading mood data:', error);
