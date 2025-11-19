@@ -64,7 +64,8 @@ nav a:hover {
 }
 
 .quotes {
-   background: linear-gradient(135deg, rgba(245, 247, 250, 0.95), rgba(232, 245, 233, 0.95)), url('/assets/images/hero-meditation-2.jpg');
+   background: linear-gradient(135deg, rgba(245, 247, 250, 0.95), rgba(232, 245, 233, 0.95)), 
+   url('../../assets/images/hero-meditation-2.jpg');
    background-size: cover;
    background-position: center;
    background-attachment: fixed;

@@ -1,3 +1,4 @@
+/* Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -6,20 +7,17 @@
 }
 
 body {
-   background: linear-gradient(135deg, #E3F2FD, #F5F7FA);
-
-
-}
-
-h1 {
+  background: linear-gradient(135deg, #F5F7FA, #E8F5E9);
+  /* Soft off-white to soft green */
   color: #546E7A;
+  /* Slate Gray */
+  line-height: 1.6;
 }
-
 
 /* Header */
 header {
-  background: #E8EAF6;
-  /* Misty Lilac to Lavender */
+  background: linear-gradient(90deg, #F5F7FA, #E8F5E9);
+  /* Soft off-white to soft green */
   padding: 1rem 5rem;
   position: sticky;
   top: 0;
@@ -40,12 +38,6 @@ header {
 .logo img {
   width: 50px;
   margin-right: 0.5rem;
-}
-
-header .logo span {
-  font-weight: 600;
-  font-size: 1.5rem;
-  color: #546E7A;
 }
 
 nav ul {
