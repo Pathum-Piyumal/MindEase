@@ -39,6 +39,27 @@ function toggleBreathing() {
     btnText.textContent = "Start";
   }
 }
+async function loadMeditationAudio() {
+    const response = await fetch('../../backend/api/meditations.php');
+    const data = await response.json();
+
+    const container = document.getElementById("meditation-list");
+
+    data.forEach(item => {
+        container.innerHTML += `
+            <div class="meditation-card">
+                <h4>${item.title}</h4>
+                <p>Duration: ${item.duration}</p>
+                <audio controls>
+                    <source src="${item.url}" type="audio/mpeg">
+                </audio>
+            </div>
+        `;
+    });
+}
+
+loadMeditationAudio();
+
 
 // ===== SCROLL ANIMATIONS =====
 const observer = new IntersectionObserver((entries) => {
