@@ -12,6 +12,12 @@ body {
   color: #546E7A;
   /* Slate Gray */
   line-height: 1.6;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+  background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+  color: #e0e0e0;
 }
 
 /* Header */
@@ -26,6 +32,12 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: background 0.3s ease;
+}
+
+body.dark-mode header {
+  background: linear-gradient(90deg, #2d2d2d, #1a1a1a);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .logo {
@@ -70,12 +82,22 @@ footer {
   text-align: center;
   margin-top: 2rem;
   /* border-top: 1px solid #C7C9F2; */
+  transition: background 0.3s ease;
+}
+
+body.dark-mode footer {
+  background: linear-gradient(90deg, #2d2d2d, #1a1a1a);
 }
 
 footer a {
   color: #546E7A;
   text-decoration: none;
   margin: 0 1rem;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode footer a {
+  color: #e0e0e0;
 }
 
 footer a:hover {
@@ -85,6 +107,11 @@ footer a:hover {
 .hero {
   background: linear-gradient(135deg, #E3F2FD, #C8E6C9);
   color: #37474F;
+}
+
+body.dark-mode .hero {
+  background: linear-gradient(135deg, #1e3a5f, #2d5a3d);
+  color: #e0e0e0;
 }
 
 .hero h1,
@@ -139,6 +166,11 @@ footer a:hover {
   padding: 5rem 8%;
   background: linear-gradient(135deg, #F5F7FA, #E8F5E9);
   flex-wrap: wrap;
+  transition: background 0.3s ease;
+}
+
+body.dark-mode .section-hero {
+  background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
 }
 
 /* Journey Section */
@@ -147,6 +179,11 @@ footer a:hover {
   background: linear-gradient(to right, #E8F5E9, #F0F4F8);
   padding: 6rem 2rem;
   text-align: center;
+  transition: background 0.3s ease;
+}
+
+body.dark-mode .journey-section {
+  background: linear-gradient(to right, #2d2d2d, #1a1a1a);
 }
 
 .stats-section {
@@ -154,6 +191,11 @@ footer a:hover {
     background: linear-gradient(135deg, #E8F5E9 0%, #F5F7FA 100%);
     margin: 0;
     font-family: 'Poppins', sans-serif;
+    transition: background 0.3s ease;
+}
+
+body.dark-mode .stats-section {
+    background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
 }
 
 
@@ -253,6 +295,11 @@ footer a:hover {
   background: linear-gradient(to bottom right, #E8F5E9, #F5F7FA);
   text-align: center;
   padding: 4rem 2rem;
+  transition: background 0.3s ease;
+}
+
+body.dark-mode .core-features {
+  background: linear-gradient(to bottom right, #2d2d2d, #1a1a1a);
 }
 
 
@@ -281,6 +328,12 @@ footer a:hover {
   background: linear-gradient(135deg, #E8F5E9, #F5F7FA);
   color: rgb(37, 30, 30);
   text-align: center;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .feature-hero {
+  background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
+  color: #e0e0e0;
 }
 
 .hero-content {
@@ -342,6 +395,11 @@ footer a:hover {
   padding: 4rem 8%;
   background: linear-gradient(135deg, #E8F5E9, #F5F7FA);
   text-align: center;
+  transition: background 0.3s ease;
+}
+
+body.dark-mode .calm-gallery {
+  background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
 }
 
 .gallery-title {
@@ -417,6 +475,12 @@ footer a:hover {
   text-align: center;
   color: rgb(37, 30, 30);
   text-align: center;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .ready-to-feel {
+  background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
+  color: #e0e0e0;
 }
 
 .ready-content {
@@ -621,6 +685,16 @@ footer a:hover {
     padding: 60px 20px;
     background-color: #f7f9fa;
     text-align: center;
+    transition: background 0.3s ease;
+}
+
+body.dark-mode .how-it-works {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode .how-it-works .section-title,
+body.dark-mode .how-it-works .section-subtitle {
+    color: #e0e0e0;
 }
 
 .how-it-works .container {
@@ -656,6 +730,12 @@ footer a:hover {
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode .step-card {
+    background-color: #333;
+    color: #e0e0e0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .step-card:hover {
@@ -726,6 +806,16 @@ footer a:hover {
     padding: 80px 20px;
     background: linear-gradient(135deg, #E8F5E9, #F5F7FA);
     text-align: center;
+    transition: background 0.3s ease;
+}
+
+body.dark-mode .testimonials {
+    background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
+}
+
+body.dark-mode .testimonials .section-title,
+body.dark-mode .testimonials .section-subtitle {
+    color: #e0e0e0;
 }
 
 .testimonials .container {
@@ -740,10 +830,18 @@ footer a:hover {
     font-weight: 700;
 }
 
+body.dark-mode .testimonials .section-title {
+    color: #e0e0e0;
+}
+
 .testimonials .section-subtitle {
     font-size: 1.25rem;
     color: #607d8b;
     margin-bottom: 3rem;
+}
+
+body.dark-mode .testimonials .section-subtitle {
+    color: #b0b0b0;
 }
 
 .testimonial-grid {
@@ -765,12 +863,22 @@ footer a:hover {
     text-align: left;
 }
 
+body.dark-mode .testimonial-card {
+    background-color: #333;
+    color: #e0e0e0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
 .testimonial-card .quote {
     font-size: 1.15rem;
     color: #546d78;
     font-style: italic;
     line-height: 1.6;
     margin-bottom: 20px;
+}
+
+body.dark-mode .testimonial-card .quote {
+    color: #e0e0e0;
 }
 
 .testimonial-card .user-info {
@@ -791,9 +899,40 @@ footer a:hover {
     font-size: 0.95rem;
 }
 
+body.dark-mode .testimonial-card .name {
+    color: #b0b0b0;
+}
+
 .share-story-btn {
     /* Inherits button styling, but ensures it's centered if needed */
     display: inline-block;
+    margin-bottom: 0.2rem;
+    margin-top: 5rem;
+}
+
+.custom-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.custom-prev,
+.custom-next {
+    background-color: #A8E6CF;
+    color: #546E7A;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.custom-prev:hover,
+.custom-next:hover {
+    background-color: #B3E5FC;
+    transform: translateY(-2px);
 }
 
 @media (max-width: 992px) {
@@ -814,6 +953,16 @@ footer a:hover {
     padding: 80px 20px;
     background: linear-gradient(135deg, #F5F7FA, #E8F5E9);
     text-align: center;
+    transition: background 0.3s ease;
+}
+
+body.dark-mode .faq-section {
+    background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
+}
+
+body.dark-mode .faq-section .faq-title,
+body.dark-mode .faq-section .faq-subtitle {
+    color: #e0e0e0;
 }
 
 .faq-section .container {
@@ -859,6 +1008,10 @@ footer a:hover {
     align-items: center;
     transition: color 0.3s ease;
     position: relative;
+}
+
+body.dark-mode .faq-question {
+    color: #e0e0e0;
 }
 
 .faq-question::after {

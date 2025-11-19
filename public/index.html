@@ -4,9 +4,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MindEase - Home</title>
+  <title>MindEase - Your Personal Mental Wellness Companion</title>
+  <meta name="description" content="Track emotions, reflect daily, and find your calm with MindEase. A comprehensive mental health app for mood tracking, journaling, quotes, and guided exercises.">
+  <meta name="keywords" content="mental health, wellness, mood tracker, journal, quotes, calm corner, meditation">
+  <meta name="author" content="MindEase Team">
+
+  <!-- Open Graph Tags for Social Sharing -->
+  <meta property="og:title" content="MindEase - Your Personal Mental Wellness Companion">
+  <meta property="og:description" content="Track emotions, reflect daily, and find your calm with MindEase. Transform your well-being one day at a time.">
+  <meta property="og:image" content="https://mindease.com/assets/images/hero-meditation-1.jpg">
+  <meta property="og:url" content="https://mindease.com">
+  <meta property="og:type" content="website">
+
+  <!-- JSON-LD Structured Data for Mental Health Services -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "MindEase",
+    "description": "A mental wellness app for tracking mood, journaling, inspirational quotes, and guided breathing exercises.",
+    "url": "https://mindease.com",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "creator": {
+      "@type": "Organization",
+      "name": "MindEase Team"
+    }
+  }
+  </script>
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css">
+  <!-- Swiper.js for Carousel -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <!-- Typed.js for Typing Animation -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 </head>
 
 <body>
@@ -32,6 +69,7 @@
         <li class="hideOnMobile"><a href="./pages/quotes.html">Quotes</a></li>
         <li class="hideOnMobile"><a href="./pages/calm_corner.html">Calm Corner</a></li>
         <li class="hideOnMobile"><a href="./pages/login.html">Login</a></li>
+        <li><button id="theme-toggle" aria-label="Toggle dark mode">🌙</button></li>
         <li class="menu-button" onclick=showSidebar()><a href="#"><img src="../assets/icons/menu_icon.svg" alt="menu_icon"></a></li>
       </ul>
     </nav>
@@ -45,7 +83,7 @@
         <span></span><span></span><span></span><span></span><span></span>
       </div>
       <div style="flex: 1; min-width: 280px; margin-right: 2rem;">
-        <h1 style="font-size: 4rem; color: #546d78; margin-bottom: 0.5rem; font-weight: 700;">
+        <h1 id="typed-text" style="font-size: 4rem; color: #546d78; margin-bottom: 0.5rem; font-weight: 700;">
           MindEase
         </h1>
         <h2 style="font-size: 2rem; color: #6f8592; margin-bottom: 0.5rem; font-weight: 500;">
@@ -54,12 +92,12 @@
         <p style="font-size: 1.5rem; color: #607D8B; margin-bottom: 2rem;">
           Track emotions. Reflect daily. Find your calm. Transform your well-being, one day at a time.
         </p>
-        <a href="./pages/login.html" class="btn">Get Started</a>
-        <a href="./pages/calm_corner.html" class="btn_2">Try Breathing Exercise</a>
+        <a href="./pages/login.html" class="btn" aria-label="Get started with MindEase">Get Started</a>
+        <a href="./pages/calm_corner.html" class="btn_2" aria-label="Try a breathing exercise">Try Breathing Exercise</a>
       </div>
 
       <div style="flex: 1; min-width: 280px; display: flex; justify-content: center;">
-        <img src="../assets/images/hero-meditation-1.jpg" alt="Meditating Person" class="hero-image fade-in-hero"
+        <img src="../assets/images/hero-meditation-1.jpg" alt="Meditating Person" class="hero-image fade-in-hero parallax"
           style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
       </div>
     </section>
@@ -86,25 +124,25 @@
 
     <!-- How It Works Section -->
 
-    <section class="how-it-works">
+    <section class="how-it-works" id="how-it-works">
       <div class="container">
         <h2 class="section-title">Your Path to Wellness in 3 Simple Steps</h2>
         <p class="section-subtitle">MindEase makes mental well-being accessible, daily, and effective.</p>
 
         <div class="steps-grid">
-          <div class="step-card">
+          <div class="step-card progress-step" data-step="1">
             <div class="step-icon">1</div>
             <h3>Track Your Mood</h3>
             <p>Start by logging your feelings daily. Understand what influences your emotional patterns over time.</p>
           </div>
 
-          <div class="step-card">
+          <div class="step-card progress-step" data-step="2">
             <div class="step-icon">2</div>
             <h3>Reflect & Journal</h3>
             <p>Use guided prompts to process your daily thoughts, reduce rumination, and gain mental clarity.</p>
           </div>
 
-          <div class="step-card">
+          <div class="step-card progress-step" data-step="3">
             <div class="step-icon">3</div>
             <h3>Find Your Calm</h3>
             <p>Access evidence-based coping techniques, meditations, and breathing exercises instantly when you need
@@ -151,34 +189,56 @@
         <h2 class="section-title">Hear From Our Community</h2>
         <p class="section-subtitle">Real results from people transforming their well-being with MindEase.</p>
 
-        <div class="testimonial-grid">
+        <div class="swiper testimonial-swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <div class="user-avatar">SM</div>
+                <p class="quote">"MindEase helped me recognize my anxiety triggers and manage my stress daily. The Mood
+                  Tracker is a game-changer!"</p>
+                <div class="user-info">
+                  <span class="rating">⭐⭐⭐⭐⭐</span>
+                  <p class="name">— Sarah M., Verified User</p>
+                </div>
+              </div>
+            </div>
 
-          <div class="testimonial-card">
-            <p class="quote">"MindEase helped me recognize my anxiety triggers and manage my stress daily. The Mood
-              Tracker is a game-changer!"</p>
-            <div class="user-info">
-              <span class="rating">⭐⭐⭐⭐⭐</span>
-              <p class="name">— Sarah M., Verified User</p>
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <div class="user-avatar">DK</div>
+                <p class="quote">"The Digital Journal feature gives me the space to reflect without judgment. It’s truly my
+                  peaceful corner of the internet."</p>
+                <div class="user-info">
+                  <span class="rating">⭐⭐⭐⭐⭐</span>
+                  <p class="name">— David K., New York</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <div class="user-avatar">EJ</div>
+                <p class="quote">"I look forward to my daily quote and my calm corner session. It’s a simple, effective
+                  routine that has boosted my overall mood."</p>
+                <div class="user-info">
+                  <span class="rating">⭐⭐⭐⭐⭐</span>
+                  <p class="name">— Emily J., London</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <div class="user-avatar">AR</div>
+                <p class="quote">"MindEase has become an essential part of my daily routine. The guided meditations help me unwind after a long day."</p>
+                <div class="user-info">
+                  <span class="rating">⭐⭐⭐⭐⭐</span>
+                  <p class="name">— Alex R., California</p>
+                </div>
+              </div>
             </div>
           </div>
-
-          <div class="testimonial-card">
-            <p class="quote">"The Digital Journal feature gives me the space to reflect without judgment. It’s truly my
-              peaceful corner of the internet."</p>
-            <div class="user-info">
-              <span class="rating">⭐⭐⭐⭐⭐</span>
-              <p class="name">— David K., New York</p>
-            </div>
-          </div>
-
-          <div class="testimonial-card">
-            <p class="quote">"I look forward to my daily quote and my calm corner session. It’s a simple, effective
-              routine that has boosted my overall mood."</p>
-            <div class="user-info">
-              <span class="rating">⭐⭐⭐⭐⭐</span>
-              <p class="name">— Emily J., London</p>
-            </div>
-          </div>
+          <div class="swiper-pagination"></div>
         </div>
 
         <a href="./pages/journal.html" class="btn share-story-btn">Start Your Story Today</a>
@@ -332,6 +392,7 @@
     <p>© 2025 MindEase. All Rights Reserved.</p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="../public/js/script.js"></script>
 </body>
 

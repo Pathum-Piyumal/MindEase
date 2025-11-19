@@ -1,12 +1,12 @@
-    function showSidebar(){
-      const sidebar = document.querySelector('.sidebar')
-      sidebar.style.display = 'flex'
-    }
-    
-    function hideSidebar(){
-      const sidebar = document.querySelector('.sidebar')
-      sidebar.style.display = 'none'
-    }
+function showSidebar(){
+  const sidebar = document.querySelector('.sidebar')
+  sidebar.style.display = 'flex'
+}
+
+function hideSidebar(){
+  const sidebar = document.querySelector('.sidebar')
+  sidebar.style.display = 'none'
+}
 
 // Common JavaScript for all pages
 document.addEventListener('DOMContentLoaded', () => {
@@ -267,5 +267,59 @@ document.addEventListener('DOMContentLoaded', () => {
             // This is what controls the max-height/padding for the transition effect
             answer.classList.toggle('open');
         });
+    });
+});
+
+// --- Dark Mode Toggle ---
+
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Check for saved theme preference or default to light mode
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    if (currentTheme === 'dark') {
+        body.classList.add('dark-mode');
+        themeToggle.textContent = '☀️';
+    } else {
+        themeToggle.textContent = '🌙';
+    }
+
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        const isDark = body.classList.contains('dark-mode');
+        themeToggle.textContent = isDark ? '☀️' : '🌙';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+});
+
+// --- Swiper Initialization for Testimonials ---
+
+document.addEventListener('DOMContentLoaded', () => {
+    const testimonialSwiper = new Swiper('.testimonial-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
+            },
+        },
     });
 });
