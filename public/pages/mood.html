@@ -121,6 +121,18 @@
         </div>
         <p id="progressStats" style="margin-top: 0.75rem; color: #718096; font-size: 0.9rem;">No moods recorded yet. Start tracking your emotional journey! 🌱</p>
       </div>
+
+      <!-- Mood History Section -->
+      <div class="progress-section">
+        <h2 class="card-title">Recent Mood History</h2>
+        <button id="showHistoryBtn" class="btn" style="margin-bottom: 1rem;">
+          Show History
+        </button>
+
+        <div id="moodHistoryContainer" style="display: none;">
+          <div id="moodHistoryList"></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -131,19 +143,6 @@
     <div class="toast" id="toast">
       <div id="toastMessage"></div>
     </div>
-  <!-- Mood History Section -->
-<div class="container" style="margin-top: 3rem;">
-  <div class="card">
-    <h2 class="card-title">Recent Mood History</h2>
-    <button id="showHistoryBtn" class="btn" style="margin-bottom: 1rem;">
-      Show History
-    </button>
-    
-    <div id="moodHistoryContainer" style="display: none;">
-      <div id="moodHistoryList"></div>
-    </div>
-  </div>
-</div>
     <!-- Footer Section -->
     <footer>
       <p>
