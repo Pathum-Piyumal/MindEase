@@ -20,6 +20,8 @@ let saved = false;
 let count = 0;
 let showingSavedQuotes = false;
 
+const API_BASE = CONFIG.apiUrl + '/api/quotes';
+
 // DOM elements
 const quoteText = document.getElementById("quotes-text");
 const nextBtn = document.getElementById("next-btn");
@@ -41,7 +43,7 @@ async function loadQuoteStatus() {
     const formData = new FormData();
     formData.append('quote_text', quotes[currentIndex]);
 
-    const response = await fetch('../../backend/api/get_quote_status.php', {
+    const response = await fetch(API_BASE + '/get_quote_status.php', {
       method: 'POST',
       body: formData,
       credentials: 'include'
@@ -82,7 +84,13 @@ async function loadQuoteStatus() {
 nextBtn.addEventListener("click", () => {
   currentIndex = (currentIndex + 1) % quotes.length;
   quoteText.textContent = quotes[currentIndex];
-  loadQuoteStatus(); // Load status for new quote
+  
+  // Fade animation
+  quoteText.style.opacity = '0';
+  setTimeout(() => {
+    quoteText.style.opacity = '1';
+    loadQuoteStatus();
+  }, 100);
 });
 
 // Like button handler
@@ -91,7 +99,7 @@ likeBtn.addEventListener('click', async () => {
     const formData = new FormData();
     formData.append('quote_text', quotes[currentIndex]);
 
-    const response = await fetch('../../backend/api/like_quote.php', {
+    const response = await fetch(API_BASE + '/like_quote.php', {
       method: 'POST',
       body: formData,
       credentials: 'include'
@@ -111,6 +119,14 @@ likeBtn.addEventListener('click', async () => {
         likeBtn.classList.remove('liked');
         likeBtn.querySelector('i').classList.replace('fa-solid', 'fa-regular');
       }
+      
+      // Animation
+      likeBtn.style.transform = 'scale(1.3)';
+      likeCount.style.transform = 'scale(1.3)';
+      setTimeout(() => {
+        likeBtn.style.transform = 'scale(1)';
+        likeCount.style.transform = 'scale(1)';
+      }, 200);
     } else if (data.message === 'not_logged_in') {
       alert('Please login to like quotes');
       window.location.href = './login.html';
@@ -127,7 +143,7 @@ saveBtn.addEventListener('click', async () => {
     const formData = new FormData();
     formData.append('quote_text', quotes[currentIndex]);
 
-    const response = await fetch('../../backend/api/save_quote.php', {
+    const response = await fetch(API_BASE + '/save_quote.php', {
       method: 'POST',
       body: formData,
       credentials: 'include'
@@ -141,10 +157,18 @@ saveBtn.addEventListener('click', async () => {
       if (saved) {
         saveBtn.classList.add('saved');
         saveBtn.querySelector('i').classList.replace('fa-regular', 'fa-solid');
+        showNotification('Quote saved! ✅');
       } else {
         saveBtn.classList.remove('saved');
         saveBtn.querySelector('i').classList.replace('fa-solid', 'fa-regular');
+        showNotification('Quote removed 🗑️');
       }
+      
+      // Animation
+      saveBtn.style.transform = 'scale(1.3)';
+      setTimeout(() => {
+        saveBtn.style.transform = 'scale(1)';
+      }, 200);
 
       // If saved quotes are currently shown, refresh the list
       if (showingSavedQuotes) {
@@ -179,7 +203,7 @@ toggleSavedBtn.addEventListener('click', async () => {
 // Load saved quotes from backend
 async function loadSavedQuotes() {
   try {
-    const response = await fetch('../../backend/api/get_saved_quotes.php', {
+    const response = await fetch(API_BASE + '/get_saved_quotes.php', {
       method: 'GET',
       credentials: 'include'
     });
@@ -208,13 +232,37 @@ function displaySavedQuotes(quotesArray) {
   let html = '<div class="saved-quotes-list">';
   quotesArray.forEach((quote, index) => {
     html += `
-      <div class="saved-quote-item">
-        <p class="saved-quote-text">"${quote.quote_text}"</p>
-        <small class="saved-quote-date">Saved on: ${new Date(quote.saved_at).toLocaleDateString()}</small>
+      <div class="saved-quote-item" style="background: #f5f5f5; padding: 1rem; margin: 1rem 0; border-radius: 8px; border-left: 4px solid #667eea; animation: fadeIn 0.5s ease;">
+        <p style="font-size: 1.1rem; color: #333; margin-bottom: 0.5rem;">"${quote.quote_text}"</p>
+        <small style="color: #999;">Saved on: ${new Date(quote.saved_at).toLocaleDateString()}</small>
       </div>
     `;
   });
   html += '</div>';
   
   savedQuotesContainer.innerHTML = html;
+}
+
+// Notification helper
+function showNotification(message) {
+  const notification = document.createElement('div');
+  notification.textContent = message;
+  notification.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #4CAF50;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 1000;
+    animation: slideIn 0.3s ease;
+  `;
+  
+  document.body.appendChild(notification);
+  
+  setTimeout(() => {
+    notification.remove();
+  }, 3000);
 }
