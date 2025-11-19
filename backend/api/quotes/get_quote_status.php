@@ -1,5 +1,8 @@
 <?php
-header('Access-Control-Allow-Origin: *');
+session_start();
+
+header('Access-Control-Allow-Origin: http://localhost');
+header('Access-Control-Allow-Credentials: true');
 header('Access-Control-Allow-Methods: POST');
 header('Content-Type: application/json');
 
@@ -10,7 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-session_start();
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 $quote_text = isset($_POST['quote_text']) ? trim($_POST['quote_text']) : '';
 
