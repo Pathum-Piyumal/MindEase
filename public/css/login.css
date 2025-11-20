@@ -7,10 +7,11 @@
 }
 
 body {
-    background: linear-gradient(135deg, #f4eaff, #ffffff, #f0f8ff);
+    background: linear-gradient(135deg, #F5F7FA, #E8F5E9);
     color: #546E7A;
     line-height: 1.6;
 }
+
 
 /* Header */
 header {
