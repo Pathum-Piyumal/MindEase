@@ -235,8 +235,10 @@ nav a:hover {
 }
 
 .contact-text {
-  color: #607D8B;
+  color:#37474F;
   font-size: 0.98rem;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 @media (max-width: 900px) {
