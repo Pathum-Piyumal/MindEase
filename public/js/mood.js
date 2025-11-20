@@ -1,5 +1,8 @@
-// API Base URL
-const API_BASE = CONFIG.apiUrl + '/api/quotes';
+// API Base URL 
+const API_BASE = CONFIG.apiUrl + '/api/mood';
+
+console.log('API_BASE configured as:', API_BASE);
+
 // DOM Elements
 const moodButtons = document.querySelectorAll('.mood-button');
 const submitButton = document.getElementById('submitButton');
@@ -15,16 +18,13 @@ const moodHistoryList = document.getElementById('moodHistoryList');
 let selectedMood = null;
 
 // INITIALIZATION
-
 document.addEventListener('DOMContentLoaded', function() {
     loadMoodStats();
     setupEventListeners();
     addSmoothAnimations();
 });
 
-
 // SETUP EVENT LISTENERS
-
 function setupEventListeners() {
     // Mood button selection
     moodButtons.forEach(function(button) {
@@ -68,20 +68,47 @@ function setupEventListeners() {
     }
 }
 
-
 // LOAD MOOD STATISTICS
 async function loadMoodStats() {
+    const url = API_BASE + '/get_mood_stats.php';
+    console.log('Loading mood stats from:', url);
+    
     try {
-        const response = await fetch(API_BASE + '/api/mood/get_mood_stats.php', {
+        const response = await fetch(url, {
             method: 'GET',
             credentials: 'include'
         });
 
-        const data = await response.json();
+        console.log(' Response status:', response.status, response.statusText);
+        console.log(' Response headers:', Object.fromEntries(response.headers.entries()));
+
+        const text = await response.text();
+        console.log(' Raw response text:', text);
+        console.log(' Response length:', text.length);
+        
+        if (!text || text.trim() === '') {
+            console.error('Empty response from server');
+            showToast('⚠️ Server returned empty response. Check PHP error logs.', 'error');
+            return;
+        }
+
+        // Try to parse JSON
+        let data;
+        try {
+            data = JSON.parse(text);
+            console.log('✅ Parsed JSON data:', data);
+        } catch (e) {
+            console.error(' JSON Parse Error:', e);
+            console.error(' Text that failed to parse:', text);
+            showToast('⚠️ Invalid JSON from server. Check console for details.', 'error');
+            return;
+        }
 
         if (data.status === 'success') {
             const percentage = data.positive_percentage;
             const totalEntries = data.total_entries;
+            
+            console.log('✅ Mood stats loaded successfully:', { percentage, totalEntries });
             
             // Update progress bar
             progressFill.style.width = percentage + '%';
@@ -105,15 +132,19 @@ async function loadMoodStats() {
                     progressStats.textContent = `You've recorded ${totalEntries} moods, with ${positiveCount} positive ones.`;
                 }
             }
+        } else {
+            console.warn('⚠️ Server returned error status:', data);
+            if (data.message === 'not_logged_in') {
+                showToast('⚠️ Please login to view mood stats', 'error');
+            }
         }
     } catch (error) {
-        console.error('Error loading mood stats:', error);
+        console.error(' Error loading mood stats:', error);
+        showToast(' Failed to load mood stats. Check console.', 'error');
     }
 }
 
-
 // SUBMIT MOOD
-
 async function handleMoodSubmit() {
     if (!selectedMood) {
         showToast('Please select a mood first!', 'error');
@@ -124,17 +155,41 @@ async function handleMoodSubmit() {
     submitButton.textContent = 'Saving...';
     submitButton.disabled = true;
 
+    const url = API_BASE + '/save_mood.php';
+    console.log(' Saving mood to:', url);
+    console.log(' Mood data:', { mood: selectedMood });
+
     try {
         const formData = new FormData();
         formData.append('mood', selectedMood);
 
-        const response = await fetch(API_BASE + '/api/mood/save_mood.php', {
+        const response = await fetch(url, {
             method: 'POST',
             credentials: 'include',
             body: formData
         });
 
-        const data = await response.json();
+        console.log(' Response status:', response.status, response.statusText);
+
+        const text = await response.text();
+        console.log(' Raw response text:', text);
+        
+        if (!text || text.trim() === '') {
+            console.error(' Empty response from server');
+            showToast('⚠️ Server returned empty response', 'error');
+            return;
+        }
+
+        let data;
+        try {
+            data = JSON.parse(text);
+            console.log('✅ Parsed JSON data:', data);
+        } catch (e) {
+            console.error(' JSON Parse Error:', e);
+            console.error(' Text that failed to parse:', text);
+            showToast('⚠️ Invalid JSON from server', 'error');
+            return;
+        }
 
         if (data.status === 'success') {
             showToast(`✅ Your ${selectedMood} mood has been recorded!`, 'success');
@@ -156,32 +211,53 @@ async function handleMoodSubmit() {
                 window.location.href = './login.html';
             }, 2000);
         } else {
-            showToast('❌ Failed to save mood: ' + data.message, 'error');
+            showToast(' Failed to save mood: ' + data.message, 'error');
         }
     } catch (error) {
-        console.error('Error submitting mood:', error);
-        showToast('❌ Connection error. Please try again.', 'error');
+        console.error(' Error submitting mood:', error);
+        showToast(' Connection error. Please try again.', 'error');
     } finally {
         submitButton.textContent = originalText;
         submitButton.disabled = true;
     }
 }
 
-
 // SHOW MOOD HISTORY
-
 async function handleShowHistory() {
     if (moodHistoryContainer.style.display === 'none') {
         showHistoryBtn.textContent = 'Loading...';
         showHistoryBtn.disabled = true;
         
+        const url = API_BASE + '/get_mood_history.php';
+        console.log(' Loading mood history from:', url);
+        
         try {
-            const response = await fetch(API_BASE + '/api/mood/get_mood_history.php', {
+            const response = await fetch(url, {
                 method: 'GET',
                 credentials: 'include'
             });
 
-            const data = await response.json();
+            console.log(' Response status:', response.status, response.statusText);
+
+            const text = await response.text();
+            console.log(' Raw response text:', text);
+            
+            if (!text || text.trim() === '') {
+                console.error(' Empty response from server');
+                showToast('⚠️ Server returned empty response', 'error');
+                return;
+            }
+
+            let data;
+            try {
+                data = JSON.parse(text);
+                console.log('✅ Parsed JSON data:', data);
+            } catch (e) {
+                console.error(' JSON Parse Error:', e);
+                console.error(' Text that failed to parse:', text);
+                showToast('⚠️ Invalid JSON from server', 'error');
+                return;
+            }
 
             if (data.status === 'success') {
                 displayMoodHistory(data.entries);
@@ -190,11 +266,11 @@ async function handleShowHistory() {
             } else if (data.message === 'not_logged_in') {
                 showToast('⚠️ Please login to view mood history!', 'error');
             } else {
-                showToast('❌ Failed to load history', 'error');
+                showToast(' Failed to load history', 'error');
             }
         } catch (error) {
-            console.error('Error loading history:', error);
-            showToast('❌ Connection error', 'error');
+            console.error(' Error loading history:', error);
+            showToast(' Connection error', 'error');
         } finally {
             showHistoryBtn.disabled = false;
         }
@@ -204,9 +280,7 @@ async function handleShowHistory() {
     }
 }
 
-
 // DISPLAY MOOD HISTORY
-
 function displayMoodHistory(entries) {
     if (!moodHistoryList) return;
 
@@ -257,9 +331,7 @@ function displayMoodHistory(entries) {
     }).join('');
 }
 
-
 // SMOOTH ANIMATIONS
-
 function addSmoothAnimations() {
     moodButtons.forEach((button, index) => {
         button.style.opacity = '0';
@@ -273,9 +345,7 @@ function addSmoothAnimations() {
     });
 }
 
-
 // TOAST NOTIFICATION
-
 function showToast(message, type = 'info') {
     if (!toast || !toastMessage) return;
 
