@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Daily Motivation - MindEase</title>
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/quotes.css" />
 </head>
 
@@ -33,7 +33,11 @@
   <main class="quotes">
     <div class="quotes-container">
       <div class="quotes-image">
+<<<<<<< HEAD
         <img src="/assets/quates.jpg " alt="Inspiration">
+=======
+        <img src="/assets/quates.jpg" alt="Inspiration">
+>>>>>>> d39d5e031905b60bd67c81dd782a15c4c4c33a34
       </div>
       <div class="quotes-content">
         <h1 style="font-size: 3rem; color: #546d78; font-weight: 700">Daily Motivation</h1>
@@ -46,6 +50,18 @@
           <button id="like-btn"><i class="fa-regular fa-heart"></i><span id="like-count">0</span></button>
           <button id="save-btn"><i class="fa-regular fa-bookmark"></i></button>
           <button id="next-btn">Next</button>
+        </div>
+
+        <!-- Toggle Saved Quotes Button -->
+        <div class="toggle-saved-section">
+          <button id="toggle-saved-btn" class="toggle-saved-btn">
+            <i class="fa-solid fa-bookmark"></i> Show Saved Quotes
+          </button>
+        </div>
+
+        <!-- Saved Quotes Container (Hidden by default) -->
+        <div id="saved-quotes-container" class="saved-quotes-container" style="display: none;">
+          <!-- Saved quotes will be loaded here -->
         </div>
       </div>
     </div>

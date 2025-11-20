@@ -12,6 +12,7 @@ body {
     line-height: 1.6;
 }
 
+
 /* Header */
 header {
   background: linear-gradient(90deg, #F5F7FA, #E8F5E9);
@@ -79,7 +80,7 @@ footer a:hover {
 
 /* Login Section */
 .section-login {
-    background: linear-gradient(120deg, #E8EAF6, #A8E6CF);
+   background: linear-gradient(135deg, #f6f3ff, #f2f7ff, #ffffff);
     flex: 1;
     display: flex;
     align-items: center;
