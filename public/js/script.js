@@ -186,22 +186,57 @@ document.addEventListener('DOMContentLoaded', () => {
   updateWeeklySessions();
 });
 async function loadMeditationAudio() {
-    const response = await fetch('../../backend/api/meditations.php');
-    const data = await response.json();
+    try {
+        const response = await fetch('../../backend/api/meditations.php');
+        const data = await response.json();
 
-    const container = document.getElementById("meditation-list");
+        const container = document.getElementById("meditation-list");
 
-    data.forEach(item => {
-        container.innerHTML += `
-            <div class="meditation-card">
+        if (data.length === 0) {
+            container.innerHTML = '<p style="color: #78909C; font-style: italic;">No meditation sessions available at the moment.</p>';
+            return;
+        }
+
+        container.innerHTML = '';
+
+        data.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'meditation-card';
+
+            card.innerHTML = `
                 <h4>${item.title}</h4>
-                <p>Duration: ${item.duration}</p>
-                <audio controls>
+                <span class="category">${item.category || 'General'}</span>
+                <div class="duration">${item.duration}</div>
+                <audio controls preload="none">
                     <source src="${item.url}" type="audio/mpeg">
+                    Your browser does not support the audio element.
                 </audio>
-            </div>
-        `;
-    });
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%;"></div>
+                </div>
+            `;
+
+            // Add progress tracking
+            const audio = card.querySelector('audio');
+            const progressFill = card.querySelector('.progress-fill');
+
+            audio.addEventListener('timeupdate', () => {
+                const progress = (audio.currentTime / audio.duration) * 100;
+                progressFill.style.width = progress + '%';
+            });
+
+            audio.addEventListener('ended', () => {
+                progressFill.style.width = '100%';
+                // Could add completion tracking here
+            });
+
+            container.appendChild(card);
+        });
+    } catch (error) {
+        console.error('Error loading meditation audio:', error);
+        const container = document.getElementById("meditation-list");
+        container.innerHTML = '<p style="color: #d32f2f;">Failed to load meditation sessions. Please try again later.</p>';
+    }
 }
 
 loadMeditationAudio();
