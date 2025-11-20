@@ -1,11 +1,13 @@
 <?php
-header('Access-Control-Allow-Origin: *');
+session_start();
+
+header('Access-Control-Allow-Origin: http://localhost');
+header('Access-Control-Allow-Credentials: true');
 header('Access-Control-Allow-Methods: GET');
 header('Content-Type: application/json');
 
 require_once '../../config/database.php';
 
-session_start();
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
 if (!$user_id) {
