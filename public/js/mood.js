@@ -14,14 +14,20 @@ const toastMessage = document.getElementById('toastMessage');
 const showHistoryBtn = document.getElementById('showHistoryBtn');
 const moodHistoryContainer = document.getElementById('moodHistoryContainer');
 const moodHistoryList = document.getElementById('moodHistoryList');
+const weekFilter = document.getElementById('weekFilter');
+const monthFilter = document.getElementById('monthFilter');
+const chartContainer = document.getElementById('chartContainer');
 
 let selectedMood = null;
+let moodChart = null;
+let currentPeriod = 'week';
 
 // INITIALIZATION
 document.addEventListener('DOMContentLoaded', function() {
     loadMoodStats();
     setupEventListeners();
     addSmoothAnimations();
+    loadMoodTrends(); // Load initial chart
 });
 
 // SETUP EVENT LISTENERS
@@ -65,6 +71,14 @@ function setupEventListeners() {
     // Show history
     if (showHistoryBtn) {
         showHistoryBtn.addEventListener('click', handleShowHistory);
+    }
+
+    // Filter buttons
+    if (weekFilter) {
+        weekFilter.addEventListener('click', () => switchPeriod('week'));
+    }
+    if (monthFilter) {
+        monthFilter.addEventListener('click', () => switchPeriod('month'));
     }
 }
 
@@ -355,6 +369,141 @@ function showToast(message, type = 'info') {
     setTimeout(function() {
         toast.classList.remove('show');
     }, 3000);
+}
+
+// LOAD MOOD TRENDS
+async function loadMoodTrends(period = currentPeriod) {
+    const url = API_BASE + '/get_mood_trends.php?period=' + period;
+    console.log('Loading mood trends from:', url);
+
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            credentials: 'include'
+        });
+
+        const text = await response.text();
+        console.log('Raw response text:', text);
+
+        if (!text || text.trim() === '') {
+            console.error('Empty response from server');
+            return;
+        }
+
+        let data;
+        try {
+            data = JSON.parse(text);
+            console.log('Parsed JSON data:', data);
+        } catch (e) {
+            console.error('JSON Parse Error:', e);
+            return;
+        }
+
+        if (data.status === 'success') {
+            renderMoodChart(data.trends, period);
+        } else if (data.message === 'not_logged_in') {
+            showToast('Please login to view mood trends', 'error');
+        }
+    } catch (error) {
+        console.error('Error loading mood trends:', error);
+    }
+}
+
+// SWITCH PERIOD
+function switchPeriod(period) {
+    currentPeriod = period;
+
+    // Update button states
+    if (weekFilter) {
+        weekFilter.classList.toggle('active', period === 'week');
+    }
+    if (monthFilter) {
+        monthFilter.classList.toggle('active', period === 'month');
+    }
+
+    loadMoodTrends(period);
+}
+
+// RENDER MOOD CHART
+function renderMoodChart(trends, period) {
+    const ctx = document.getElementById('moodChart');
+    if (!ctx) return;
+
+    // Destroy existing chart
+    if (moodChart) {
+        moodChart.destroy();
+    }
+
+    const labels = trends.map(trend => {
+        const date = new Date(trend.date);
+        return period === 'week' ? date.toLocaleDateString('en-US', { weekday: 'short' }) : date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    });
+
+    const datasets = [
+        {
+            label: 'Happy',
+            data: trends.map(trend => trend.happy),
+            backgroundColor: '#fbbf24',
+            borderColor: '#f59e0b',
+            borderWidth: 1
+        },
+        {
+            label: 'Calm',
+            data: trends.map(trend => trend.calm),
+            backgroundColor: '#34d399',
+            borderColor: '#10b981',
+            borderWidth: 1
+        },
+        {
+            label: 'Anxious',
+            data: trends.map(trend => trend.anxious),
+            backgroundColor: '#f87171',
+            borderColor: '#ef4444',
+            borderWidth: 1
+        },
+        {
+            label: 'Sad',
+            data: trends.map(trend => trend.sad),
+            backgroundColor: '#60a5fa',
+            borderColor: '#3b82f6',
+            borderWidth: 1
+        },
+        {
+            label: 'Angry',
+            data: trends.map(trend => trend.angry),
+            backgroundColor: '#fb923c',
+            borderColor: '#f97316',
+            borderWidth: 1
+        }
+    ];
+
+    moodChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: datasets
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: `Mood Trends - ${period.charAt(0).toUpperCase() + period.slice(1)}`
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
 }
 
 // Initialize submit button as disabled
