@@ -340,14 +340,159 @@ background: linear-gradient(135deg, #e9fff9, #e3f2fd, #f9fbe7);
 }
 
 }
+/* Meditation Grid */
+.meditation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
 .meditation-card {
-    background: #faf5ff;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 12px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    background: linear-gradient(135deg, #f8f9ff, #e8f5e9);
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.meditation-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #A8E6CF, #B3E5FC);
+}
+
+.meditation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.meditation-card h4 {
+    color: #37474f;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.meditation-card .category {
+    display: inline-block;
+    background: #A8E6CF;
+    color: #2e3a47;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.meditation-card .duration {
+    color: #78909C;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.meditation-card .duration::before {
+    content: '⏱️';
 }
 
 .meditation-card audio {
     width: 100%;
+    margin-top: 1rem;
+    border-radius: 8px;
+}
+
+.meditation-card .progress-bar {
+    width: 100%;
+    height: 4px;
+    background: #e0e0e0;
+    border-radius: 2px;
+    margin: 0.5rem 0;
+    overflow: hidden;
+}
+
+.meditation-card .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #A8E6CF, #B3E5FC);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+/* Techniques Grid */
+.techniques-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.technique-card {
+    background: linear-gradient(135deg, #fff8f0, #f0f8ff);
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.technique-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #FFD54F, #FFAB91);
+}
+
+.technique-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.technique-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.technique-card h3 {
+    color: #37474f;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.technique-card p {
+    color: #78909C;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .meditation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .techniques-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .meditation-card,
+    .technique-card {
+        padding: 1rem;
+    }
 }
