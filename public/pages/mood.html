@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mood Tracker</title>
   <link rel="stylesheet" href="../css/mood.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -120,6 +121,18 @@
           <div class="progress-fill" id="progressFill" style="width: 0%"></div>
         </div>
         <p id="progressStats" style="margin-top: 0.75rem; color: #718096; font-size: 0.9rem;">No moods recorded yet. Start tracking your emotional journey! 🌱</p>
+      </div>
+
+      <!-- Historical Charts Section -->
+      <div class="progress-section">
+        <h2 class="card-title">Historical Charts</h2>
+        <div class="filter-buttons" style="margin-bottom: 1rem;">
+          <button id="weekFilter" class="filter-btn active">Week</button>
+          <button id="monthFilter" class="filter-btn">Month</button>
+        </div>
+        <div id="chartContainer">
+          <canvas id="moodChart" width="400" height="200"></canvas>
+        </div>
       </div>
 
       <!-- Mood History Section -->
